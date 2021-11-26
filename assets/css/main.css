@@ -1,0 +1,432 @@
+/* ================ Home Component CSS Start ================ */
+.home__component {
+    height: 930px;
+    position: relative;
+    background-size: cover;
+    /* width: 100vw; */
+    background-repeat: no-repeat;
+    background-image: url('../images/Landing-Page-background-image.png');
+    
+}
+header {
+    /* display: flex; */
+    justify-content: space-between;
+    position: relative;
+    color: #FFFFFF;
+    font-size: 17px;
+    flex-wrap: wrap;
+}
+div.logo > img {
+    position: relative;
+    top: 10px;
+    left: 17px;
+    height: 130px;
+}
+nav {
+    margin-right: 15px;
+    margin-top: 43px;
+    height: 40px;
+    width: 925px;
+    align-items: center;
+}
+
+.nav-btn {
+    outline: none;
+    height: 40px;
+    background: transparent;
+    border-radius: 20px;
+    border: 1px solid #FFFFFF80;
+    padding: 11px 24px 12px;
+    font-size: 17px;
+    line-height: 17px;
+    
+}
+.action__button, .language__selection, .action__links  {
+    height: 40px;
+}
+.action__links {
+    width: 370px;
+    margin-left: 20px;
+}
+.action__button {
+    margin: 0 20px;
+    width: 270px;
+}
+.language__selection{
+    width: 44px;
+}
+a:any-link{
+    color: #FFFFFF;
+}
+
+.hero__section {
+    width: 380px;
+    position: relative;
+    top: 150px;
+    left: 55px;
+    color: #FFFFFF;
+}
+.hero__title > h1{
+    font-size: 50px;
+    padding: 10px 0;
+}
+.hero__subtitle {
+    margin: 8px 0;
+}
+.hero__subtitle > img {
+    height: 10px;
+}
+.hero__subtitle > p {
+    padding-left: 25px;
+}
+
+.btn__primary {
+    width: 225px;
+    height: 54px;
+    cursor: pointer;
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    transform: translate(-50%);
+    outline: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 27px;
+    opacity: 0.7;
+    background-color: #006072;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.hero__diagram {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1085px;
+    height: 121px;
+}
+.diagram__element {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.diagram__arrow {
+    padding-top: 21px;
+}
+.navigation__arrow {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 3%;
+    cursor: pointer;
+}
+
+/* ============================================================== */
+
+/* ======================== Info CSS Start ================== */
+.container {
+    width: 1162px;
+    margin: 0 auto;
+}
+/* Info__section__1 */
+.info__title {
+    font-size: 40px;
+    padding-top: 80px;
+    width: 100%;
+    text-align: center;
+}
+.info__cards{
+    width: 100%;
+    margin: 80px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info__card__element {
+    height: 506px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 320px;
+}
+.info__card__title {
+    font-size: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+.info__card__desc {
+    font-size: 17px;
+    margin-top: 28px;
+    text-align: center;
+}
+
+/* info__section__2 */
+.info__section__2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0 50px;
+}
+.left {
+    width: 50%;     /*for responsive it should be change*/
+}
+.left > title {
+    font-size: 30px;
+}
+.left > .desc {
+    margin-top: 7px;
+    font-size: 18px;
+}
+.left > .desc  p {
+    padding-bottom: 18px;
+}
+
+/* info__section__3__blog */
+.info__section__3__blog {
+    width: 100%;
+    /* height: 200px;
+    background-color: red; */
+}
+.blog__title {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 900;
+    color: #4F4F4F;
+}
+.blog__card__wrapper{
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 42px;
+}
+.blog__card {
+    max-width: 357px;
+    box-shadow: 0px 0px 30px #E4EBF0;
+    border-radius: 4px;
+}
+.blog__content {
+    padding: 20px;
+}
+.blog__content > .blog__subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #3D4046;
+}
+.blog__content > .blog__date {
+    font-size: 12px;
+    color: #A3A3A3;
+    padding: 2px 0;
+}
+.blog__content > .blog__desc {
+    font-size: 16px;
+    color: #4F4F4F;
+    margin-top: 5px;
+    padding-bottom: 15px;
+}
+.blog__redirect > span {
+    color: #4F4F4F;
+    font-size: 18px;
+}
+.blog__redirect > img {
+    margin-left: 10px;
+}
+
+/* ============================================================== */
+
+/* ======================== Tesinomial CSS Start ================== */
+
+.testimonial__wrapper {
+    width: 100%;
+    background-color: #F4F5F8;
+    padding-bottom: 53px;
+}
+.testinomial__title {
+    margin-top: 56px;
+    font-size: 40px;
+    font-weight: 900;
+    color: #4F4F4F;
+    padding-top: 57px;
+    text-align: center;
+}
+.cutomers__wrapper {
+    padding-top: 56px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.customer__card {
+    width: 357px;
+    padding: 43px 38px 38px;
+    position: relative;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.customer__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+    background-color: #1D7A8C;
+}
+.message__icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.customer__intro {
+    display: flex;
+    align-items: center;
+}
+.customer__intro > .customer__details {
+    margin-left: 18px;
+}
+.customer__details > .customer__name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4F4F4F;
+}
+.customer__details > .customer__city {
+    font-size: 13px;
+    color: #8E8E8E;
+}
+.customer__review {
+    margin-top: 25px;
+    color: #565656;
+    font-size: 16px;
+}
+.customer__review > p {
+    margin-bottom: 25px;
+}
+.customer__redirect > span {
+    font-size: 18px;
+    padding-right: 11px;
+    color: #565656;
+}
+/* Newsletter CSS */
+.newsletter__wrapper {
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+}
+.scroll__button {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    background-color: #525252;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter__details > form {
+    margin-top: 16px;
+    text-align: center;
+}
+.newsletter__title {
+    margin-top: 9px;
+    text-align: center;
+    line-height: 21px;
+    font-size: 18px;
+}
+.newsletter__title {
+    line-height: 22px;
+    font-size: 18px;
+    margin-top: 9px;
+}
+.timer__button {
+    top: 0;
+    right: 70px;
+    position: absolute;
+}
+
+form > input {
+    background-color: #F4F5F8;
+    border: 1px solid #565656;
+    height: 40px;
+    border-radius: 40px;
+    width: 233px;
+    padding: 11px 22px;
+    text-transform: capitalize;
+    margin-right: 11px;
+}
+.newsletter__details > form > button {
+    background-color: #FF7B6D;
+    width: 88px;
+    height: 40px;
+    border-radius: 40px;
+    border: none;
+}
+
+/* Footer */
+.footer__wrapper {
+    background-color: #111111;
+    height: 132px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 123px 0 115px;
+}
+.footer__links {
+    width: 581px;
+}
+.footer__links > ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer__links > ul > a > li {
+    font-size: 14px;
+}
+.footer__social__media {
+    display: flex;
+    width: 49px;
+}
+.footer__social__media > img:nth-child(1) {
+    margin-right: 20px;
+}
+
+.footer__info {
+    background-color: #292929;
+    height: 64px;
+    position: relative;
+}
+.footer__info > p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 22px;
+    color: #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.footer__info > button {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #EED507;
+    cursor: pro;
+}
