@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding-top: 32px;
+    padding-bottom: 55px;
+}
+@media (min-width: 1000px) {
+    .container{
+        max-width: 987px;
+    }
+    .custom__img {
+        width: 24px;
+        height: 25px;
+    }
+    
+}
+a:any-link {
+    text-decoration: none;
+}
+
+.custom__page__title {
+    font-size: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #4F4F4F;
+}
+.custom__hr__line {
+    width: 62px;
+    height: 1px;
+    background-color: #CCCCCC;
+    margin: 0 10px;
+}
+.custom__page__intro {
+    margin: 34px 0;
+    font-size: 18px;
+    color: #646464;
+    text-align: center;
+}
+.custom__que__title {
+    padding-left: 15px; 
+    color: #646464;
+    font-weight: bold;
+}
+.card-body {
+    padding: 0px 0 0px 37px;
+    border: none;
+    text-align: justify ;
+}
+.custom__wrapper {
+    margin: 18px 0;
+}
+.custom__button {
+    background-color: #f6f6f6;
+    text-align: center;
+    text-transform: uppercase;
+    height: 66px;
+    color: #646464;
+    border-bottom: 4px solid #1d7a8c;
+}
+.cutomer__button,.button__active {
+    background-color: #1d7a8c;
+    color: #fff;
+}
