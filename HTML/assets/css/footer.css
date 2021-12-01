@@ -14,7 +14,7 @@ footer > .row > .col-12 > .container.footer__content {
 }
 footer > .row > .col-12 > .container > div > a:any-link {
     text-decoration: none;
-    color: #9BA0A3;
+    color: #F1F1F1;
     text-transform: uppercase;
     font-size: 0.875rem;
 }
