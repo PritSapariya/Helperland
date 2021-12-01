@@ -2,24 +2,22 @@
     box-sizing: border-box;
 }
 
-.container {
+.faq > .container {
     padding-top: 32px;
     padding-bottom: 55px;
 }
 @media (min-width: 1000px) {
-    .container{
+    .faq > .container {
         max-width: 987px;
     }
     .custom__img {
         width: 24px;
         height: 25px;
-    }
-    
+    } 
 }
 a:any-link {
     text-decoration: none;
 }
-
 .custom__page__title {
     font-size: 36px;
     line-height: 36px;
