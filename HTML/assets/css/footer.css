@@ -1,29 +1,26 @@
-footer > .row {
-    background-color: #111111;
-}
-footer > .row > .col-12 > .container.footer__content {
-    height: 132px;
-    padding-left: 20px;
-    padding-right: 20px;
-    /* border-bottom: 1px solid #424242; */
-}
-.footer__copyright > .container {
-    font-size: 0.875rem;
-    border-top: 1px solid #424242;
-    padding: 22px 0;
-}
-footer > .row > .col-12 > .container > div > a:any-link {
-    text-decoration: none;
-    color: #F1F1F1;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-}
-footer > .row > .col-12 > .container > .footer__links > a.nav-link {
-    font-size: 0.875rem;
+/* Footer Section */
+.site-footer .container { max-width: 1420px; }
+.site-footer .footer-top { background: #111111; padding: 27px 0; }
+.site-footer a { display: inline-block; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul.footer-navigation li a:hover, .site-footer ul.social-media-list a:hover { opacity: 0.8; }
+.site-footer ul.footer-navigation { flex-wrap: wrap; }
+.site-footer ul.footer-navigation li+li { margin-left: 30px; }
+.site-footer ul.footer-navigation li a { color: #F1F1F1; text-decoration: none; text-transform: uppercase; font-size: 14px; line-height: 2.14; transition: opacity 0.3s; }
+.site-footer ul.social-media-list li { text-align: center; }
+.site-footer ul.social-media-list a { width: 20px; height: 20px; transition: opacity 0.3s; }
+.site-footer ul.social-media-list li:last-child { margin-left: 20px; }
+.site-footer .footer-bottom { background: #292929; padding: 19px 0; position: relative; }
+.ok-btn { position: absolute; text-decoration: none; color: #4F4F4F !important; background: #EED507; border-radius: 20px; width: 99px; height: 40px; line-height: 40px; right: 15px; top: 50%; transform: translateY(-50%); }
+.site-footer .footer-bottom p { color: #f1f1f1; margin-bottom: 0; font-size: 14px; }
+.site-footer .footer-bottom p a { text-decoration: none; color: #6EABEF;}
+
+@media (max-width: 991px) {
+    .site-footer .footer-top .row .footer-navigation {margin: 20px 0;}
+    .footer-widget {display: flex; align-items: center; justify-content: center;}
 }
 
-@media (min-width: 1400px) {
-    footer > .row > .container {
-        width: 1320px;
-    }
+@media (max-width: 690px) {
+    .site-footer .footer-top .row .footer-navigation {flex-direction: column; text-align: center;}
+    .site-footer .footer-top .row .footer-navigation > li {margin: 0;}
 }
