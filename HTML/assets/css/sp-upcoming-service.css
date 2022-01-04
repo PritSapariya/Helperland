@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+h6 {margin: 0; font-weight: bold;}
+/* Upcoming Service Section Starts */
+.upcoming-service .container-fluid {padding-top: 30px; padding-bottom: 30px;}
+.list-group .list-group-item {border: 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); background-color: #1D7A8C; color: #FFFFFF; font-size: 1.125rem; padding: 17px 15px; line-height: 1; transition: 0.2s linear;}
+.list-group .list-group-item.active {background-color: #146371;}
+.list-group .list-group-item:hover {background-color: #146371;}
+.list-group {border-radius: 0px;}
+
+/* Main Content Starts */
+table {border: 1px solid #E1E1E1}
+table thead {background: #F9F9F9; border: 1px solid #E1E1E1; height: 49px;}
+table thead tr > th img {padding-left: 8px;}
+tbody tr {border: 1px solid #E1E1E1}
+tbody tr td div span.service-date {margin-bottom: 6px;}
+tbody tr td div span.service-date img {padding-right: 4px}
+tbody tr td div span.service-time img {padding-right: 3px;}
+tbody tr td button {padding: 0; height: 34px; width: 80px; background-color: #ff6b6b; outline: none; color: #FFFFFF; border: 0; border-radius: 34px;}
+tbody tr td div span.customer-name {padding-bottom: 6px; line-height: 1}
+tbody tr td div span.customer-address img {padding-right: 3px}

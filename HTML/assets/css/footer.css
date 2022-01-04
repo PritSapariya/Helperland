@@ -1,4 +1,5 @@
 /* Footer Section */
+.site-footer.sticky {position: fixed; bottom: 0; right: 0; left: 0;} /* not using right now */
 .site-footer .container { max-width: 1420px; }
 .site-footer .footer-top { background: #111111; padding: 27px 0; }
 .site-footer a { display: inline-block; }
@@ -14,6 +15,7 @@
 .ok-btn { position: absolute; text-decoration: none; color: #4F4F4F !important; background: #EED507; border-radius: 20px; width: 99px; height: 40px; line-height: 40px; right: 15px; top: 50%; transform: translateY(-50%); }
 .site-footer .footer-bottom p { color: #f1f1f1; margin-bottom: 0; font-size: 14px; }
 .site-footer .footer-bottom p a { text-decoration: none; color: #6EABEF;}
+.site-footer .footer-copyright p {font-size: 14px; color: #9BA0A3;}
 
 @media (max-width: 991px) {
     .site-footer .footer-top .row .footer-navigation {margin: 20px 0;}

@@ -1,0 +1,27 @@
+a {text-decoration: none}
+li {list-style: none}
+h2 {font-size: 1.875rem;}
+body { box-sizing: border-box;}
+
+/* Service Provider Main Navbar CSS */
+.header-section .container-fluid {padding: 0;}
+.header-wrapper {position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 5px 15px; background-color: #272727B3;}
+.nav-link {color: #FFFFFF; line-height: 1; font-size: 1rem; padding: 8px 20px;}
+.nav-link:hover{color: #FFFFFF;}
+.nav-item:hover {color: #FFFFFF; border: 1px solid #FFFFFF; border-radius: 32px;}
+.nav-item:last-child {margin-right: 10px;}
+
+.notification-icon {cursor: pointer; position: relative; width: 68px; border-left: 1px #E1E1E1 solid; border-right: 1px #E1E1E1 solid;}
+.notification-icon span {position: absolute; height: 18px; width: 18px; text-align: center; background-color: #FF1616; color: #FFFFFF; font-size: 13px; border-radius: 18px; line-height: 1; top: 4px; right: 10px;}
+
+.profile-icon {width: 84px; cursor: pointer;}
+.profile-icon > img:nth-child(1) {padding-right: 7px;}
+
+.header-section .welcome-msg {background-color: #F9F9F9; height: 184px; padding: 104px 15px 40px; border-bottom: 1px solid #e1e1e1;}
+
+/* Side Navbar */
+.open .wrapper-background {position: fixed; height: 100vh; width: 100%; z-index: 1100; background-color: rgba(0, 0, 0, 0.5); transition: 0.2s; overflow: hidden;}
+.wrapper-background .side-navbar {position: absolute; z-index: 1200; top: 0; bottom: 0; right: 0; left: 100%; transition: all 0.3s ease; padding: 10px 20px}
+.open .side-navbar { max-width: 256px; height: 100vh; width: 250px; background-color: #FFFFFF; left: calc(100% - 250px);}
+
+.side-navbar .side-navbar-welcome-msg {line-height: 1}
