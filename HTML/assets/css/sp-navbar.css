@@ -1,13 +1,14 @@
 a {text-decoration: none}
 li {list-style: none}
 h2 {font-size: 1.875rem;}
-body { box-sizing: border-box;}
+/* body { box-sizing: border-box;} */
 
 /* Service Provider Main Navbar CSS */
 .header-section .container-fluid {padding: 0;}
 .header-wrapper {position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 5px 15px; background-color: #272727B3;}
 .nav-link {color: #FFFFFF; line-height: 1; font-size: 1rem; padding: 8px 20px;}
 .nav-link:hover{color: #FFFFFF;}
+.nav .nav-item {border: 1px solid rgba(255, 255, 255, 0);}
 .nav-item:hover {color: #FFFFFF; border: 1px solid #FFFFFF; border-radius: 32px;}
 .nav-item:last-child {margin-right: 10px;}
 
