@@ -10,19 +10,28 @@ h4 {margin: 0; font-weight: bold; font-size: 22px;}
 .list-group {border-radius: 0px}
 
 /* Main Content Starts */
+.table-header-top {margin-bottom: 10px}
 .table-header-top h4 {color: #646464}
+.table-header-top button {height: 34px; width: 70px; background-color: #1d7a8c; color: #FFFFFF; outline: none; border: 0; border-radius: 34px}
+.table-header-top button:hover {background-color: #146371 !important}
 .sortable {cursor: pointer}
-table {border: 1px solid #E1E1E1}
+table {border: 1px solid #E1E1E1;}
 table thead {background: #F9F9F9; border: 1px solid #E1E1E1; height: 49px;}
 table thead tr > th img {padding-left: 8px;}
 tbody tr {border: 1px solid #E1E1E1}
 
-tbody tr td div span.service-date {margin-bottom: 6px;}
+tbody tr td div span.service-date {margin-bottom: 6px; font-weight: bold;}
 tbody tr td div span.service-date img {padding-right: 4px}
 tbody tr td div span.service-time img {padding-right: 3px;}
-tbody tr td button {padding: 0; height: 34px; width: 80px; background-color: #ff6b6b; outline: none; color: #FFFFFF; border: 0; border-radius: 34px;}
 .service-history .customer-name {padding-left: 5px; line-height: 1}
 tbody tr td div span.customer-address img {padding-right: 3px}
 
 .rating-icons {padding-left: 5px;}
 h6 {margin: 0; padding-left: 10px;}
+.payment-text {font-size: 1.5rem; color: #1d7a8c; font-weight: 700}
+.rate-action button {outline: none; border: none; border-radius: 70px; height: 34px; width: 70px; color: #FFFFFF; background-color: #1d7a8c; font-size: 14px;}
+.rate-action button:hover {background-color: #146371!important;}
+td.service-status div {padding-top: 2px; margin: 0 auto; color: #FFFFFF; font-size: 12px;}
+td.service-status.complete div{height: 22px; width: 82px; background-color: #67b644;}
+td.service-status.cancel div{height: 22px; width: 76px; background-color: #ff6b6b;}
+
