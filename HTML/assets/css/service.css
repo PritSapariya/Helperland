@@ -9,7 +9,7 @@ p { font-size: 1rem; font-weight: 400; color: #4F4F4F; line-height: 1.3; }
 
 /* Hero Section */
 .hero-banner-section {padding-top: 135px; background-position: center; background-repeat: no-repeat; background-size: cover; min-height: 100vh; display: flex; align-items: center; justify-content: center;}
-.hero-banner-section .form-wrapper {background-color: #ffffff;border-radius: 4px; box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15); width: 430px; padding: 20px 36px;}
+.hero-banner-section .form-wrapper {background-color: #ffffff; border-radius: 4px; box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15); width: 430px; padding: 20px 36px; margin: 0 15px;}
 .hero-banner-section .form-wrapper .form-title {color: #4f4f4f; text-align: center; padding-bottom: 1.5rem;}
 .hero-banner-section .form-wrapper .form-group {position: relative;}
 .hero-banner-section .form-wrapper .form-group > div input {height: 2.875rem; margin-bottom: 0.938rem; padding: 16px; border: 1px solid #C8C8C8;}
@@ -22,6 +22,10 @@ p { font-size: 1rem; font-weight: 400; color: #4F4F4F; line-height: 1.3; }
 .hero-banner-section .form-wrapper .form-submit {width: 100%; text-align: center;}
 
 /* Work Section */
+.work-process-section {position: relative}
+.left-bg, .right-bg {position: absolute; top: 0; z-index: -99}
+.left-bg {left: 0}
+.right-bg {right: 0}
 .work-process-section h1 {padding-top: 56px; color: #4f4f4f; padding-bottom: 73px;}
 .work-process-section .work-subsection {margin-bottom: 20px}
 .work-process-section .work-subsection h2 {margin-bottom: 16px}
@@ -29,4 +33,11 @@ p { font-size: 1rem; font-weight: 400; color: #4F4F4F; line-height: 1.3; }
 .work-process-section .work-subsection div.work-desc > div {margin-bottom: 48px; line-height: 24px; font-size: 18px; color: #4f4f4f; font-weight: normal}
 .work-process-section .work-subsection span {font-size: 18px; color: #4f4f4f; cursor: pointer;}
 .work-process-section .work-subsection span img {padding-left: 10px}
-.work-process-section .work-subsection div.img-section {width: 260px; height: 260px; border-radius: 50%; overflow: hidden;}
+.work-process-section .work-subsection div.img-section {width: 260px; height: 260px; overflow: hidden;}
+
+/* Media */
+@media screen and (max-width: 768px) {
+    .work-subsection { flex-direction: column; height: 500px; margin-bottom: 35px !important; justify-content: space-around !important;}
+    .work-subsection .img-section {order: 1;}
+    .work-subsection div.work-desc {order: 2; width: 100% !important; text-align: center;}
+}
