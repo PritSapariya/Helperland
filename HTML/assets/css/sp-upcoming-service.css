@@ -19,3 +19,22 @@ tbody tr td div span.service-time img {padding-right: 3px;}
 tbody tr td button {padding: 0; height: 34px; width: 80px; background-color: #ff6b6b; outline: none; color: #FFFFFF; border: 0; border-radius: 34px;}
 tbody tr td div span.customer-name {padding-bottom: 6px; line-height: 1}
 tbody tr td div span.customer-address img {padding-right: 3px}
+
+
+@media screen and (max-width: 767px) {
+    /* Main Content Responsice */
+    thead {display: none}
+    table {border: none}
+    table tbody tr {display: block; padding: 30px; margin-bottom: 35px; box-shadow: 0 0 6px rgb(0 0 0 / 25%);}
+    tbody tr td {display: block; padding: 15px 0 !important; margin: 0 !important ; color: #646464; border-bottom: 1px solid #E1E1E1 !important;}
+    tbody tr td:nth-child(1) {padding-top: 0 !important}
+    tbody tr td:nth-child(2) div {display: inline-block; margin-right: 10px;}
+    tbody tr td:last-child {text-align: center; padding-bottom: 0px !important; border-bottom: none !important;}
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    thead th:nth-child(1) {width: 114px;}
+    thead th:nth-child(2) {width: 130px;}
+    thead th:nth-child(4) {width: 105px;}
+    thead th:nth-child(5) {width: 105px;}
+}
