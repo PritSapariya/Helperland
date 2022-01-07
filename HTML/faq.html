@@ -1,201 +1,240 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <title>FAQ</title>
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/faq.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
-
-    <title>FAQ</title>
-  </head>
-  <body>
+        <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
     
+        <!-- Bootstrap CDN links -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
 
-    <!-- Navbar Starts -->
-    <nav class="navbar navbar-expand-lg p-0">
-      <div class="container-fluid navbar__container">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/images/logo-small.png" alt="Branding">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav m-0 d-flex justify-content-end">
-            <a class="nav-link custom__btn btn__1" href="#">Book Now</a>
-            <a class="nav-link custom__btn btn__2" href="#">Prices & Services</a>
-            <a class="nav-link custom__link" href="#">Warranty</a>
-            <a class="nav-link custom__link" href="#">Blog</a>
-            <a class="nav-link custom__link" href="#">Contact</a>
-            <a class="nav-link custom__btn btn__3" href="#">Login</a>
-            <a class="nav-link custom__btn btn__4" href="#">Become a Helper</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar Ends -->
+        <!-- Custom CSS files -->
+        <link rel="stylesheet" href="./assets/css/static-page-navbar.css">
+        <link rel='stylesheet' href="./assets/css/faq.css">
+        <link rel='stylesheet' href="./assets/css/footer.css">
+    
+    </head>
+<body>
+    <div class="wrapper">
+        <!-- FAQ Navbar Starts -->
+        <section class="header-section">
+            <header class="container-fluid">
+                <div class="header-wrapper d-flex justify-content-between align-items-center">
+                    <a href="#"><img src="./assets/images/logo-small.png" alt="Company Logo" srcset=""></a>
+                    <nav class="d-flex">
+                        <ul class="nav">
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Book now</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Prices & services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Warranty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Bocome a Helper!</a>
+                            </li>
+                        </ul>
+                        <div class="hamburger-button text-center align-middle" id="hamburger">
+                            <img src="./assets/images/hamburger.svg" alt="">
+                        </div>
+                    </nav>
+                </div>
 
-    <img src="./assets/images/faq-banner.png" class="img-fluid" alt="FAQ Banner">
+                <!-- Side Navbar Starts -->
+                <div class="side-navbar-wrapper" id="side-navbar-model">
+                    <div class="wrapper-background" id="side-navbar-wrapper">
+                        <div class="side-navbar" id="side-navbar-menu">
+                            <div class="nav-container">
+                                <ul>
+                                    <li><a href="#">Book Now</a></li>
+                                    <li><a href="#">Prices & Services</a></li>
+                                    <li><a href="#">Warranty</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Become a helper!</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Side Navbar Ends -->
 
-    <!-- FAQs Starts -->
-    <div class="faq">
-    <div class="container">
+            </header>
+        </section>
+        <!-- FAQ Navbar Ends -->
 
-      <div class="row">
-        <div class="col-12 custom__page__title">
-          <h1 class="m-0">FAQs</h1>
-        </div>
-      </div>
-      <div class="row px-auto">
-        <div class="col-12 d-flex justify-content-center align-items-center custom__title__box">
-          <div class="custom__hr__line"></div>
-          <img src="./assets/images/forma-1-copy-5.png" class="custom__img" width="16px" height="16px" alt="">
-          <div class="custom__hr__line"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 custom__page__intro">
-          <p class="m-0">Whether you are Customer or Service provider,<br>We have tried our best to solve all your queries and questions.</p>
-        </div>
-      </div>
+        <!-- Hero Image Section -->
+        <img class="img-fluid" src="./assets/images/faq-banner.png" alt="">
 
-      <!-- Buttons -->
-      <div class="row">
-        <div class="col-md-6 custom__button p-0 d-flex justify-content-center align-items-center button__active">
-          <h4 class="m-0">For Customer</h4>
-        </div>
-        <div class="col-md-6 custom__button p-0 d-flex justify-content-center align-items-center">
-          <h4 class="m-0">For Service Provider</h4>
-        </div>
-      </div>
-
-      <!-- Questions & Answers Starts -->
-      <div class="row">
-
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>    
-          </a>
-          <div class="collapse" id="collapseExample1">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+        <!-- FAQ Main Content Starts -->
+        <main class="container">
+            <div class="row mx-auto">
+                <h2 class="title text-center">FAQs</h2>     
             </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>   
-          </a>
-          <div class="collapse" id="collapseExample2">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+            <div class="row mx-auto d-flex justify-content-center">
+                <p class="text-center description">
+                    Whether you are Customer or Service provider, We have tried our best to solve all your queries and questions.
+                </p>
             </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>   
-          </a>
-          <div class="collapse" id="collapseExample3">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+            <ul class="data-title-container row mx-auto">
+                <li class="active col-6">
+                    <span class="active" id="customerFAQ">
+                        <h4>For Customer</h4>
+                    </span>
+                </li>
+                <li class="col-6">
+                    <span id="serviceFAQ">
+                        <h4>For Service Provider</h4>
+                    </span>
+                </li>
+            </ul>
+            <div class="customerFAQ open">
+                <div class="row mx-auto">
+                    <div class="question-element" id="question1">
+                        <img id="arrow1" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6> What's included in a cleaning?</h6>
+                        <p class="anser-description" id="answer">
+                            Bedroom, Living Room & Common Areas,Bathrooms,Kitchen,Extras
+                        </p>
+                    </div>
+                    <div class="question-element" id="question2">
+                        <img id="arrow2" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>testQA??</h6>
+                        <p class="anser-description" id="answer">
+                            A:testQA
+                        </p>
+                    </div>
+                    <div class="question-element" id="question3">
+                        <img id="arrow3" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>Which Helperland professional will come to my place?</h6>
+                        <p class="anser-description" id="answer">
+                            Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date of your request, we work to assign the best professional available.Like working with a specific pro? Add them to your Pro Team from the mobile app and they'll be requested first for all future bookings.You will receive an email with details about your professional prior to your appointment.
+                        </p>
+                    </div>
+                    <div class="question-element" id="question4">
+                        <img id="arrow4" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>Can I skip or rescheduled bookings?</h6>
+                        <p class="anser-description" id="answer">
+                            You can reschedule any booking for free at least 24 hours in advance of the scheduled start time. If you need to skip a booking within the minimum commitment, we’ll credit the value of the booking to your account. You can use this credit on future cleanings and other Helperland services.
+                        </p>
+                    </div>
+                    <div class="question-element" id="question5">
+                        <img id="arrow5" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>test tatva</h6>
+                        <p class="anser-description" id="answer">
+                            test tatva
+                        </p>
+                    </div>
+                    <div class="question-element" id="question6">
+                        <img id="arrow6" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>test tatvasoft</h6>
+                        <p class="anser-description" id="answer">
+                            test tatvasoft
+                        </p>
+                    </div>
+                    <div class="question-element" id="question7">
+                        <img id="arrow7" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>Do I need to be home for a booking?</h6>
+                        <p class="anser-description" id="answer">
+                            We strongly recommend that you are home for the first clean of your booking to show your cleaner around. Some customers choose to give a spare key to their cleaner, but this decision is based on individual preferences.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>   
-          </a>
-          <div class="collapse" id="collapseExample4">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+            <div class="serviceFAQ">
+                <div class="row mx-auto">
+                    <div class="question-element" id="sp-question1">
+                        <img id="sp-arrow1" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>How much do service providers earn?</h6>
+                        <p class="anser-description" id="answer">
+                            The self-employed service providers working with Helperland set their own payouts, this means that they decide how much they earn per hour.
+                        </p>
+                    </div>
+                    <div class="question-element" id="sp-question2">
+                        <img id="sp-arrow2" src="./assets/images/vector-smart-object-copy.png" alt="Arrow">
+                        <h6>What suport do you provide to the service providers?</h6>
+                        <p class="anser-description" id="answer">
+                            Our call-centre is available to assist the service providers with all queries or issues in regards to their bookings during office hours. Before a service provider starts receiving jobs, every individual partner receives an orientation session to familiarise with the online platform and their profile.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>   
-          </a>
-          <div class="collapse" id="collapseExample5">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <a data-bs-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <div class="custom__wrapper d-flex">
-              <img src="./assets/images/down-arrow.png" width="22" height="22" alt="Down Arrow" style="transform: rotate(-90deg);">
-              <h6 class="m-0 custom__que__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</h6>
-            </div>   
-          </a>
-          <div class="collapse" id="collapseExample6">
-            <div class="card card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
-            </div>
-          </div>
-        </div>
 
-      </div>
-      <!-- Questions & Answers Ends -->
+        </main>
+        <!-- FAQ Main Content Ends -->
+
+        <!-- Footer Section Starts -->
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 footer-widget">
+                            <a href="#" title="Helper Hand">
+                                <img src="./assets/images/footer-logo.png" alt="Helper Hand">
+                            </a>
+                        </div>
+                        <div class="col-lg-8 footer-widget">
+                            <ul class="footer-navigation d-flex justify-content-center">
+                                <li><a href="#" title="Home">Home</a></li>
+                                <li><a href="#" title="About">About</a></li>
+                                <li><a href="#" title="Testimonials">Testimonials</a></li>
+                                <li><a href="#" title="FAQs">FAQs</a></li>
+                                <li><a href="#" title="Insurance Policy">Insurance Policy</a></li>
+                                <li><a href="#" title="Impressum">Impressum</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 footer-widget">
+                            <ul class="social-media-list d-flex justify-content-end">
+                                <li>
+                                    <a href="#" target="_blank" title="Facebook">
+                                        <img src="./assets/images/ic-facebook.png" alt="Facebook">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank" title="Instagram">
+                                        <img src="./assets/images/ic-instagram.png" alt="Instagram">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <p class="text-center">©2018 Helperland. All rights reserved. <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section Ends -->
+
     </div>
-    </div>
-    <!-- FAQs Ends -->
-
-    <!-- Footer Starts -->
-    <footer>
-      <div class="row">
-        <div class="col-12">
-          <div class="container footer__content d-flex justify-content-between align-items-center">
-            <img src="./assets/images/footer-logo.png" alt="Branding">
-            <div class="footer__links d-flex justify-content-between align-items-center">
-              <a class="nav-link" href="#">Home</a>
-              <a class="nav-link" href="#">About</a>
-              <a class="nav-link" href="#">Testimonials</a>
-              <a class="nav-link" href="#">Faqs</a>
-              <a class="nav-link" href="#">Insurance policy</a>
-              <a class="nav-link" href="#">Impressum</a>
-            </div>
-            <div class="footer__social__links d-flex justify-content-between align-items-center" style="width: 49px; height: 20px;">
-              <a href="#"><img src="./assets/images/ic-facebook.png" style="position: relative; top: -1px;" alt="Facebook"></a>      
-              <a href="#"></a><img src="./assets/images/ic-instagram.png" alt="Facebook" ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center footer__copyright">
-          <div class="container">
-            ©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer Ends -->
-
-    <!-- Bootstrap JavaScript File CDN -->
+    
+    <!-- JavaScript File CDN link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- Custom CSS link -->
+    <script src="./assets/js/faq.js"></script>
+</body>
 </html>
