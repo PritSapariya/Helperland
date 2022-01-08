@@ -44,8 +44,3 @@
 @media screen and (max-width: 991px) {
     .helperland-section .container .row > div:nth-child(1), .helperland-section .container .row > div:nth-child(3) {text-align: center;}
 }
-
-@media screen and (max-width: 778px) {
-    .hero.img-fluid {display: none;}
-    body {padding-top: 0;}
-}

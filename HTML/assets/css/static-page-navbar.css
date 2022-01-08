@@ -1,7 +1,8 @@
 a {text-decoration: none}
 li {list-style: none}
 *{box-sizing: border-box}
-body {padding-top: 64px;}
+
+.img-fluid.hero {padding-top: 64px;}
 
 /* Service History Main Navbar CSS */
 .header-section .container-fluid {padding: 0;}
@@ -31,4 +32,8 @@ body {padding-top: 64px;}
     /* Side navbar */
     .hamburger-button {display: block; padding: 5px 5px; margin-left: 10px;}
     .nav, .left, .profile-icon {display: none} 
+}
+
+@media screen and (max-width: 778px) {
+    .hero.img-fluid {display: none;}
 }
