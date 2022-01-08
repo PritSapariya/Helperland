@@ -31,9 +31,9 @@ h6 {margin: 0; padding-left: 10px;}
 .payment-text {font-size: 1.5rem; color: #1d7a8c; font-weight: 700}
 .rate-action button {outline: none; border: none; border-radius: 70px; height: 34px; width: 70px; color: #FFFFFF; background-color: #1d7a8c; font-size: 14px;}
 .rate-action button:hover {background-color: #146371!important;}
-td.service-status div {padding-top: 2px; margin: 0 auto; color: #FFFFFF; font-size: 12px;}
-td.service-status.complete div{height: 22px; width: 82px; background-color: #67b644;}
-td.service-status.cancel div{height: 22px; width: 76px; background-color: #ff6b6b;}
+td.service-status div {height: 22px; padding-top: 2px; margin: 0 auto; color: #FFFFFF; font-size: 12px;}
+td.service-status.complete div{width: 82px; background-color: #67b644;}
+td.service-status.cancel div{width: 76px; background-color: #ff6b6b;}
 
 
 
