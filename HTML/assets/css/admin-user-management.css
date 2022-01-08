@@ -32,6 +32,6 @@ td.user-status.inactive div{background-color: #ff6b6b;}
 a.show {height: 30px; border-radius: 30px; width: 30px; background-color: #f4f4f4;}
 .user-action .dropdown {position: relative;}
 .user-action .dropdown .dropdown-menu {position: absolute; right: 0; width: 34px; box-shadow: 0px 0px 13px 3px rgba(235,235,235,1); padding: 0 !important;}
-.user-action .dropdown .dropdown-menu a {weight: 160px; color: #646464; padding: 7px 10px;}
+.user-action .dropdown .dropdown-menu a {width: 160px; color: #646464; padding: 7px 10px;}
 
 footer p {color: #A2A6A8; font-size: 14px;}
