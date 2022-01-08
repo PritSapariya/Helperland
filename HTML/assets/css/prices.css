@@ -1,24 +1,51 @@
-a:any-link {
-    text-decoration: none;
-}
-.custom__page__title {
-    font-size: 36px;
-    line-height: 36px;
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 14px;
-    color: #4F4F4F;
-}
-.custom__hr__line {
-    width: 62px;
-    height: 1px;
-    background-color: #CCCCCC;
-    margin: 0 10px;
-}
-@media (min-width: 1000px) {
-    .custom__img {
-        width: 24px;
-        height: 25px;
-    } 
+.img-fluid {width: 100%;}
+
+/* Section Title */
+.title {position: relative; text-align: center; margin: 0 0 75px; color: #4F4F4F}
+.title:before {content: ''; width: 168px; height: 1px; background-color: #ccc; display: block; position: absolute; bottom: -21px; left: 50%; margin-left: -84px;}
+.title:after {content: ''; position: absolute; bottom: -33px; display: block; width: 44px; height: 24px; background: url(../images/forma-1-copy-5.png) no-repeat center #FFF; background-size: contain; left: 50%; margin-left: -22px}
+
+/* Price Section */
+.price-section {padding: 94px 0;}
+.price-section .price-panel {max-width: 550px;}
+.price-section .price-panel .price-detail span {font-size: 48px; color: #646464; font-weight: 700; margin-bottom: 25px !important;}
+.price-section .price-panel .price-detail span small {font-size: 30px; font-weight: 400;}
+.price-section ul {padding: 0;}
+.price-section ul li {text-align: left; margin-bottom: 15px; color: #646464;}
+.price-section ul li:last-child {margin-bottom: 0;}
+.price-section ul li img {padding-right: 5px; }
+
+/* What we include section */
+.include-section {padding: 75px 0;}
+.include-section, .include-section h2.title::after {background-color: #F6F6F6;}
+.title {margin-bottom: 90px;}
+.include-section .col-sm-4 {padding: 0 15px !important;}
+.include-section .img-fluid {margin-bottom: 20px;}
+.include-section h5 {margin-bottom: 10px; color: #4F4F4F; font-weight: 700; font-size: 18px;}
+.include-section ul {padding: 0px; color: #4F4F4F;}
+.include-section ul li {padding: 8px 0;}
+.include-section ul > li > div > img {padding-right: 7px; height: 22px;}
+
+/* Extra Service Section */
+.extra-service-section {padding: 84px 0 84px}
+.d-flex {flex-wrap: wrap;}
+.extra-service-section .service-wrapper {min-width: 108px; margin: 0 0 7px !important;}
+.extra-service-section .service-icon-wrapper {height: 108px; width: 108px; background: transparent; border: 1px solid #c8c8c8; border-radius: 108px; margin: 0 !important; margin-bottom: 8px !important;}
+.extra-service-section .service-wrapper div.service-name { color: #646464 !important;}
+.extra-service-section .service-wrapper span.service-time {font-size: 18px; color: #1D7A8C; font-weight: 500;}
+
+/* Why Helperland Section */
+.helperland-section {padding: 75px 0;}
+.helperland-section h4 {color: #646464; margin-bottom: 8px !important; font-size: 20px; font-weight: 700;}
+.helperland-section p {padding-bottom: 20px !important;}
+.helperland-section .container .row > div:nth-child(1) {text-align: end}
+.helperland-section .container .row > div:nth-child(3) {text-align: start}
+
+@media screen and (max-width: 991px) {
+    .helperland-section .container .row > div:nth-child(1), .helperland-section .container .row > div:nth-child(3) {text-align: center;}
 }
 
+@media screen and (max-width: 778px) {
+    .hero.img-fluid {display: none;}
+    body {padding-top: 0;}
+}

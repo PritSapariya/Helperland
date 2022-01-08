@@ -1,304 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <title>Prices</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/prices.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
+        <!-- Bootstrap CDN links -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
 
-    <title>Prices</title>
-</head>
+        <!-- Custom CSS files -->
+        <link rel="stylesheet" href="./assets/css/static-page-navbar.css">
+        <link rel='stylesheet' href="./assets/css/prices.css">
+        <link rel='stylesheet' href="./assets/css/footer.css">
+
+    </head>
 <body>
+    <div class="wrapper">
+        <!-- Prices Navbar Starts -->
+        <section class="header-section">
+            <header class="container-fluid">
+                <div class="header-wrapper d-flex justify-content-between align-items-center">
+                    <a href="#"><img src="./assets/images/logo-small.png" alt="Company Logo" srcset=""></a>
+                    <nav class="d-flex">
+                        <ul class="nav">
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Book now</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Prices & services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Warranty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item border-btn">
+                                <a class="nav-link" href="#">Bocome a Helper!</a>
+                            </li>
+                        </ul>
+                        <div class="hamburger-button text-center align-middle" id="hamburger">
+                            <img src="./assets/images/hamburger.svg" alt="">
+                        </div>
+                    </nav>
+                </div>
 
-    <!-- Navbar Starts -->
-    <nav class="navbar navbar-expand-lg p-0">
-        <div class="container-fluid navbar__container">
-            <a class="navbar-brand" href="#">
-            <img src="./assets/images/logo-small.png" alt="Branding">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav m-0 d-flex justify-content-end">
-                <a class="nav-link custom__btn btn__1" href="#">Book Now</a>
-                <a class="nav-link custom__btn btn__2" href="#">Prices & Services</a>
-                <a class="nav-link custom__link" href="#">Warranty</a>
-                <a class="nav-link custom__link" href="#">Blog</a>
-                <a class="nav-link custom__link" href="#">Contact</a>
-                <a class="nav-link custom__btn btn__3" href="#">Login</a>
-                <a class="nav-link custom__btn btn__4" href="#">Become a Helper</a>
+                <!-- Side Navbar Starts -->
+                <div class="side-navbar-wrapper" id="side-navbar-model">
+                    <div class="wrapper-background" id="side-navbar-wrapper">
+                        <div class="side-navbar" id="side-navbar-menu">
+                            <div class="nav-container">
+                                <ul>
+                                    <li><a href="#">Book Now</a></li>
+                                    <li><a href="#">Prices & Services</a></li>
+                                    <li><a href="#">Warranty</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Become a helper!</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Side Navbar Ends -->
+
+            </header>
+        </section>
+        <!-- Prices Navbar Ends -->
+
+        <!-- Main Content Starts -->
+        <main>
+            <!-- Hero Image -->
+            <img src="./assets/images/group-18.png" class="img-fluid hero" alt="...">
+
+            <!-- Price Section -->
+            <section class="price-section">
+                <h1 class="title">Prices</h1>
+                <div class="container d-flex justify-content-center">
+                    <div class="price-panel">
+                        <div class="price-detail text-center">
+                            <span>18 € <small>/hr</small></span>
+                            <ul>
+                                <li><img width="25" src="./assets/images/checkmark-blue.png" alt="">Lower prices</li>
+                                <li><img width="25" src="./assets/images/forma-1_5.png" alt="">Easy online & secure payment</li>
+                                <li><img width="25" src="./assets/images/forma-1_5.png" alt="">Easy amendment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What we include Section -->
+            <section class="include-section">
+                <h2 class="title">What we include in cleaning</h2>
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <img src="./assets/images/group-18_3.png" class="img-fluid" alt="...">
+                            <h5>Bedroom and Living Room</h5>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Dust all accessible surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Wipe down all mirrors and glass fixtures</divclass=>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Not Included Clean all floor surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Take out garbage and recycling</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>To clean up</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Make beds</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="./assets/images/group-18_4.png" class="img-fluid" alt="...">
+                            <h5>Bathrooms</h5>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Wash and sanitize the toilet, shower, tub, sink</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Not Included Dust all accessible surfaces</divclass=>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Wipe down all mirrors and glass fixtures</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Not Included Clean all floor surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Take out garbage and recycling</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="./assets/images/group-18_2.png" class="img-fluid" alt="...">
+                            <h5>Kitchen</h5>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Cleaning the sink</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Cleaning the oven (outside)</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Cleaning the work surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Dust all accessible surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Clean all floor surfaces</div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div><img src="./assets/images/included-green.png" alt=""></div>
+                                    <div>Included Take out garbage and recycling</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extra Services Section -->
+            <section class="extra-service-section">
+                <h2 class="title">Extra Services</h2>
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="service-wrapper text-center">
+                            <div class="service-icon-wrapper d-flex justify-content-center align-items-center">
+                                <div><img src="./assets/images/3.png" alt=""></div>
+                            </div>
+                            <div class="service-name">Inside cabinets</div>
+                            <span class="service-time">30 Minutes</span>
+                        </div>
+                        <div class="service-wrapper text-center">
+                            <div class="service-icon-wrapper d-flex justify-content-center align-items-center">
+                                <div><img src="./assets/images/5.png" alt=""></div>
+                            </div>
+                            <div class="service-name">Inside fridge</div>
+                            <span class="service-time">30 Minutes</span>
+                        </div>
+                        <div class="service-wrapper text-center">
+                            <div class="service-icon-wrapper d-flex justify-content-center align-items-center">
+                                <div><img src="./assets/images/4.png" alt=""></div>
+                            </div>
+                            <div class="service-name">Inside oven</div>
+                            <span class="service-time">30 Minutes</span>
+                        </div>
+                        <div class="service-wrapper text-center">
+                            <div class="service-icon-wrapper d-flex justify-content-center align-items-center">
+                                <div><img src="./assets/images/2.png" alt=""></div>
+                            </div>
+                            <div class="service-name">Laundry Wash</div>
+                            <span class="service-time">30 Minutes</span>
+                        </div>
+                        <div class="service-wrapper text-center">
+                            <div class="service-icon-wrapper d-flex justify-content-center align-items-center">
+                                <div><img src="./assets/images/1.png" alt=""></div>
+                            </div>
+                            <div class="service-name">Interior windows</div>
+                            <span class="service-time">30 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Helperland Section -->
+            <section class="helperland-section">
+                <h2 class="title">Why Helperland</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div>
+                                <h4>Experienced and vetted professionals</h4>
+                                <p>dominate the industry in scale and scope with an adaptable, extensive network that consistently delivers exceptional results.</p>
+                            </div>
+                            <div>
+                                <h4>Dedicated customer service</h4>
+                                <p>to our customers and are guided in all we do by their needs. The team is always happy to support you and offer all the information. you need.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-center">
+                            <img src="./assets/images/the-best-img-1.png" alt="">
+                        </div>
+                        <div class="col-lg-4">
+                            <div>
+                                <h4>Every cleaning is insured</h4>
+                                <p>and seek to provide exceptional service and engage in proactive behavior. We'd be happy to clean your homes.</p>
+                            </div>
+                            <div>
+                                <h4>Secure online payment</h4>
+                                <p>Payment is processed securely online. Customers pay safely online and manage the booking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Main Content Ends -->
+
+        <!-- Footer Section Starts -->
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 footer-widget">
+                            <a href="#" title="Helper Hand">
+                                <img src="./assets/images/footer-logo.png" alt="Helper Hand">
+                            </a>
+                        </div>
+                        <div class="col-lg-8 footer-widget">
+                            <ul class="footer-navigation d-flex justify-content-center">
+                                <li><a href="#" title="Home">Home</a></li>
+                                <li><a href="#" title="About">About</a></li>
+                                <li><a href="#" title="Testimonials">Testimonials</a></li>
+                                <li><a href="#" title="FAQs">FAQs</a></li>
+                                <li><a href="#" title="Insurance Policy">Insurance Policy</a></li>
+                                <li><a href="#" title="Impressum">Impressum</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 footer-widget">
+                            <ul class="social-media-list d-flex justify-content-end">
+                                <li>
+                                    <a href="#" target="_blank" title="Facebook">
+                                        <img src="./assets/images/ic-facebook.png" alt="Facebook">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank" title="Instagram">
+                                        <img src="./assets/images/ic-instagram.png" alt="Instagram">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+                </div>
             </div>
+            <div class="footer-bottom">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <p class="text-center">©2018 Helperland. All rights reserved. <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- Navbar Ends -->
+        </footer>
+        <!-- Footer Section Ends -->
+
+
+    </div>
     
-    <!-- Banner -->
-    <img src="./assets/images/group-18.png" class="img-fluid" alt="Banner">
-
-    <!-- ========== PRICES SECTION ========== -->
-    <div class="row">
-        <div class="col-12 custom__page__title">
-          <h1 class="m-0">Prices</h1>
-        </div>
-    </div>
-    <div class="row px-auto">
-        <div class="col-12 d-flex justify-content-center align-items-center custom__title__box">
-          <div class="custom__hr__line"></div>
-          <img src="./assets/images/forma-1-copy-5.png" class="custom__img" width="16px" height="16px" alt="">
-          <div class="custom__hr__line"></div>
-        </div>
-    </div>
-    <div class="row">  
-        <div class="container">
-            <div class="price__box">
-                <div class="price__box__title"><h2>One Time</h2></div>
-                <div class="price__tag"><span class="price__euro">€20</span>/hr</div>
-                <div class="price__box__desc">
-                    <div>
-                        <img src="./assets/images/forma-1_5.png" alt="right icon">
-                        <h6>Lower prices</h6>
-                    </div>
-                    <div>
-                        <img src="./assets/images/forma-1_5.png" alt="right icon">
-                        <h6>Easy online & secure payment</h6>
-                    </div>
-                    <div>
-                        <img src="./assets/images/forma-1_5.png" alt="right icon">
-                        <h6>Easy amendment</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ==================================== -->
-    <!-- ====== EXTRA SERVICES SECTION ====== -->
-    <div class="row">
-        <div class="col-12 custom__page__title">
-            <h1 class="m-0">Extra Services</h1>
-        </div>
-    </div>
-    <div class="row px-auto">
-        <div class="col-12 d-flex justify-content-center align-items-center custom__title__box">
-            <div class="custom__hr__line"></div>
-            <img src="./assets/images/forma-1-copy-5.png" class="custom__img" width="16px" height="16px" alt="">
-            <div class="custom__hr__line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="container">
-            <div class="service__wrapper">
-                <img src="./assets/images/3.png" alt="Service Icon">
-                <span class="service__tag">Inside Cabinets</span>
-                <span class="service__minute">30 minutes</span>
-            </div>
-            <div class="service__wrapper">
-                <img src="./assets/images/3.png" alt="Service Icon">
-                <span class="service__tag">Inside fridge</span>
-                <span class="service__minute">30 minutes</span>
-            </div>
-            <div class="service__wrapper">
-                <img src="./assets/images/3.png" alt="Service Icon">
-                <span class="service__tag">Inside oven</span>
-                <span class="service__minute">30 minutes</span>
-            </div>
-            <div class="service__wrapper">
-                <img src="./assets/images/3.png" alt="Service Icon">
-                <span class="service__tag">Laundry wash & dry</span>
-                <span class="service__minute">30 minutes</span>
-            </div>
-            <div class="service__wrapper">
-                <img src="./assets/images/3.png" alt="Service Icon">
-                <span class="service__tag">Interior windows</span>
-                <span class="service__minute">30 minutes</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ===================================== -->
-    <!-- ====== WHAT WE INCLUDE SECTION ====== -->
-    <div class="row">
-        <div class="col-12 custom__page__title">
-        <h1 class="m-0">What we inlude in cleaning</h1>
-    </div>
-    </div>
-        <div class="row px-auto">
-        <div class="col-12 d-flex justify-content-center align-items-center custom__title__box">
-            <div class="custom__hr__line"></div>
-            <img src="./assets/images/forma-1-copy-5.png" class="custom__img" width="16px" height="16px" alt="">
-            <div class="custom__hr__line"></div>
-        </div>
-    </div>
-
-    </div>
-    <div class="container">
-        <div class="row gx-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./assets/images/group-18_3.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Bedroom and Living Room</h5>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Dust all accessible surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Wipe down all mirrors and glass fixtures </p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Clean all floor surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Take out garbage and recycling</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./assets/images/group-18_4.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Bathrooms</h5>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Wash and sanitize the toilet, shower, tub, sink</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Dust all accessible surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Wipe down all mirrors and glass fixtures</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Clean all floor surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Take out garbage and recycling</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./assets/images/group-18_2.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Kitchen</h5>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Dust all accessible surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Empty sink and load up dishwasher</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Clean all floor surfaces</p>
-                    </div>
-                    <div class="d-flex align-items-center" style="padding-bottom: 14px;">
-                        <img src="./assets/images/right-arrow-grey.png" alt="" width="22" height="22">
-                        <p class="card-text px-2">Take out garbage and recycling</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================================== -->
-    <!-- ====== WHY HEPLERLAND SECTION ====== -->
-    <div class="row">
-        <div class="col-12 custom__page__title">
-          <h1 class="m-0">Why Helperland</h1>
-        </div>
-      </div>
-      <div class="row px-auto">
-        <div class="col-12 d-flex justify-content-center align-items-center custom__title__box">
-          <div class="custom__hr__line"></div>
-          <img src="./assets/images/forma-1-copy-5.png" class="custom__img" width="16px" height="16px" alt="">
-          <div class="custom__hr__line"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="container">
-            <div class="col-md-4 quality__left">
-                <div class="quality__section">
-                    <h6>Experienced and vetted professionals</h6>
-                    <p>dominate the industry in scale and scope with an adaptable, extensive network that consistently delivers exceptional results.</p>
-                </div>
-                <div class="quality__section">
-                    <h6>Dedicated customer service</h6>
-                    <p>to our customers and are guided in all we do by their needs. The team is always happy to support you and offer all the information. you need.</p>
-                </div>
-            </div>
-            <div class="col-md-4"><img src="./assets/images/the-best-img-1.png" alt="image"></div>
-            <div class="col-md-4 quality__right">
-                <div class="quality__section">
-                    <h6>Every cleaning is insured</h6>
-                    <p>and seek to provide exceptional service and engage in proactive behavior. We‘d be happy to clean your homes.</p>
-                </div>
-                <div class="quality__section">
-                    <h6>Secure online payment</h6>
-                    <p>Payment is processed securely online. Customers pay safely online and manage the booking.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- =================================== -->
-
-    <!-- Footer Starts -->
-    <footer>
-        <div class="row">
-            <div class="col-12">
-                <div class="container footer__content d-flex justify-content-between align-items-center">
-                    <img src="./assets/images/footer-logo.png" alt="Branding">
-                    <div class="footer__links d-flex justify-content-between align-items-center">
-                        <a class="nav-link" href="#">Home</a>
-                <a class="nav-link" href="#">About</a>
-                <a class="nav-link" href="#">Testimonials</a>
-                <a class="nav-link" href="#">Faqs</a>
-                <a class="nav-link" href="#">Insurance policy</a>
-                <a class="nav-link" href="#">Impressum</a>
-              </div>
-              <div class="footer__social__links d-flex justify-content-between align-items-center" style="width: 49px; height: 20px;">
-                <a href="#"><img src="./assets/images/ic-facebook.png" style="position: relative; top: -1px;" alt="Facebook"></a>      
-                <a href="#"></a><img src="./assets/images/ic-instagram.png" alt="Facebook" ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center footer__copyright">
-            <div class="container">
-              ©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy
-            </div>
-          </div>
-        </div>
-    </footer>
-    <!-- Footer Ends -->
-
-
-    <!-- Bootstrap JavaScript File CDN -->
+    <!-- JavaScript File CDN link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
-
+    <!-- Custom CSS link -->
+    <script src="./assets/js/prices.js"></script>
 
 </body>
 </html>
