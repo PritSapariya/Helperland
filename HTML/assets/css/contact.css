@@ -1,0 +1,26 @@
+/* Section Title */
+.title {position: relative; text-align: center; margin: 0 0 70px; color: #4F4F4F; font-size: 36px;}
+.title:before {content: ''; width: 168px; height: 1px; background-color: #ccc; display: block; position: absolute; bottom: -21px; left: 50%; margin-left: -84px;}
+.title:after {content: ''; position: absolute; bottom: -33px; display: block; width: 44px; height: 24px; background: url(../images/forma-1-copy-5.png) no-repeat center #FFF; background-size: contain; left: 50%; margin-left: -22px}
+.sub-title {text-align: center; font-size: 28px; line-height: 32px; color: #4F4F4F; font-weight: 700; margin-bottom: 25px;}
+
+/* Contact Details */
+section.contact-detail {padding: 94px 0 !important;}
+.contact-detail div.contact-icon-wrapper {height: 61px; width: 100%; margin-bottom: 15px; display: flex; justify-content: center; align-items: center;}
+.contact-detail div.col-md-4 {margin-bottom: 15px !important;}
+.contact-detail div.col-md-4 address {margin-bottom: 0 !important;}
+.contact-detail div > a {text-decoration: none; color: #4F4F4F; transition: 0.3s all ease;}
+.contact-detail div > a:hover {color: #858585;}
+
+hr {margin: 0;}
+
+/* Contact Form */
+section.contact-form {padding: 94px 0;}
+form {max-width: 628px}
+form .col-sm-6 {padding: 0;}
+form .input-group {margin-bottom: 15px; padding: 0 7px;}
+form .input-group .form-control, .input-group-text, .form-select  {height: 46px; padding: 12px 15px; color: #646464;}
+.input-group-text {background-color: #EEEEEE; color: #555555; border-color: dedddd; width: 52px; padding: 6px 12px;}
+textarea.form-control {min-height: 126px;}
+.form-label {color: #646464; font-size: 16px; font-weight: 700; padding: 0 7px; margin-bottom: 5px;}
+.btn.btn-primary {padding: 10px 50px; color: #FFF; width: 163px; height: 46px; border-radius: 46px; border: none; background-color: #1D7A8C; font-weight: 700;}
