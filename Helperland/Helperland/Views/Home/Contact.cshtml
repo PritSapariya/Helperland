@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+    Layout = "~/Views/Shared/_StaticPageLayout.cshtml";
+}
+
+<link rel='stylesheet' href="~/css/contact.css">
+
+<main>
+    <!-- Hero Image -->
+    <img src="~/images/group-16_2.png" class="img-fluid hero" alt="...">
+
+    <!-- Contact Details Section -->
+    <section class="contact-detail">
+        <div class="container">
+            <h2 class="title">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="contact-icon-wrapper"><img src="~/images/forma-1_2.png" alt=""></div>
+                    <address>Königswinterer Str. 116<br>53227 Bonn</address>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="contact-icon-wrapper"><img src="~/images/phone-call.png" alt=""></div>
+                    <a href="tel:+49 (228) 28693320">+49 (228) 28693320</a>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="contact-icon-wrapper"><img src="~/images/vector-smart-object.png" alt=""></div>
+                    <a href="mailto:info@helperland.de">info@helperland.de</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <hr>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+        <div class="container">
+            <h2 class="sub-title">Get in touch with us</h2>
+            <form action="?" class="m-auto px-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="First name">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">+49</span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="mail" class="form-control" placeholder="Email address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="general" selected>General</option>
+                            <option value="inquiry">Inquiry</option>
+                            <option value="renewal">Renewal</option>
+                            <option value="revocation">Revocation</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="With textarea" placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group d-block">
+                        <label class="custom-label d-block" for="attachment">Attachment</label>
+                        <input class="custom-upload btn" type="file" name="contactAttachment" id="Contact_Attachment">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Our current ones apply <a href="#" class="privacy-link">privacy policy</a>. I hereby agree that my data entered into the contact form will be stored electronically and processed and used for the purpose of establishing contact. The consent can be withdrawn at any time pursuant to Art. 7 (3) GDPR by informal notification (eg by e-mail).
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary m-auto">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <img src="~/images/group-16.png" class="img-fluid" alt="...">
+</main>

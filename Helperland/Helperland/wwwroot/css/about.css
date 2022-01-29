@@ -1,0 +1,13 @@
+
+/* Section Title */
+.title {position: relative; text-align: center; margin: 0 0 75px; color: #4F4F4F}
+.title:before {content: ''; width: 168px; height: 1px; background-color: #ccc; display: block; position: absolute; bottom: -21px; left: 50%; margin-left: -84px;}
+.title:after {content: ''; position: absolute; bottom: -33px; display: block; width: 44px; height: 24px; background: url(../images/forma-1-copy-5.png) no-repeat center #FFF; background-size: contain; left: 50%; margin-left: -22px}
+
+main h2 {color: #4F4F4F;}
+main p {color: #646464;}
+/* About */
+.about-us {max-width: 945px !important; padding: 94px 0;}
+
+/* Our Story */
+.our-story {max-width: 945px !important; padding: 0 0 94px;}
