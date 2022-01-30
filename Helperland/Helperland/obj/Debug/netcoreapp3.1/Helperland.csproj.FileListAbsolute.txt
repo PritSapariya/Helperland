@@ -40,3 +40,4 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_StaticPageLayout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Prices.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Faq.cshtml.g.cs

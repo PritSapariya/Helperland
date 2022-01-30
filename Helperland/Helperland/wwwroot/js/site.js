@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 $(document).ready(() => {
 
     /* Sidenavbar Events Starts */
@@ -21,5 +17,32 @@ $(document).ready(() => {
     $(this).scroll(() => {
         $('#side-navbar-model').removeClass('open');
     });
+
+    /* Only for FAQ page */
+    /* Data Toggle Control Starts */
+    $('#customerFAQ').click(() => {
+        $('.serviceFAQ').removeClass('open');
+        $('.customerFAQ').addClass('open');
+        $('#serviceFAQ').removeClass('active');
+        $('#customerFAQ').addClass('active');
+    });
+    $('#serviceFAQ').click(() => {
+        $('.customerFAQ').removeClass('open');
+        $('.serviceFAQ').addClass('open');
+        $('#customerFAQ').removeClass('active');
+        $('#serviceFAQ').addClass('active');
+    });
+
+    $('#question1').click(() => { $('#question1').toggleClass('open'); });
+    $('#question2').click(() => { $('#question2').toggleClass('open'); });
+    $('#question3').click(() => { $('#question3').toggleClass('open'); });
+    $('#question4').click(() => { $('#question4').toggleClass('open'); });
+    $('#question5').click(() => { $('#question5').toggleClass('open'); });
+    $('#question6').click(() => { $('#question6').toggleClass('open'); });
+    $('#question7').click(() => { $('#question7').toggleClass('open'); });
+
+    $('#sp-question1').click(() => { $('#sp-question1').toggleClass('open'); });
+    $('#sp-question2').click(() => { $('#sp-question2').toggleClass('open'); });
+    /* Data Toggle Control Ends */
 
 });

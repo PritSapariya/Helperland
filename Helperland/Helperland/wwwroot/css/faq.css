@@ -1,0 +1,31 @@
+/* .img-fluid {padding-top: 64px;} */
+
+/* Main Content Starts */
+/* main.container {padding: 0px;} */
+ul {list-style: none;}
+main.container .row {max-width: 940px;}
+h2.title {position: relative; margin: 0 0 70px; padding-top: 94px}
+h2.title:before {content: ''; width: 168px; height: 1px; background-color: #ccc; display: block; position: absolute; bottom: -21px; left: 50%; margin-left: -84px;}
+h2.title:after {content: ''; position: absolute; bottom: -33px; display: block; width: 44px; height: 24px; background: url(../images/forma-1-copy-5.png) no-repeat center #FFF; background-size: contain; left: 50%; margin-left: -22px; }
+.text-center {color: #646464}
+p.description {max-width:550px; margin-bottom: 30px; font-size: 1.125rem;}
+
+/* FAQ Container toggle */
+ul.data-title-container {padding: 0 !important; min-height: 66px; height: 100%;}
+.col-6 {padding: 0 !important;}
+.data-title-container li span {text-align: center; position: relative; display: block; padding: 19px 15px; width: 100%; background-color: #F6F6F6; height: 100%;}
+.data-title-container li span h4 {position: relative; z-index: 10; margin: 0 !important; text-transform: uppercase; color: #646464;}
+.data-title-container li span:after {content: ''; z-index: 2; width: 100%; position: absolute; bottom: 0; left: 0;height: 4px; background-color: #1d7a8c; transition: all 0.3s ease;}
+.data-title-container li span.active:after {height: 100%;}
+.data-title-container li span.active h4 {color: #FFFFFF;}
+.customerFAQ {display: none;}
+.serviceFAQ {display: none}
+.open {display: block;}
+
+/* FAQ Container Q&A*/
+.question-element {padding: 0; position: relative; margin-bottom: 35px; height: 22px; overflow: hidden}
+.question-element.open {height: 100%;}
+.question-element img {position: absolute; top: 0; left: 0;}
+.question-element h6 {padding: 0 0 0 40px !important; font-weight:700 !important; color: #646464; margin: 0 !important; display: inline-block; line-height: 1;}
+.question-element p {padding: 15px 0 0 44px; margin-bottom: 0;}
+/*img {rotate: -90deg;}*/

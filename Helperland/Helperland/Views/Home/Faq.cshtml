@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "FAQs";
+    Layout = "~/Views/Shared/_StaticPageLayout.cshtml";
+}
+
+<link rel='stylesheet' href="~/css/faq.css">
+
+<!-- Hero Image Section -->
+<img class="img-fluid hero" src="~/images/faq-banner.png" alt="">
+
+<!-- FAQ Main Content Starts -->
+<main class="container">
+    <div class="row mx-auto">
+        <h2 class="title text-center">FAQs</h2>
+    </div>
+    <div class="row mx-auto d-flex justify-content-center">
+        <p class="text-center description">
+            Whether you are Customer or Service provider, We have tried our best to solve all your queries and questions.
+        </p>
+    </div>
+    <ul class="data-title-container row mx-auto">
+        <li class="active col-6">
+            <span class="active" id="customerFAQ">
+                <h4>For Customer</h4>
+            </span>
+        </li>
+        <li class="col-6">
+            <span id="serviceFAQ">
+                <h4>For Service Provider</h4>
+            </span>
+        </li>
+    </ul>
+    <div class="customerFAQ open">
+        <div class="row mx-auto">
+            <div class="question-element" id="question1">
+                <img id="arrow1" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6> What's included in a cleaning?</h6>
+                <p class="anser-description" id="answer">
+                    Bedroom, Living Room & Common Areas,Bathrooms,Kitchen,Extras
+                </p>
+            </div>
+            <div class="question-element" id="question2">
+                <img id="arrow2" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>testQA??</h6>
+                <p class="anser-description" id="answer">
+                    A:testQA
+                </p>
+            </div>
+            <div class="question-element" id="question3">
+                <img id="arrow3" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>Which Helperland professional will come to my place?</h6>
+                <p class="anser-description" id="answer">
+                    Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date of your request, we work to assign the best professional available.Like working with a specific pro? Add them to your Pro Team from the mobile app and they'll be requested first for all future bookings.You will receive an email with details about your professional prior to your appointment.
+                </p>
+            </div>
+            <div class="question-element" id="question4">
+                <img id="arrow4" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>Can I skip or rescheduled bookings?</h6>
+                <p class="anser-description" id="answer">
+                    You can reschedule any booking for free at least 24 hours in advance of the scheduled start time. If you need to skip a booking within the minimum commitment, we’ll credit the value of the booking to your account. You can use this credit on future cleanings and other Helperland services.
+                </p>
+            </div>
+            <div class="question-element" id="question5">
+                <img id="arrow5" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>test tatva</h6>
+                <p class="anser-description" id="answer">
+                    test tatva
+                </p>
+            </div>
+            <div class="question-element" id="question6">
+                <img id="arrow6" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>test tatvasoft</h6>
+                <p class="anser-description" id="answer">
+                    test tatvasoft
+                </p>
+            </div>
+            <div class="question-element" id="question7">
+                <img id="arrow7" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>Do I need to be home for a booking?</h6>
+                <p class="anser-description" id="answer">
+                    We strongly recommend that you are home for the first clean of your booking to show your cleaner around. Some customers choose to give a spare key to their cleaner, but this decision is based on individual preferences.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="serviceFAQ">
+        <div class="row mx-auto">
+            <div class="question-element" id="sp-question1">
+                <img id="sp-arrow1" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>How much do service providers earn?</h6>
+                <p class="anser-description" id="answer">
+                    The self-employed service providers working with Helperland set their own payouts, this means that they decide how much they earn per hour.
+                </p>
+            </div>
+            <div class="question-element" id="sp-question2">
+                <img id="sp-arrow2" src="~/images/vector-smart-object-copy.png" alt="Arrow">
+                <h6>What suport do you provide to the service providers?</h6>
+                <p class="anser-description" id="answer">
+                    Our call-centre is available to assist the service providers with all queries or issues in regards to their bookings during office hours. Before a service provider starts receiving jobs, every individual partner receives an orientation session to familiarise with the online platform and their profile.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-- FAQ Main Content Ends -->
+
