@@ -131,62 +131,104 @@ font-size: 1rem;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*a {text-decoration: none}
-li {list-style: none}
-*{box-sizing: border-box}
-
-.img-fluid.hero {padding-top: 64px;}*/
-
-/* Service History Main Navbar CSS */
-/*.header-section .container-fluid {padding: 0;}
-.header-wrapper {position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 5px 15px; background-color: #272727B3;}
-.nav-link {color: #FFFFFF; line-height: 1; font-size: 1rem; padding: 8px 20px;}
-.nav-link:hover{color: #FFFFFF;}
-.nav .nav-item {overflow: hidden; border: 1px solid rgba(255, 255, 255, 0);  border-radius: 32px; margin-left:10px; transition: all 0.2s linear;}
-.nav-item:hover {color: #FFFFFF; border: 1px solid #FFFFFF;}
-.nav-item:last-child {margin-right: 10px;}
-.nav-item.border-btn {border: 1px solid rgba(255, 255, 255, 1); background-color: #29626D; color: #FFFFFF; font-size: 1rem; border-radius: 32px;}
-.nav-item.border-btn .nav-link:hover {color: #29626D; margin-bottom: 0; background-color: #FFFFFF}
-.hamburger-button {display: none}*/
-
-/* Side Navbar */
-/*.open .wrapper-background {position: fixed; left: 0; height: 100vh; width: 100%; z-index: 1100; background-color: rgba(0, 0, 0, 0.5); transition: 0.2s; overflow: hidden;}
-.side-navbar {width: 0; overflow: hidden;}
-.wrapper-background .side-navbar {position: absolute; z-index: 1200; top: 0; bottom: 0; right: 0; left: 100%; transition: all 0.3s ease;}
-.open .side-navbar { max-width: 256px; height: 100vh; width: 250px; background-color: #FFFFFF; left: calc(100% - 250px);}
-
-.nav-container {border-bottom: 1px solid #d8d8d8}
-.side-navbar .nav-container ul {margin: 0; padding: 8px 0;}
-.side-navbar .nav-container ul li a {padding: 8px 20px; line-height:1; display: block; cursor: pointer; color: #646464; font-size: 1rem;}
-.side-navbar .nav-container ul li a.active {background-color: #F6F6F6; color: #1D7A8C}
-.side-navbar .nav-container ul li a:hover {background-color: #F6F6F6; color: #1D7A8C}
-
-@media (max-width: 991px) {*/
-    /* Side navbar */
-    /*.hamburger-button {display: block; padding: 5px 5px; margin-left: 10px;}
-    .nav, .left, .profile-icon {display: none} 
+/* Login Modal */
+input:focus {
+    box-shadow: none !important;
+    border-color: #1D7A8C;
 }
 
-@media screen and (max-width: 778px) {
-    .hero.img-fluid {display: none;}
-}*/
+.modal-dialog {
+    max-width: 360px;
+}
+
+.modal-header, .modal-body {
+    padding: 0 !important;
+    border: none;
+}
+
+.modal-dialog .modal-content {
+    padding: 25px;
+    position: relative;
+}
+
+.modal-header {
+    color: #646464;
+    margin-bottom: 45px;
+    border-bottom: 0;
+}
+
+    .modal-header h4 {
+        font-weight: 700;
+    }
+
+    .modal-header .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px;
+        margin: 0;
+    }
+
+.modal-content .modal-body .input {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+    .modal-content .modal-body .input .form-control {
+        padding: 12px 60px 12px 15px;
+    }
+
+    .modal-content .modal-body .input img {
+        position: absolute;
+        background: transparent;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+    }
+
+.modal-content .modal-body .form-check {
+    margin-bottom: 15px;
+}
+
+    .modal-content .modal-body .form-check .form-check-input {
+        height: 20px;
+        width: 20px;
+        margin-top: 2px;
+    }
+
+        .modal-content .modal-body .form-check .form-check-input:checked {
+            border-color: #1d7a8c;
+            background-color: #1D7A8C;
+        }
+
+    .modal-content .modal-body .form-check .form-check-label {
+        color: #4F4F4F;
+        padding-left: 5px;
+        line-height: 1;
+    }
+
+.modal-content .btn {
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 54px;
+    color: #FFFFFF;
+    background-color: #1D7A8C;
+    border: transparent !important;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.modal-content p {
+    color: #646464;
+    font-size: 16px;
+    margin: 0;
+}
+
+.modal-content .modal-body .login-modal-link {
+    color: #1D7A8C;
+}
+
+.nav-link:focus {
+    color: #FFFFFF;
+}

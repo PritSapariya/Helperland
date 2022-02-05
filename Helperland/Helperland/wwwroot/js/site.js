@@ -11,6 +11,9 @@ $(document).ready(() => {
     $('#side-navbar-menu').click((e) => {
         e.stopPropagation();
     });
+    $('.side-nav-link').click(() => {
+        $('#side-navbar-model').removeClass('open');
+    });
     /* Sidenavbar Events Ends */
 
     /* Window Events */
