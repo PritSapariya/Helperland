@@ -1,0 +1,25 @@
+/* Section Title */
+.title {position: relative; text-align: center; margin: 0 0 75px; color: #4F4F4F}
+.title:before {content: ''; width: 168px; height: 1px; background-color: #ccc; display: block; position: absolute; bottom: -21px; left: 50%; margin-left: -84px;}
+.title:after {content: ''; position: absolute; bottom: -33px; display: block; width: 44px; height: 24px; background: url(../images/forma-1-copy-5.png) no-repeat center #FFF; background-size: contain; left: 50%; margin-left: -22px}
+
+/* Price Section */
+.main-section {padding: 94px 0;}
+
+/* Contact Form */
+section.contact-form {padding: 94px 0;}
+form {max-width: 628px}
+form .col-sm-6 {padding: 0;}
+form .input-group {margin-bottom: 15px; padding: 0 7px;}
+form .input-group .form-control, .input-group-text  {height: 46px; padding: 12px 15px; color: #646464;}
+.input-group-text {background-color: #EEEEEE; color: #555555; border-color: dedddd; width: 52px; padding: 6px 12px;}
+.form-label {color: #646464; font-size: 16px; font-weight: 700; padding: 0 7px; margin-bottom: 5px;}
+.main-section .btn.btn-primary {margin-bottom: 15px !important; padding: 10px 50px; color: #FFF; width: 163px; height: 46px; border-radius: 46px; border: none; background-color: #1D7A8C; font-weight: 700;}
+
+
+.form-check {margin-bottom: 15px; padding-left: 29px;}
+.form-check .form-check-input {height: 20px; width: 20px;margin-top: 2px;}
+.form-check .form-check-input:checked {border-color: #1d7a8c; background-color: #1D7A8C;}
+.form-check .form-check-label {color: #4F4F4F; padding-left: 5px; line-height: 20px; font-size: 14px;}
+.check-link {color: #1D7A8C;}
+.text-center {color: #646464;}
