@@ -142,6 +142,29 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult SignIn(User user)
         {
+            if(String.IsNullOrEmpty(user.Email))
+            {
+                ModelState.AddModelError("Email", "Empty Field is not allowed");
+            }
+            if (String.IsNullOrEmpty(user.Password))
+            {
+                ModelState.AddModelError("Password", "Empty Field is not allowed");
+            }
+            if(ModelState.IsValid)
+            {
+                User result = _DBContext.Users.Where(x => x.Email == user.Email && x.Password == user.Password).FirstOrDefault();
+                if(result != null)
+                {
+                    if(result.UserTypeId == 1)
+                    {
+                        return RedirectToAction("Index", "Customer");
+                    }
+                    if(result.UserTypeId == 2)
+                    {
+                        return RedirectToAction("Index", "ServiceProvider");
+                    }
+                }
+            }
             return RedirectToAction("Index");
         }
         
