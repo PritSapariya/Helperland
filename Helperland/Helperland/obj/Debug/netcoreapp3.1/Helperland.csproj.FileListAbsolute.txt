@@ -24,7 +24,6 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.RazorCoreGenerate.cache
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -37,7 +36,6 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.pdb
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.genruntimeconfig.cache
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.csproj.CopyComplete
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_StaticPageLayout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Prices.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Faq.cshtml.g.cs
@@ -83,8 +81,6 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserSignUp.cshtml.g.cs
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\ServiceProviderSignUp.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -160,3 +156,6 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\bin\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\List.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\Index.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Login.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserRegistration.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\ServiceProviderRegistration.cshtml.g.cs

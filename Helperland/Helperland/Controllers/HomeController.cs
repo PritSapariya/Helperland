@@ -1,5 +1,8 @@
-﻿using Helperland.Data;
-using Helperland.Models;
+﻿using Helperland.Models.DBModels;
+using Helperland.Models.DBModels.Data;
+using Helperland.Models.ViewModel;
+using Helperland.Repository.IRepository;
+using Helperland.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,168 +16,167 @@ namespace Helperland.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly HelperlandContext _DBContext;
+        private readonly UserRegistrationRepository _userRegistrationRepository;
+        private readonly LoginRepository _loginRepository;
 
-        public HomeController(ILogger<HomeController> logger, HelperlandContext DBContext)
+        public HomeController ( ILogger<HomeController> logger,
+                              IUserRegistrationRepository userRegistrationRepository,
+                              ILoginRepository loginRepository )
         {
-            _DBContext = DBContext;
             _logger = logger;
+            this._userRegistrationRepository = (UserRegistrationRepository)userRegistrationRepository;
+            this._loginRepository = (LoginRepository)loginRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index ()
         {
             return View();
         }
-        public IActionResult Privacy()
+        public IActionResult About ()
         {
             return View();
         }
-        public IActionResult About()
+        public IActionResult Prices ()
         {
             return View();
         }
-        public IActionResult Prices()
+        public IActionResult Contact ()
         {
             return View();
         }
-        public IActionResult Contact()
+        public IActionResult Faq ()
         {
             return View();
         }
-        public IActionResult Faq()
+        public IActionResult LoginRedirect ()
+        {
+            return RedirectToAction("Index", "Home", new { isLoginOpen = "true" });
+        }
+        public IActionResult UserRegistration ()
         {
             return View();
         }
-        public IActionResult UserSignUp()
-        {
-            User user = new User();
-            return View(user);
-        }
+        
         [HttpPost] 
-        public IActionResult UserSignUp(User user)
+        public IActionResult UserRegistration (UserRegistrationViewModel userRegistrationViewModel)
         {
-            user.UserTypeId = 1; // 1 for all Cutomers
+            ViewBag.HasError = false;
+            ViewBag.Success = false;
+            ViewBag.ErrorMessage = "Please enter valid details";
+            ViewBag.SuccessMessage = "User is successfully registered!";
+            int userTypeId = 1;        // 1 is for user(Customer type) .....
 
-            if(String.IsNullOrEmpty(user.FirstName))
-            {
-                ModelState.AddModelError("FirstName", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.LastName))
-            {
-                ModelState.AddModelError("LastName", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Email))
-            {
-                ModelState.AddModelError("Email", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Mobile))
-            {
-                ModelState.AddModelError("Mobile", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Password))
-            {
-                ModelState.AddModelError("Password", "Empty is not allowed");
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _DBContext.Users.Add(user);
-                    _DBContext.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return RedirectToAction("Faq");
-                }
-
-            }
-            return View();
-        }
-        public IActionResult ServiceProviderSignUp()
-        {
-            User user = new User();
-            return View(user);
-        }
-        [HttpPost]
-        public IActionResult ServiceProviderSignUp(User user)
-        {
-            user.UserTypeId = 2; // 2 for all Service Providers
-
-            if (String.IsNullOrEmpty(user.FirstName))
-            {
-                ModelState.AddModelError("FirstName", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.LastName))
-            {
-                ModelState.AddModelError("LastName", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Email))
-            {
-                ModelState.AddModelError("Email", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Mobile))
-            {
-                ModelState.AddModelError("Mobile", "Empty is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Password))
-            {
-                ModelState.AddModelError("Password", "Empty is not allowed");
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _DBContext.Users.Add(user);
-                    _DBContext.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return RedirectToAction("Faq");
-                }
-
-            }
-            return View();
-        }
-        [HttpPost]
-        public IActionResult SignIn(User user)
-        {
-            if(String.IsNullOrEmpty(user.Email))
-            {
-                ModelState.AddModelError("Email", "Empty Field is not allowed");
-            }
-            if (String.IsNullOrEmpty(user.Password))
-            {
-                ModelState.AddModelError("Password", "Empty Field is not allowed");
-            }
             if(ModelState.IsValid)
             {
-                User result = _DBContext.Users.Where(x => x.Email == user.Email && x.Password == user.Password).FirstOrDefault();
-                if(result != null)
+                if (_userRegistrationRepository.AddUser(userRegistrationViewModel, userTypeId))
+                { 
+                    ViewBag.Success = true;
+                    ModelState.Clear();
+                }
+                else
                 {
-                    if(result.UserTypeId == 1)
+                    ViewBag.ErrorMessage = _userRegistrationRepository.GetErrorMessage();
+                    ViewBag.HasError = true;
+                }
+
+                return View();
+            }
+            else
+            {
+                ViewBag.HasError = true;
+                return View();
+            }
+
+        }
+        public IActionResult ServiceProviderRegistration ()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult ServiceProviderRegistration (UserRegistrationViewModel userRegistrationViewModel)
+        {
+
+            ViewBag.HasError = false;
+            ViewBag.Success = false;
+            ViewBag.ErrorMessage = "Please enter valid details";
+            ViewBag.SuccessMessage = "User is successfully registered!";
+            int userTypeId = 2;        // 2 is for ServiceProvier(Customer type) .....
+
+            if (ModelState.IsValid)
+            {
+                if (_userRegistrationRepository.AddUser(userRegistrationViewModel, userTypeId))
+                {
+                    ViewBag.Success = true;
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = _userRegistrationRepository.GetErrorMessage();
+                    ViewBag.HasError = true;
+                }
+                return View();
+            }
+            else
+            {
+                ViewBag.HasError = true;
+                return View();
+            }
+
+        }
+        
+        [HttpPost]
+        public IActionResult Index (LoginViewModel loginViewModel)
+        {
+        
+            if (ModelState.IsValid)
+            {
+                if(_loginRepository.IsValidUser(loginViewModel))
+                {
+                    int _id = _loginRepository.GetUserId(loginViewModel.Email);
+                    if (_id == 1)
                     {
                         return RedirectToAction("Index", "Customer");
                     }
-                    if(result.UserTypeId == 2)
+                    else if (_id == 2)
                     {
                         return RedirectToAction("Index", "ServiceProvider");
                     }
+                    else if(_id == -1)
+                    {
+                        ViewBag.IsLoginOpen = true;
+                        ViewBag.HasError = true;
+                        ViewBag.ErrorMessage = _loginRepository.GetErrorMessage();
+                        return View();
+                    }
+                    else
+                    {
+                        return View("Prices");
+                    }
+                }
+                else
+                {
+                    ViewBag.IsLoginOpen = true;
+                    ViewBag.HasError = true;
+                    ViewBag.ErrorMessage = _loginRepository.GetErrorMessage();
+                    return View();
                 }
             }
-            return RedirectToAction("Index");
+            else
+            {
+                ViewBag.IsLoginOpen = true;
+                ViewBag.HasError = true;
+                ViewBag.ErrorMessage = "Please enter valid details";
+                return View();
+            }
         }
         
+
+
+
+
+
         
-        // FOR DEBUGGING PURPOSE
-        public IActionResult List()
-        {
-            List<User> users = _DBContext.Users.ToList();
-            return View(users);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

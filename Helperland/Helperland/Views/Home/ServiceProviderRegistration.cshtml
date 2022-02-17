@@ -1,0 +1,120 @@
+﻿@model Helperland.Models.ViewModel.UserRegistrationViewModel;
+
+@{
+    ViewData["Title"] = "Service Proider Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel='stylesheet' href="~/css/sp-sign-up.css">
+
+<main>
+    <h1 id="large-header" hidden></h1>  <!-- To set large-navbar to header-->
+
+    <section class="hero-banner-section" style="background-image: url(/images/become-a-pro-banner.png);">
+        <div class="form-wrapper">
+            <div class="form-title">
+                <h3>Register Now!</h3>
+            </div>
+            <form asp-action="ServiceProviderRegistration" method="post">
+
+                @if (ViewBag.HasError == true)
+                {
+                    <div class="form-group mb-3">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            @ViewBag.ErrorMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                }
+                @if (ViewBag.Success == true)
+                {
+                    <div class="form-group mb-3">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            @ViewBag.SuccessMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group mb-3">
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" required />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" required />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email Address" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+46</span>
+                        <input asp-for="MobileNumber" type="number" class="form-control" placeholder="Mobile Number" required />
+                    </div>
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        I accept <a href="#" class="link">terms and conditions</a> & <a href="#" class="link">privacy policy</a>
+                    </label>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary m-auto">Getting Started <img src="./assets/images/arrow-white.png" alt=""></button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- How it Works Section Starts -->
+    <section class="work-process-section">
+        <div class="left-bg"><img src="~/images/blog-left-bg.png" alt="" srcset=""></div>
+        <div class="right-bg"><img src="~/images/blog-right-bg.png" alt="" srcset=""></div>
+        <div class="container">
+            <h1 class="text-center">How it works</h1>
+            <div class="work-subsection d-flex align-items-center justify-content-between">
+                <div class="work-desc">
+                    <h2>Register yourself</h2>
+                    <div>Provide your basic information to register<br>yourself as a service provider.</div>
+                    <span>Read more<img src="~/images/shape-2.png" alt="" srcset=""></span>
+                </div>
+                <div class="img-section">
+                    <img src="~/images/group-18-1.png" alt="">
+                </div>
+            </div>
+            <div class="work-subsection d-flex align-items-center justify-content-between">
+                <div class="img-section">
+                    <img src="~/images/new-group-18-2.png" alt="">
+                </div>
+                <div class="work-desc">
+                    <h2>Complete service</h2>
+                    <div>Accept service requests from your customers<br>and complete your work.</div>
+                    <span>Read more<img src="~/images/shape-2.png" alt="" srcset=""></span>
+                </div>
+            </div>
+            <div class="work-subsection d-flex align-items-center justify-content-between">
+                <div class="work-desc">
+                    <h2>Complete service</h2>
+                    <div>Accept service requests from your customers<br>and complete your work.</div>
+                    <span>Read more<img src="~/images/shape-2.png" alt="" srcset=""></span>
+                </div>
+                <div class="img-section">
+                    <img src="~/images/group-18-4.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How it Works Section Ends -->
+</main>
+
+<script src="~/js/large-navbar.js" asp-append-version="true"></script>

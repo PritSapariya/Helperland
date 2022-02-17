@@ -6,13 +6,14 @@
 /* Main Section */
 .main-section {padding: 94px 0;}
 
-/* Form */
+/* Contact Form */
 section.contact-form {padding: 94px 0;}
 form {max-width: 628px}
 form .col-sm-6 {padding: 0;}
-form .input-group {margin-bottom: 15px; padding: 0 7px;}
-form .input-group .form-control, .input-group-text  {height: 46px; padding: 12px 15px; color: #646464;}
-.input-group-text {background-color: #EEEEEE; color: #555555; width: 52px; padding: 6px 12px;}
+form .form-group {margin-bottom: 15px; padding: 0 7px;}
+form .form-group .form-control, .input-group-text  {height: 46px; padding: 12px 15px; color: #646464;}
+
+.input-group-text {background-color: #EEEEEE; color: #555555; border-color: #dedddd; width: 52px; padding: 6px 12px;}
 .form-label {color: #646464; font-size: 16px; font-weight: 700; padding: 0 7px; margin-bottom: 5px;}
 .main-section .btn.btn-primary {margin-bottom: 15px !important; padding: 10px 50px; color: #FFF; width: 163px; height: 46px; border-radius: 46px; border: none; background-color: #1D7A8C; font-weight: 700;}
 

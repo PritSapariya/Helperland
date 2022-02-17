@@ -1,4 +1,4 @@
-﻿@model Helperland.Models.User;
+﻿@model Helperland.Models.ViewModel.LoginViewModel;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,10 @@
 
     @* Bootstrap CDN links *@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
+
+    @* JS CDN files *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     @* Custom CSS files *@
     <link href="~/css/static-page-navbar.css" rel="stylesheet" />
@@ -18,12 +21,11 @@
 
 </head>
 <body>
-
     <!-- Main Navbar Starts -->
-    <header class="large-header">
+    <header class="">
         <nav class="navbar navbar-light fixed-top">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img id="branding" src="~/images/logo-large.png" alt="">
+                <img id="branding" src="~/images/logo-small.png" alt="">
             </a>
             <ul class="nav justify-content-end d-none d-lg-flex">
                 <li class="nav-item btn-border">
@@ -42,10 +44,10 @@
                     <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
                 <li class="nav-item btn-border">
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    <a class="nav-link" asp-action="LoginRedirect">Login</a>
                 </li>
                 <li class="nav-item btn-border">
-                    <a class="nav-link" asp-controller="Home" asp-action="ServiceProviderSignUp">Become a helper!</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="ServiceProviderRegistration">Become a helper!</a>
                 </li>
             </ul>
             <ul class="nav justify-content-end d-lg-none">
@@ -66,7 +68,7 @@
                             <li><a href="#">Warranty</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a class="side-nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                            <li><a asp-controller="Home" asp-action="LoginRedirect" class="side-nav-link">Login</a></li>
                             <li><a asp-controller="Home" asp-action="ServiceProviderSignUp">Become a helper!</a></li>
                         </ul>
                     </div>
@@ -74,64 +76,18 @@
             </div>
         </div>
         <!-- Side Navbar Ends -->
-
         <!-- Login Model Starts -->
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="loginModalLabel">Login to your account</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form asp-action="SignIn">
-                            <div class="input">
-                                <input asp-for="Email" type="text" class="form-control" placeholder="Email">
-                                <img src="~/images/email_icon.png" alt="">
-                            </div>
-                            <div class="input">
-                                <input asp-for="Password" type="text" class="form-control" placeholder="Password">
-                                <img src="~/images/lock_icon.png" alt="">
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Remember me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </form>
-                        <div class="text-center">
-                            <a href="#" class="login-modal-link" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot Password?</a>
-                            <p>Don't have an account? <a asp-controller="Home" asp-action="UserSignUp" class="login-modal-link">Create an account</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Login Model Ends -->
+        <partial name="_Login" />
 
-        <!-- Forgot Password Starts -->
-        <div class="modal fade" id="forgotModal" tabindex="-1" aria-labelledby="forgotModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="forgotModalLabel">Forgot Password</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input">
-                            <input type="text" class="form-control" placeholder="Email">
-                        </div>
-                        <button type="button" class="btn btn-primary">Send</button>
-                        <div class="text-center">
-                            <a href="#" class="login-modal-link" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Login now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Forgot Password Ends -->
+        @if (ViewBag.IsLoginOpen == true)
+        {
+            <script>
+                $().ready(() => {
+                    $("#loginModal").modal("show");
+                });
+            </script>
+        }
+        
     </header>
     <!-- Main Navbar Ends -->
 
@@ -180,15 +136,23 @@
             </div>
         </div>
     </footer>
+
     <!-- Footer Section Ends -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
     @* Custom JS File *@
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/large-navbar.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+@* 
+1. If we put JS CDN link to bottom, then large-navbar.js in Index.cshtml is not work.     
+    
+    
+    
+    
+*@

@@ -1,4 +1,6 @@
-using Helperland.Data;
+using Helperland.Models.DBModels.Data;
+using Helperland.Repository;
+using Helperland.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace Helperland
         {
             services.AddControllersWithViews();
             services.AddDbContext<HelperlandContext>();
+            services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,7 +7,7 @@
 main h2 {color: #4F4F4F;}
 main p {color: #646464;}
 /* About */
-.about-us {max-width: 945px !important; padding: 94px 0;}
+.about-us {max-width: 945px !important; padding: 94px 15px;}
 
 /* Our Story */
-.our-story {max-width: 945px !important; padding: 0 0 94px;}
+.our-story {max-width: 945px !important; padding: 0 15px 94px;}

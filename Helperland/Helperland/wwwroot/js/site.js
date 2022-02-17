@@ -1,5 +1,19 @@
-﻿
-$(document).ready(() => {
+﻿$(document).ready(() => {
+
+    // To set Login Modal open
+    let searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has("isLoginOpen")) {
+
+        $("#loginModal").modal("show");
+    }
+
+
+    /* Set LARGE-HEADER for Home page and SP register page */
+    if ($("#large-header").length) {
+
+        $("header").addClass("large-header");
+        $("#branding").attr("src", "/images/logo-large.png");
+    }
 
     /* Sidenavbar Events Starts */
     $('#hamburger').click(() => {
@@ -14,12 +28,13 @@ $(document).ready(() => {
     $('.side-nav-link').click(() => {
         $('#side-navbar-model').removeClass('open');
     });
-    /* Sidenavbar Events Ends */
+
 
     /* Window Events */
     $(this).scroll(() => {
         $('#side-navbar-model').removeClass('open');
     });
+
 
     /* Only for FAQ page */
     /* Data Toggle Control Starts */
