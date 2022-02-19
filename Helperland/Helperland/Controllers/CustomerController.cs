@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace Helperland.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag._id = HttpContext.Session.GetString("_id");
+            ViewBag.email = HttpContext.Session.GetString("email");                 
+
+            if (ViewBag._id == null)
+            {
+                return RedirectToAction("LoginRedirect", "Home");
+            }
             return View();
         }
     }

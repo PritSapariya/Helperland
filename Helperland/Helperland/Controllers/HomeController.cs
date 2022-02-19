@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Helperland.Controllers
 {
@@ -64,9 +65,10 @@ namespace Helperland.Controllers
             ViewBag.Success = false;
             ViewBag.ErrorMessage = "Please enter valid details";
             ViewBag.SuccessMessage = "User is successfully registered!";
-            int userTypeId = 1;        // 1 is for user(Customer type) .....
+            /*int userTypeId = class.customerTypeId;*/     // 1 is for user(Customer type) .....
+            int userTypeId = 1;
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (_userRegistrationRepository.AddUser(userRegistrationViewModel, userTypeId))
                 { 
@@ -133,25 +135,26 @@ namespace Helperland.Controllers
             {
                 if(_loginRepository.IsValidUser(loginViewModel))
                 {
-                    int _id = _loginRepository.GetUserId(loginViewModel.Email);
+                    int _id = _loginRepository.GetUserTypeId(loginViewModel.Email);
                     if (_id == 1)
                     {
+                        HttpContext.Session.SetString("_id", _id.ToString());
+                        HttpContext.Session.SetString("email", loginViewModel.Email);
+                        
                         return RedirectToAction("Index", "Customer");
                     }
                     else if (_id == 2)
                     {
+                        HttpContext.Session.SetString("_id", _id.ToString());
+                        HttpContext.Session.SetString("email", loginViewModel.Email);
                         return RedirectToAction("Index", "ServiceProvider");
                     }
-                    else if(_id == -1)
+                    else
                     {
                         ViewBag.IsLoginOpen = true;
                         ViewBag.HasError = true;
                         ViewBag.ErrorMessage = _loginRepository.GetErrorMessage();
                         return View();
-                    }
-                    else
-                    {
-                        return View("Prices");
                     }
                 }
                 else

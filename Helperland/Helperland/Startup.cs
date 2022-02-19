@@ -27,6 +27,7 @@ namespace Helperland
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
             services.AddDbContext<HelperlandContext>();
             services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
@@ -49,6 +50,7 @@ namespace Helperland
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

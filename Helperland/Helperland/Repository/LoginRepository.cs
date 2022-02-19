@@ -67,7 +67,7 @@ namespace Helperland.Repository
 
         }
     
-        public int GetUserId(string _email)
+        public int GetUserTypeId(string _email)
         {
             User result = _db.Users.Where(u => u.Email == _email).FirstOrDefault();
             if(result != null)
@@ -77,6 +77,6 @@ namespace Helperland.Repository
             Message = "Error in getting useId";
             return -1;
         }
-        
+
     }
 }
