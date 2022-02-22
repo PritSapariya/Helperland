@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!-- Your Details Section Starts -->
+
+<div class="row d-lg-none">
+    <span class="step-title">Your Details</span>
+    <p class="hr-line"></p>
+</div>
+<div class="row">
+    <label class="form-label">Enter your contact details, so we can serve you in better way!</label>
+    <div class="col-12 address-wrapper">
+        <label class="form-label address-block">
+            <input type="radio" name="address" id="address1" value="1">
+            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
+            <div><span>Mobile nunber: </span>9512347382</div>
+            <div class="radio-input-icon"></div>
+        </label>
+        <label class="form-label address-block">
+            <input type="radio" name="address" id="address2" value="2">
+            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
+            <div><span>Mobile nunber: </span>9512347382</div>
+            <div class="radio-input-icon"></div>
+        </label>
+        <label class="form-label address-block">
+            <input type="radio" name="address" id="address3" value="3">
+            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
+            <div><span>Mobile nunber: </span>9512347382</div>
+            <div class="radio-input-icon"></div>
+        </label>
+    </div>
+    <div class="col-12">
+        <input type="button" class="btn btn-large-outline" value="+ Add New Address" id="addAddressButton" />
+        <div class="addressForm" id="addAddressForm">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Street Name</label>
+                    <input type="text" class="form-control" placeholder="Street Name" required />
+                    <!-- <span class="text-danger">Error</span> -->
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">House Number</label>
+                    <input type="number" class="form-control" placeholder="House Number" required />
+                    <!-- <span class="text-danger">Error</span> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Postal Code</label>
+                    <input type="text" class="form-control" placeholder="Street Name" value="53842" disabled required />
+                    <!-- <span class="text-danger">Error</span> -->
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">City</label>
+                    <select class="form-select" required>
+                        <option value="mumbai" selected>Mumbai</option>
+                    </select>
+                    <!-- <span class="text-danger">Error</span> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+49</span>
+                        <input type="number" class="form-control" placeholder="Mobile Number" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input type="button" class="col-2 btn btn-primary-small mx-2" value="Save" id="addAddress" />
+                <input type="button" class="col-2 btn btn-secondary-small" value="Cancel" id="closeAddressForm" />
+            </div>
+        </div>
+    </div>
+    <p class="hr-line"></p>
+    <div class="d-flex flex-row-reverse">
+        <input type="button" class="col-3 btn btn-primary" value="Continue" />
+    </div>
+</div> 

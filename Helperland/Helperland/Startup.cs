@@ -31,6 +31,7 @@ namespace Helperland
             services.AddDbContext<HelperlandContext>();
             services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<IBookNowRepository, BookNowRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

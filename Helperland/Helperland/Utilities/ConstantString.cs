@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Helperland.Utilities
 {
-    public class TypeID
+    public class ConstantString
     {
         public static int customerTypeId = 1;
         public static int serviceTypeId = 2;

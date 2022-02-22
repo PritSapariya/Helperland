@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Book Now";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel='stylesheet' href="~/css/book-now.css">
+
+<!-- Main Content Starts -->
+<main>
+    <!-- Price Section -->
+    <section class="main-section">
+        <h2 class="title">Set up your cleaning service</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-9">
+
+                    <!-- Left -> navbar Starts -->
+                    <ul class="book-now nav nav-custom nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="step1" href="#">
+                                <span class="icon"></span>
+                                <span class="text d-none d-lg-inline-block">Setup Service</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" id="step2" href="#">
+                                <span class="icon"></span>
+                                <span class="text d-none d-lg-inline-block">Schedule & Plan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" id="step3" href="#">
+                                <span class="icon"></span>
+                                <span class="text d-none d-lg-inline-block">Your Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" id="step4" href="#">
+                                <span class="icon"></span>
+                                <span class="text d-none d-lg-inline-block">Make Payment</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Left -> navbar Ends -->
+
+                    <!-- Left -> Form Details Section Starts -->
+                    <div class="book-now-section-wrapper" id="book-now-section-wrapper">
+                        <form>
+
+                            <section id="section1">
+                                <div class="row d-lg-none">
+                                    <span class="step-title">Setup Service</span>
+                                    <p class="hr-line"></p>
+                                </div>
+                                <div id="step1message">
+                                    
+                                </div>
+                                <div class="row">
+                                    <label class="form-label">Enter your Postal Code</label>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6 col-lg-5">
+                                        <input id="postalCode" type="number" class="form-control" required />
+                                        <span id="postalCodeError" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-5 my-2 my-md-0">
+                                        <input id="submit1" type="button" class="btn btn-primary" value="Check Availability" />
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="section2">
+                                
+                            </section>
+                            <section id="section3">
+                                
+                            </section>
+                            <section id="section4">
+                                
+                            </section>
+
+                        </form>
+                    </div>
+                    <!-- Left -> Form Details Section Ends -->
+                </div>
+
+                <!-- Right -->
+                <div class="col-lg-4 col-xl-3 d-none d-lg-block">
+                    <div class="payment-summary-wrapper">
+
+                        <div class="payment-summary">
+                            <h6 class="heading">Payment Summary</h6>
+                            <div class="service-details">
+                                <span>14/02/2022</span> <span>08:00</span>
+
+                                <table class="table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th class="">Duration</th>
+                                            <th class="col-3 text-end"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Basic</td>
+                                            <td class="text-end">3 Hrs</td>
+                                        </tr>
+                                        <tr id="extraTitle">
+                                            <td class="extra-title">Extras</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inside cabinets</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inside fridge</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inside oven</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Laundry wash & dry</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Interior windows</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <div class="total-time d-flex justify-content-between">
+                                    <div class="d-inline-block"><b>Total Service Time</b></div>
+                                    <div class="d-inline-block text-end"><b>5.5 Hrs</b></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <hr class="m-0">
+                        <div class="cleaning-details d-flex justify-content-between">
+                            <div class="d-inline-block">Per cleaning</div>
+                            <div class="d-inline-block text-end"><b>99,00 €</b></div>
+                        </div>
+                        <hr class="m-0">
+                        <div class="payment-details d-flex justify-content-between">
+                            <div class="d-inline-block"><h4>Total<br>Payment</h4></div>
+                            <div class="d-inline-block text-end"><h1><b>99,00 €</b></h1></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</main>
+<!-- Main Content Ends -->
+
+<script src="~/js/book-now.js" asp-append-version="true"></script>

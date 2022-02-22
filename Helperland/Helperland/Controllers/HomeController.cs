@@ -49,9 +49,9 @@ namespace Helperland.Controllers
         {
             return View();
         }
-        public IActionResult LoginRedirect ()
+        public IActionResult LoginRedirect (string returnurl)
         {
-            return RedirectToAction("Index", "Home", new { isLoginOpen = "true" });
+            return RedirectToAction("Index", "Home", new { isLoginOpen = "true", returnurl = returnurl });
         }
         public IActionResult UserRegistration ()
         {
@@ -130,7 +130,7 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult Index (LoginViewModel loginViewModel)
         {
-        
+
             if (ModelState.IsValid)
             {
                 if(_loginRepository.IsValidUser(loginViewModel))
@@ -140,13 +140,14 @@ namespace Helperland.Controllers
                     {
                         HttpContext.Session.SetString("_id", _id.ToString());
                         HttpContext.Session.SetString("email", loginViewModel.Email);
-                        
+
                         return RedirectToAction("Index", "Customer");
                     }
                     else if (_id == 2)
                     {
                         HttpContext.Session.SetString("_id", _id.ToString());
                         HttpContext.Session.SetString("email", loginViewModel.Email);
+
                         return RedirectToAction("Index", "ServiceProvider");
                     }
                     else
