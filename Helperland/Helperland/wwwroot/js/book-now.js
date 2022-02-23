@@ -2,7 +2,6 @@
 $().ready(() => {
 
     /* INITIAL CODE LOADING */
-    $('#addAddressForm').hide();
     let date = new Date();
     let day = ("0" + date.getDate()).slice(-2);
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -11,15 +10,7 @@ $().ready(() => {
 
 
 
-    // Add Address Form Toggle Logic
-    $('#addAddressButton').click(() => {
-        $('#addAddressButton').hide();
-        $('#addAddressForm').show();
-    });
-    $('#closeAddressForm').click(() => {
-        $('#addAddressButton').show();
-        $('#addAddressForm').hide();
-    });
+    
 
     $("#extra-service-inside-cabinet").change(() => {
         if (!$(this).is(':checked')) {
@@ -89,13 +80,19 @@ $().ready(() => {
     }
 
     const step1Complete = () => {
-        $("#section1").hide();
-        $("#step1").removeClass("active");
-        $("#step1").addClass("filled");
-        $("#step2").addClass("active");
-        $("#step2").removeClass("disabled");
-        $("#section2").load("BookNow/GetDetail");
+        stepOn("#step1", "#step2", "#section1");
+        $("#section2").load("BookNow/GetSchedulePage");
     };
+
+    const stepOn = (firstStep, secondStep, section) => {
+
+        $(section).hide();
+        $(firstStep).removeClass("active");
+        $(firstStep).addClass("filled");
+        $(secondStep).addClass("active");
+        $(secondStep).removeClass("disabled");
+
+    }
 
 
     /* =============  STEP 2, 3 & 4 JS is at own page  ======== */

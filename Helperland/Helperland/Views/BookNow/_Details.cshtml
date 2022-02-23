@@ -38,26 +38,26 @@
                 <div class="col-md-6 form-group">
                     <label class="form-label">Street Name</label>
                     <input type="text" class="form-control" placeholder="Street Name" required />
-                    <!-- <span class="text-danger">Error</span> -->
+                    <span class="text-danger"></span> 
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">House Number</label>
                     <input type="number" class="form-control" placeholder="House Number" required />
-                    <!-- <span class="text-danger">Error</span> -->
+                    <span class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
                     <label class="form-label">Postal Code</label>
                     <input type="text" class="form-control" placeholder="Street Name" value="53842" disabled required />
-                    <!-- <span class="text-danger">Error</span> -->
+                    <span class="text-danger"></span>
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">City</label>
                     <select class="form-select" required>
                         <option value="mumbai" selected>Mumbai</option>
                     </select>
-                    <!-- <span class="text-danger">Error</span> -->
+                    <span class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
@@ -80,3 +80,19 @@
         <input type="button" class="col-3 btn btn-primary" value="Continue" />
     </div>
 </div> 
+
+<script>
+
+    $('#addAddressForm').hide();
+
+    // Add Address Form Toggle Logic
+    $('#addAddressButton').click(() => {
+        $('#addAddressButton').hide();
+        $('#addAddressForm').show();
+    });
+    $('#closeAddressForm').click(() => {
+        $('#addAddressButton').show();
+        $('#addAddressForm').hide();
+    });
+
+</script>

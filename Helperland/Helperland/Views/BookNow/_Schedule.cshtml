@@ -164,7 +164,7 @@
         <p class="hr-line"></p>
     </div>
     <div class="d-flex flex-row-reverse">
-        <input type="button" class="col-3 btn btn-primary" value="Continue" />
+        <input type="button" class="col-3 btn btn-primary" value="Continue" id="step2Complete"/>
     </div>
 
 
@@ -204,5 +204,19 @@
         $("#basicTime").text($("#serviceTotalTime").val() + " Hrs");
     });
 
+    $("#step2Complete").click(() => {
+        stepOn("#step2", "#step3", "#section2");
+        $("#section3").load("BookNow/GetAddressPage");
+    });
+
+    const stepOn = (firstStep, secondStep, section) => {
+
+        $(section).hide();
+        $(firstStep).removeClass("active");
+        $(firstStep).addClass("filled");
+        $(secondStep).addClass("active");
+        $(secondStep).removeClass("disabled");
+
+    }
 
 </script>                    

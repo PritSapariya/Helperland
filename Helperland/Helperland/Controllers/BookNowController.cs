@@ -33,6 +33,18 @@ namespace Helperland.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult GetSchedulePage ()
+        {
+            return View("_Schedule");
+        }
+
+        [HttpGet]
+        public IActionResult GetAddressPage ()
+        {
+            return View("_Details");
+        }
+
         [HttpPost]
         public IActionResult CheckPostalCode ( [FromBody] PostalCodeViewModel postalCodeViewModel)
         {
@@ -53,11 +65,7 @@ namespace Helperland.Controllers
             }
         }
 
-        [HttpGet] 
-        public IActionResult GetDetail ()
-        {
-            return View("_Schedule");
-        }
+        
 
 
 
