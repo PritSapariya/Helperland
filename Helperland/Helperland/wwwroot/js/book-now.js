@@ -2,8 +2,14 @@
 $().ready(() => {
 
     /* INITIAL CODE LOADING */
-
     $('#addAddressForm').hide();
+    let date = new Date();
+    let day = ("0" + date.getDate()).slice(-2);
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
+    $("#serviceDateSummary").text(day + "/" + month + "/" + year);
+
+
 
     // Add Address Form Toggle Logic
     $('#addAddressButton').click(() => {
@@ -32,7 +38,6 @@ $().ready(() => {
         $("#section2").empty();
         $("section2").hide();
     });
-   
 
     $("#submit1").click(() => {
 
@@ -53,16 +58,12 @@ $().ready(() => {
                         step1Complete();
                     }
                     else {
-
-
                         $("#step1message").append(`
                                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                                         ${responce.message}
                                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                     </div>
                                                  `).fadeOut(7000, () => $("#step1message").empty());
-
-
                     }
                 },
                 failure: function (response) {
@@ -97,42 +98,7 @@ $().ready(() => {
     };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /* =============  STEP 2, 3 & 4 JS is at own page  ======== */
 
 
 

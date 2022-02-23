@@ -16,11 +16,11 @@
             </div>
             <div class="row form-group">
                 <div class="col-7">
-                    <input class="form-control date" type="date" id="serviceDate" />
-                    <span class="text-danger">Error</span>
+                    <input class="form-control date" type="date" id="serviceDate" value="@DateTime.Now.ToString("yyyy/MM/dd")" min="@DateTime.Now.ToString("yyyy/MM/dd")" />
+                    <span class="text-danger" id="serviceDateError" ></span>
                 </div>
-                <div class="col-5">
-                    <select class="form-select" id="serviceTime">
+                <div class="col-4">
+                    <select class="form-select" id="serviceStartTime">
                         <option value="8" selected>8:00</option>
                         <option value="8.5">8:30</option>
                         <option value="9">9:00</option>
@@ -44,7 +44,7 @@
                         <option value="18">18:00</option>
                         <option value="18.5">18:30</option>
                     </select>
-                    <span class="text-danger">Error</span>
+                    <span class="text-danger" id="serviceStartTimeError"></span>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         <option value="9">9.0 Hrs</option>
                         <option value="9.5">9.5 Hrs</option>
                     </select>
-                    <span class="text-danger">Error</span>
+                    <span class="text-danger" id="serviceTotalTimeError"></span>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="container-wrapper mt-3">
 
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="cabinet" id="extra-service-inside-cabinet" />
+                    <input class="extra-service-checkbox" type="checkbox" name="cabinet" id="extra-service-inside-cabinet" value="1" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -96,7 +96,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="fridge" id="extra-service-inside-fridge" />
+                    <input class="extra-service-checkbox" type="checkbox" name="fridge" id="extra-service-inside-fridge" value="2" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -107,7 +107,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="oven" id="extra-service-inside-oven" />
+                    <input class="extra-service-checkbox" type="checkbox" name="oven" id="extra-service-inside-oven" value="3" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -118,7 +118,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="laundry" id="extra-service-inside-laundry" />
+                    <input class="extra-service-checkbox" type="checkbox" name="laundry" id="extra-service-inside-laundry" value="4" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -129,7 +129,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="window" id="extra-service-inside-windows" />
+                    <input class="extra-service-checkbox" type="checkbox" name="window" id="extra-service-inside-windows" value="5" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -151,7 +151,7 @@
         </div>
         <div class="col-12 form-group">
             <textarea class="form-control" placeholder="Comments"></textarea>
-            <span class="text-danger">Error</span>
+            <span class="text-danger"></span>
         </div>
         <div class="col-12">
             <div class="form-check">
@@ -168,4 +168,41 @@
     </div>
 
 
-                           
+<script>
+
+    $("#serviceDate").change(() => {
+        
+        var date = new Date($("#serviceDate").val());
+
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var year = date.getFullYear();
+
+        $("#serviceDateSummary").text(day + "/" + month + "/" + year);
+       
+    });
+
+    $("#serviceStartTime").change(() => {
+
+        var startTime = $("#serviceStartTime").val();
+        var startHour = Math.floor(startTime);
+        var startMinute = startTime - startHour;
+
+        if (startMinute > 0) {
+            minute = "30";
+        }
+        else {
+            minute = "00";
+        }
+        console.log(startHour + ":" + minute);
+
+        $("#serviceStartTimeSummary").text(startHour + ":" + minute);
+       
+    });
+
+    $("#serviceTotalTime").change(() => {
+        $("#basicTime").text($("#serviceTotalTime").val() + " Hrs");
+    });
+
+
+</script>                    
