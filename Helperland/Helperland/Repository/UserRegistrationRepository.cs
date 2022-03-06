@@ -2,9 +2,12 @@
 using Helperland.Models.DBModels.Data;
 using Helperland.Models.ViewModel;
 using Helperland.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Helperland.Repository
@@ -67,5 +70,59 @@ namespace Helperland.Repository
             }
         }
 
+        //[HttpPost]
+        //[Route("ForgotPassword")]
+        //public ActionResult ForgotPassword(Models.ForgotPassword model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var isExist = IsEmailExist(model.Email);
+        //        if (isExist == false)
+        //        {
+        //            ModelState.AddModelError("Email", "Email Does not exist");
+        //            return View(model);
+        //        }
+        //        UserTable obj = dbobj.UserTable.Where(x => x.Email == model.Email).FirstOrDefault();
+        //        string pwd = Membership.GeneratePassword(6, 2);
+        //        obj.Password = Crypto.Hash(pwd);
+        //        dbobj.SaveChanges();
+        //        SendPassword(obj.Email, pwd);
+        //        TempData["Success"] = "New password has been sent to your email";
+        //    }
+        //    return RedirectToAction("ForgotPassword");
+        //}
+
+        //[NonAction]
+        //public void SendPassword(string emailID, string pwd)
+        //{
+        //    var fromEmail = new MailAddress("email");//temp@gmail.com
+        //    var toEmail = new MailAddress(emailID);
+        //    var fromEmailPassword = "password"; //abc123
+        //    string subject = "Note Marketplace - Forgot Password";
+
+        //    string body = "Hello," +
+        //        "<br/><br/>We have generated a new password for you" +
+        //        "<br/><br/>Password: " + pwd +
+        //        "<br/><br/>Regards,<br/>Notes Marketplace";
+
+        //    var smtp = new SmtpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+        //    };
+
+        //    using (var message = new MailMessage(fromEmail, toEmail)
+        //    {
+        //        Subject = subject,
+        //        Body = body,
+        //        IsBodyHtml = true
+        //    })
+
+        //    smtp.Send(message);
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Helperland.Utilities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,23 @@ namespace Helperland.Controllers
 {
     public class CustomerController : Controller
     {
+        [SessionHelper(UserTypeID: 1, returnUrl: "/Customer/Index")]
         public IActionResult Index()
         {
-            ViewBag._id = HttpContext.Session.GetString("_id");
-            ViewBag.email = HttpContext.Session.GetString("email");                 
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");                 
 
-            if (ViewBag._id == null)
-            {
-                return RedirectToAction("LoginRedirect", "Home");
-            }
+            return View();
+        }
+
+        [SessionHelper(UserTypeID: 1, returnUrl: "/Customer/ServiceHistory")]
+        public IActionResult ServiceHistory ()
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+
             return View();
         }
     }

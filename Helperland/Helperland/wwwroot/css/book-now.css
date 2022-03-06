@@ -81,9 +81,12 @@ textarea.form-control {min-height: 100px !important;}
 
 #section4 .btn-large-outline {background-color: #1D7A8C; color: #FFF !important;}
 #section4 .btn-large-outline:hover { color: #FFF !important; }
+#section4 .btn.render-page-button:focus { box-shadow: none; }
 
 /* Main Section -> Right Side */
-.payment-summary-wrapper {box-shadow: 0 0 10px rgb(0 0 0 / 30%);}
+.payment-summary-wrapper {
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
 .payment-summary .heading {padding: 22px 20px; font-size: 16px; background-color: #1D7A8C; color: #FFF; margin: 0;}
 .payment-summary .service-details {padding: 20px}
 .payment-summary .service-details > span {color: #4F4F4F;}

@@ -11,5 +11,7 @@ namespace Helperland.Repository.IRepository
         public Boolean IsUserEmailExists(string _email);
         public Boolean IsValidUser(LoginViewModel loginViewModel);
         public int GetUserTypeId(string _email);
+        public int GetUserId(string _email);
+
     }
 }

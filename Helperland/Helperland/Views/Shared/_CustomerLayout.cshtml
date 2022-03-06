@@ -1,8 +1,4 @@
-﻿@model Helperland.Models.ViewModel.LoginViewModel;
-@*@using Microsoft.AspNetCore.Http
-@{ int? userId = Context.Session.GetInt32("userId"); }*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,30 +20,30 @@
 </head>
 <body>
     <!-- Main Navbar Starts -->
-    <header class="">
-        <nav class="navbar navbar-light fixed-top">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img id="branding" src="~/images/logo-small.png" alt="">
-            </a>
-            <ul class="nav justify-content-end d-none d-lg-flex">
-                <li class="nav-item btn-border">
-                    <a class="nav-link" asp-controller="BookNow" asp-action="Index">Book now</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Prices">Prices & services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Warranty</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
-                </li>
+    <section class="header-section">
+        <header class="container-fluid">
 
-                @if (1 != 1)
-                {
+            <nav class="navbar navbar-light fixed-top">
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo-small.png" alt="">
+                </a>
+                <ul class="nav justify-content-end d-none d-lg-flex">
+                    <li class="nav-item btn-border">
+                        <a class="nav-link" asp-action="Index" asp-controller="BookNow">Book now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Prices">Prices & services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Warranty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                    </li>
 
                     <li class="nav-item icon notification-icon">
                         <a class="nav-link" href="#">
@@ -68,65 +64,82 @@
                             </li>
                             <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer">My Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">My Settings</a></li>
-                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home">Logout</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
                         </ul>
                     </li>
-                }
-                else
-                {
-                    <li class="nav-item btn-border">
-                        <a class="nav-link" asp-action="LoginRedirect">Login</a>
+                </ul>
+                <ul class="nav justify-content-end d-lg-none">
+                    <li class="nav-item btn-border" id="hamburger">
+                        <img src="~/images/hamburger.svg" alt="" class="nav-link">
                     </li>
-                    <li class="nav-item btn-border">
-                        <a class="nav-link" asp-controller="Home" asp-action="ServiceProviderRegistration">Become a helper!</a>
-                    </li>
-                }
+                </ul>
 
+            </nav>
 
-            </ul>
-            <ul class="nav justify-content-end d-lg-none">
-                <li class="nav-item btn-border" id="hamburger">
-                    <img src="~/images/hamburger.svg" alt="" class="nav-link">
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Side Navbar Starts -->
-        <div class="side-navbar-wrapper" id="side-navbar-model">
-            <div class="wrapper-background" id="side-navbar-wrapper">
-                <div class="side-navbar" id="side-navbar-menu">
-                    <div class="nav-container">
-                        <ul>
-                            <li><a href="#">Book Now</a></li>
-                            <li><a asp-controller="Home" asp-action="Prices">Prices & Services</a></li>
-                            <li><a href="#">Warranty</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-controller="Home" asp-action="LoginRedirect" class="side-nav-link">Login</a></li>
-                            <li><a asp-controller="Home" asp-action="ServiceProviderSignUp">Become a helper!</a></li>
-                        </ul>
+            <!-- Side Navbar Starts -->
+            <div class="side-navbar-wrapper" id="side-navbar-model">
+                <div class="wrapper-background" id="side-navbar-wrapper">
+                    <div class="side-navbar" id="side-navbar-menu">
+                        <div class="side-navbar-welcome-msg">
+                            Welcome,<br>
+                            <b>@ViewBag.Name</b>
+                        </div>
+                        <div class="nav-container">
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="Customer" >Dashboard</a></li>
+                                <li><a href="#" class="active">Service History</a></li>
+                                <li><a href="#">Service Schedule</a></li>
+                                <li><a href="#">Favourite Pros</a></li>
+                                <li><a href="#">Invoices</a></li>
+                                <li><a href="#">My Settings</a></li>
+                                <li><a asp-action="Logout" asp-controller="Home">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="nav-container">
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="BookNow">Book Now</a></li>
+                                <li><a asp-controller="Home" asp-action="Prices" >Prices & services</a></li>
+                                <li><a href="#">Warranty</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a asp-controller="Home" asp-action="Contact" >Contact</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Side Navbar Ends -->
-        <!-- Login Model Starts -->
-        <partial name="_Login" />
+            <!-- Side Navbar Ends -->
 
-        @if (ViewBag.IsLoginOpen == true)
-        {
-            <script>
-                $().ready(() => {
-                    $("#loginModal").modal("show");
-                });
-            </script>
-        }
+            <div class="welcome-msg">
+                <h2 class="text-center">Welcome, <b>@ViewBag.Name</b></h2>
+            </div>
 
-    </header>
+        </header>
+    </section>
     <!-- Main Navbar Ends -->
+    <!-- Main Content Starts-->
+    <section class="service-history">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="left d-none d-lg-block col-2">
+                    <div class="list-group">
+                        <a asp-action="Index" asp-controller="Customer" class="list-group-item list-group-item-action active">Dashboard</a>
+                        <a asp-action="ServiceHistory" asp-controller="Customer" class="list-group-item list-group-item-action">Service History</a>
+                        <a href="#" class="list-group-item list-group-item-action">Service Schedule</a>
+                        <a href="#" class="list-group-item list-group-item-action">Favourite Pros</a>
+                        <a href="#" class="list-group-item list-group-item-action">Invoices</a>
+                        <a href="#" class="list-group-item list-group-item-action">Notifications</a>
+                    </div>
+                </div>
+                <div class="right col-lg-10">
+                    
+                    @RenderBody()
 
-    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Main Content Ends -->
     <!-- Footer Section Starts -->
     <footer class="site-footer">
         <div class="footer-top">
@@ -182,11 +195,3 @@
 </body>
 </html>
 
-
-@*
-    1. If we put JS CDN link to bottom, then large-navbar.js in Index.cshtml is not work.
-
-
-
-
-*@

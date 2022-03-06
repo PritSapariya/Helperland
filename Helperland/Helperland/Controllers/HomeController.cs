@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Helperland.Utilities;
 
 namespace Helperland.Controllers
 {
@@ -49,24 +50,19 @@ namespace Helperland.Controllers
         {
             return View();
         }
-        public IActionResult LoginRedirect (string returnurl)
-        {
-            return RedirectToAction("Index", "Home", new { isLoginOpen = "true", returnurl = returnurl });
-        }
         public IActionResult UserRegistration ()
         {
             return View();
         }
         
         [HttpPost] 
-        public IActionResult UserRegistration (UserRegistrationViewModel userRegistrationViewModel)
+        public IActionResult UserRegistration ( UserRegistrationViewModel userRegistrationViewModel )
         {
             ViewBag.HasError = false;
             ViewBag.Success = false;
             ViewBag.ErrorMessage = "Please enter valid details";
             ViewBag.SuccessMessage = "User is successfully registered!";
-            /*int userTypeId = class.customerTypeId;*/     // 1 is for user(Customer type) .....
-            int userTypeId = 1;
+            int userTypeId = ConstantString.CustomerTypeId;
 
             if (ModelState.IsValid)
             {
@@ -90,20 +86,21 @@ namespace Helperland.Controllers
             }
 
         }
+        
         public IActionResult ServiceProviderRegistration ()
         {
             return View();
         }
         
         [HttpPost]
-        public IActionResult ServiceProviderRegistration (UserRegistrationViewModel userRegistrationViewModel)
+        public IActionResult ServiceProviderRegistration ( UserRegistrationViewModel userRegistrationViewModel )
         {
 
             ViewBag.HasError = false;
             ViewBag.Success = false;
             ViewBag.ErrorMessage = "Please enter valid details";
             ViewBag.SuccessMessage = "User is successfully registered!";
-            int userTypeId = 2;        // 2 is for ServiceProvier(Customer type) .....
+            int userTypeId = ConstantString.ServiceTypeId;
 
             if (ModelState.IsValid)
             {
@@ -127,26 +124,42 @@ namespace Helperland.Controllers
 
         }
         
-        [HttpPost]
-        public IActionResult Index (LoginViewModel loginViewModel)
+        public IActionResult LoginRedirect ( string returnurl )
         {
-
+            return RedirectToAction("Index", "Home", new { isLoginOpen = "true", returnurl = returnurl });
+        }
+        
+        [HttpPost]
+        public IActionResult Index ( LoginViewModel loginViewModel, string returnUrl )
+        {
             if (ModelState.IsValid)
             {
                 if(_loginRepository.IsValidUser(loginViewModel))
                 {
-                    int _id = _loginRepository.GetUserTypeId(loginViewModel.Email);
-                    if (_id == 1)
+                    int _UserTypeId = _loginRepository.GetUserTypeId(loginViewModel.Email);
+                    int _UserId = _loginRepository.GetUserId(loginViewModel.Email);
+                    String _name = _loginRepository.GetUserName(_UserId);
+
+                    HttpContext.Session.SetInt32("UserTypeId",  _UserTypeId);
+                    HttpContext.Session.SetInt32("UserId", _UserId);
+                    HttpContext.Session.SetString("Name", _name);
+
+                    if (_UserTypeId == 1)
                     {
-                        HttpContext.Session.SetString("_id", _id.ToString());
-                        HttpContext.Session.SetString("email", loginViewModel.Email);
+
+                        if(!String.IsNullOrEmpty(returnUrl))
+                        {
+                            return LocalRedirect(returnUrl);
+                        }
 
                         return RedirectToAction("Index", "Customer");
                     }
-                    else if (_id == 2)
+                    else if (_UserTypeId == 2)
                     {
-                        HttpContext.Session.SetString("_id", _id.ToString());
-                        HttpContext.Session.SetString("email", loginViewModel.Email);
+                        if (!String.IsNullOrEmpty(returnUrl))
+                        {
+                            return LocalRedirect(returnUrl);
+                        }
 
                         return RedirectToAction("Index", "ServiceProvider");
                     }
@@ -175,7 +188,12 @@ namespace Helperland.Controllers
             }
         }
         
+        public IActionResult Logout ()
+        {
+            HttpContext.Session.Clear();
 
+            return RedirectToAction("Index", "Home");
+        }
 
 
 

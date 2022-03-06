@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
 
-                <form asp-controller="Home" asp-action="Index" method="post">
+                <form method="post">
 
                     @if (ViewBag.HasError == true)
                     {
@@ -42,7 +42,7 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                     <div class="text-center">
                         <a href="#" class="login-modal-link" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot Password?</a>
-                        <p>Don't have an account? <a asp-controller="Home" asp-action="UserRegistration" class="login-modal-link">Create an account</a></p>
+                        <p>Don't have an account? <a asp-controller="Home" asp-action="UserRegistration" asp-route-returnUrl="@Context.Request.Path" class="login-modal-link">Create an account</a></p>
                     </div>
                 </form>
 

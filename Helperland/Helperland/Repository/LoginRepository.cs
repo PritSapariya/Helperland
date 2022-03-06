@@ -74,9 +74,30 @@ namespace Helperland.Repository
             {
                 return (int)result.UserTypeId;
             }
-            Message = "Error in getting useId";
+            Message = "Internal Server Error";
             return -1;
         }
 
+        public int GetUserId(string _email)
+        {
+            User result = _db.Users.Where(u => u.Email == _email).FirstOrDefault();
+            if (result != null)
+            {
+                return (int)result.UserId;
+            }
+            Message = "Internal Server Error";
+            return -1;
+        }
+
+        public string GetUserName(int userId)
+        {
+            User result = _db.Users.Where(u => u.UserId == userId).FirstOrDefault();
+            if (result != null)
+            {
+                return result.FirstName;
+            }
+            Message = "Internal Server Error";
+            return Message;
+        }
     }
 }

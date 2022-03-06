@@ -54,8 +54,8 @@
             </div>
             <div class="row form-group">
                 <div class="col-4">
-                    <select class="form-select" id="serviceTotalTime">
-                        <option value="3" selected>3.0 Hrs</option>
+                    <select class="form-select" id="serviceBaseTime">
+                        <option value="3">3.0 Hrs</option>
                         <option value="3.5">3.5 Hrs</option>
                         <option value="4">4.0 Hrs</option>
                         <option value="4.5">4.5 Hrs</option>
@@ -70,7 +70,7 @@
                         <option value="9">9.0 Hrs</option>
                         <option value="9.5">9.5 Hrs</option>
                     </select>
-                    <span class="text-danger" id="serviceTotalTimeError"></span>
+                    <span class="text-danger" id="serviceBaseTimeError"></span>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="container-wrapper mt-3">
 
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="cabinet" id="extra-service-inside-cabinet" value="1" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-cabinet" value="@ViewBag.ExtraServiceInsideCabinet" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -96,7 +96,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="fridge" id="extra-service-inside-fridge" value="2" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-fridge" value="@ViewBag.ExtraServiceInsideFridge" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -107,7 +107,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="oven" id="extra-service-inside-oven" value="3" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-oven" value="@ViewBag.ExtraServiceInsideOven" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -118,7 +118,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="laundry" id="extra-service-inside-laundry" value="4" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-laundry" value="@ViewBag.ExtraServiceInsideLaundry" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -129,7 +129,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="window" id="extra-service-inside-windows" value="5" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-windows" value="@ViewBag.ExtraServiceInsideWindow" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -150,13 +150,13 @@
             <label class="form-label">Comments</label>
         </div>
         <div class="col-12 form-group">
-            <textarea class="form-control" placeholder="Comments"></textarea>
+            <textarea class="form-control" placeholder="Comments" id="comments"></textarea>
             <span class="text-danger"></span>
         </div>
         <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="">
-                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="haspets" value="1" id="hasPets">
+                <label class="form-check-label" for="hasPets">
                     I have pets at home.
                 </label>
             </div>
@@ -170,53 +170,131 @@
 
 <script>
 
-    $("#serviceDate").change(() => {
-        
-        var date = new Date($("#serviceDate").val());
+    $().ready(() => {
 
-        var day = ("0" + date.getDate()).slice(-2);
-        var month = ("0" + (date.getMonth() + 1)).slice(-2);
-        var year = date.getFullYear();
+        var _baseTimeForService = 3.0;
 
-        $("#serviceDateSummary").text(day + "/" + month + "/" + year);
+        $("#section2").show();
+
+        $("#step2").click(() => {
+
+            $(".nav-link").removeClass("filled");
+            $(".nav-link").removeClass("active");
+            $("#section2").show();
+            $("#step1").addClass("filled");
+            $("#step2").addClass("active");
+            $("#step3").addClass("disabled");
+            $("#step4").addClass("disabled");
+            $("#section3").empty();
+            $("#section3").hide();
+            $("#section4").empty();
+            $("#section4").hide();
+
+        });
+
+        $("#serviceDate").change(() => setDateInPaymentSummary());
+
+        $("#serviceStartTime").change(() => {
+
+            var startTime = $("#serviceStartTime").val();
+            var startHour = Math.floor(startTime);
+            var startMinute = startTime - startHour;
+
+            if (startMinute > 0) {
+                minute = "30";
+            }
+            else {
+                minute = "00";
+            }
+
+            $("#serviceStartTimeSummary").text(startHour + ":" + minute);
        
+        });
+
+        $("#serviceBaseTime").change(() => {
+
+            //console.log("Base time changed");
+
+            _baseTimeForService = parseFloat($("#serviceBaseTime").val());
+
+            $("#baseTimeSummary").text(_baseTimeForService + " Hrs");
+            finalTimeCalculations();
+
+        });
+
+        $(".extra-service-checkbox").change(() => {
+
+            $(".extraServiceInfo").hide();
+
+            var extraServiceIdArr = getExtraServiceIdArr();
+            extraServiceIdArr.length > 0 ? $("#extraTitle").show() : $("#extraTitle").hide();
+
+            extraServiceIdArr.forEach((value, index) => {
+                let targetId = "#summaryExtraService" + value;
+                $(targetId).show();
+            });
+
+            finalTimeCalculations();
+
+        });
+
+        $("#step2Complete").click(() => {
+            stepOn("#step2", "#step3", "#section2");
+            $("#section3").load("/BookNow/GetAddressPage");
+        });
+
+
+        const stepOn = (firstStep, secondStep, section) => {
+
+            $(section).hide();
+            $(firstStep).removeClass("active");
+            $(firstStep).addClass("filled");
+            $(secondStep).addClass("active");
+            $(secondStep).removeClass("disabled");
+
+        };
+
+        const setDateInPaymentSummary = () => {
+
+            var date = new Date($("#serviceDate").val());
+
+            var day = ("0" + date.getDate()).slice(-2);
+            var month = ("0" + (date.getMonth() + 1)).slice(-2);
+            var year = date.getFullYear();
+
+            $("#serviceDateSummary").text(day + "/" + month + "/" + year);
+        };
+
+        const getExtraServiceIdArr = () => {
+            var extraServiceIdArr = [];
+            var obj = $('input[name="extraservice"]:checked');
+
+            for (let i = 0; i < obj.length; i++) {
+                let _id = parseInt($(obj[i]).val());
+                extraServiceIdArr.push(_id);
+            }
+
+            return extraServiceIdArr;
+        };
+
+        const finalTimeCalculations = () => {
+
+            var customExtraSevicesArr = getExtraServiceIdArr().length;
+
+            $("#totalServiceTimePaymentSummary").text((_baseTimeForService + (customExtraSevicesArr * 0.5)) + " Hrs");
+            var _time = `#serviceBaseTime option[value="${(_baseTimeForService + (customExtraSevicesArr * 0.5))}"]`;
+            //console.log( _baseTimeForService + (customExtraSevicesArr * 0.5));
+            //console.log("_time = " + _time);
+            //console.log("_baseTimeForService = " + _baseTimeForService);
+
+            $('#serviceBaseTime option').removeAttr('selected');
+            $(_time).attr('selected', 'selected');
+
+            $("#totalServiceTimePaymentSummary").text(parseFloat($(_time).val()) + " Hrs");
+
+        };
+
     });
-
-    $("#serviceStartTime").change(() => {
-
-        var startTime = $("#serviceStartTime").val();
-        var startHour = Math.floor(startTime);
-        var startMinute = startTime - startHour;
-
-        if (startMinute > 0) {
-            minute = "30";
-        }
-        else {
-            minute = "00";
-        }
-        console.log(startHour + ":" + minute);
-
-        $("#serviceStartTimeSummary").text(startHour + ":" + minute);
-       
-    });
-
-    $("#serviceTotalTime").change(() => {
-        $("#basicTime").text($("#serviceTotalTime").val() + " Hrs");
-    });
-
-    $("#step2Complete").click(() => {
-        stepOn("#step2", "#step3", "#section2");
-        $("#section3").load("BookNow/GetAddressPage");
-    });
-
-    const stepOn = (firstStep, secondStep, section) => {
-
-        $(section).hide();
-        $(firstStep).removeClass("active");
-        $(firstStep).addClass("filled");
-        $(secondStep).addClass("active");
-        $(secondStep).removeClass("disabled");
-
-    }
 
 </script>                    
+        

@@ -1,0 +1,18 @@
+﻿DB Command  = Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=DESKTOP-3A1VGKB; initial catalog=Helperland; Trusted_Connection=true;" -OutputDir "Models/DBModels" -ContextDir "Models/DBModels/Data"
+
+<------------------------------------------------------------------->
+
+********************** State/City/Zipcode Table **********************
+
+1. Gujarat 
+			1. Junagadh
+						1. 362001 -> Junagadh Station Road
+						2. 362002 -> Junagadh Joshipura
+						3. 362004 -> Junagadh Bhavnath
+
+			2. Ahmedabad
+						1. 380061 -> Ghatlodia
+						2. 380027 -> Gandhi Ashram
+						3. 380016 -> Civil Hospital 
+
+

@@ -1,16 +1,16 @@
 ﻿
 $().ready(() => {
 
+
     /* INITIAL CODE LOADING */
+    $(".extraServiceInfo").hide();
+    $("#extraTitle").hide();
+
     let date = new Date();
     let day = ("0" + date.getDate()).slice(-2);
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
     let year = date.getFullYear();
     $("#serviceDateSummary").text(day + "/" + month + "/" + year);
-
-
-
-    
 
     $("#extra-service-inside-cabinet").change(() => {
         if (!$(this).is(':checked')) {
@@ -18,16 +18,24 @@ $().ready(() => {
         }
     });
 
-    /* =============  STEP 1 -> Service Setup  ========== */
+    /* ================  STEP 1 -> Service Setup  ============== */
 
     $("#step1").click(() => {
+
         $(".nav-link").removeClass("filled");
         $(".nav-link").removeClass("active");
         $("#section1").show();
         $("#step1").addClass("active");
         $("#step2").addClass("disabled");
+        $("#step3").addClass("disabled");
+        $("#step4").addClass("disabled");
         $("#section2").empty();
-        $("section2").hide();
+        $("#section2").hide();
+        $("#section3").empty();
+        $("#section3").hide();
+        $("#section4").empty();
+        $("#section4").hide();
+
     });
 
     $("#submit1").click(() => {
@@ -72,16 +80,9 @@ $().ready(() => {
 
     });
 
-    // Client side validation
-    const postalCodeValidation = () => {
-        if ($("#postalCode").val().length == 6)
-            return true;
-        else return false;
-    }
-
     const step1Complete = () => {
         stepOn("#step1", "#step2", "#section1");
-        $("#section2").load("BookNow/GetSchedulePage");
+        $("#section2").load("/BookNow/GetSchedulePage");
     };
 
     const stepOn = (firstStep, secondStep, section) => {
@@ -92,30 +93,15 @@ $().ready(() => {
         $(secondStep).addClass("active");
         $(secondStep).removeClass("disabled");
 
+    };
+
+    // Client side validation
+    const postalCodeValidation = () => {
+        if ($("#postalCode").val().length == 6)
+            return true;
+        else return false;
     }
 
-
     /* =============  STEP 2, 3 & 4 JS is at own page  ======== */
-
-
-
-    //$('#section1').hide();
-    //$('#section2').show();
-    //$('#section3').hide();
-    //$('#section4').hide();
-
-    // $('#section2').show();
-    // $('#section1').hide();
-
-    // $('#section1').hide();
-    // $('#section2').hide();
-    // $('#section3').show();
-
-    // $('#section1').hide();
-    // $('#section2').hide();
-    // $('#section3').hide();
-    // $('#section4').show();
-
-
 
 });

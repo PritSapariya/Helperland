@@ -10,7 +10,10 @@ namespace Helperland.Repository.IRepository
 {
     public interface IBookNowRepository
     {
+        public string GetErrorMessage ();
         public Boolean CheckAvailabilityOfPostalCode ( PostalCodeViewModel postalCodeViewModel );
-
+        public Boolean SaveNewAddress( UserAddressViewModel userAddressViewModel );
+        public List<UserAddressViewModel> GetSavedAddress(int _id, string _postalCode);
+        public Boolean SaveServiceRequest ( ServiceRequestViewModel serviceRequestViewModel );
     }
 }

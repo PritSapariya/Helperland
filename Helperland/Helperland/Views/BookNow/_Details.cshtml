@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -12,24 +13,7 @@
 <div class="row">
     <label class="form-label">Enter your contact details, so we can serve you in better way!</label>
     <div class="col-12 address-wrapper">
-        <label class="form-label address-block">
-            <input type="radio" name="address" id="address1" value="1">
-            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
-            <div><span>Mobile nunber: </span>9512347382</div>
-            <div class="radio-input-icon"></div>
-        </label>
-        <label class="form-label address-block">
-            <input type="radio" name="address" id="address2" value="2">
-            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
-            <div><span>Mobile nunber: </span>9512347382</div>
-            <div class="radio-input-icon"></div>
-        </label>
-        <label class="form-label address-block">
-            <input type="radio" name="address" id="address3" value="3">
-            <div><span>Address: </span> Janakpuri Appartment 14, Junagadh</div>
-            <div><span>Mobile nunber: </span>9512347382</div>
-            <div class="radio-input-icon"></div>
-        </label>
+        @* Rendering the Addresses with AJAX call *@
     </div>
     <div class="col-12">
         <input type="button" class="btn btn-large-outline" value="+ Add New Address" id="addAddressButton" />
@@ -37,25 +21,24 @@
             <div class="row">
                 <div class="col-md-6 form-group">
                     <label class="form-label">Street Name</label>
-                    <input type="text" class="form-control" placeholder="Street Name" required />
-                    <span class="text-danger"></span> 
+                    <input type="text" class="form-control" id="addressLine1" placeholder="Street Name" required />
+                    <span class="text-danger" id="addressLine1Error"></span> 
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">House Number</label>
-                    <input type="number" class="form-control" placeholder="House Number" required />
-                    <span class="text-danger"></span>
+                    <input type="text" class="form-control" id="addressLine2" placeholder="House Number" required />
+                    <span class="text-danger" id="addressLine2Error"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 form-group">
                     <label class="form-label">Postal Code</label>
-                    <input type="text" class="form-control" placeholder="Street Name" value="53842" disabled required />
-                    <span class="text-danger"></span>
+                    <input type="text" class="form-control" placeholder="Postal Code" id="postalCode2" value='000000' disabled  />
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">City</label>
-                    <select class="form-select" required>
-                        <option value="mumbai" selected>Mumbai</option>
+                    <select class="form-select" id="city" required>
+                        <option value="Junagadh" selected>Junagadh</option>
                     </select>
                     <span class="text-danger"></span>
                 </div>
@@ -65,8 +48,9 @@
                     <label class="form-label">Mobile Number</label>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">+49</span>
-                        <input type="number" class="form-control" placeholder="Mobile Number" required />
+                        <input type="number" class="form-control" id="mobile" placeholder="Mobile Number" required />
                     </div>
+                    <span class="text-danger" id="mobileError"></span>
                 </div>
             </div>
             <div class="row">
@@ -77,22 +61,161 @@
     </div>
     <p class="hr-line"></p>
     <div class="d-flex flex-row-reverse">
-        <input type="button" class="col-3 btn btn-primary" value="Continue" />
+        <input type="button" class="col-3 btn btn-primary" id="submit3" value="Continue" />
     </div>
 </div> 
 
 <script>
 
-    $('#addAddressForm').hide();
+    $().ready(() => {
 
-    // Add Address Form Toggle Logic
-    $('#addAddressButton').click(() => {
-        $('#addAddressButton').hide();
-        $('#addAddressForm').show();
-    });
-    $('#closeAddressForm').click(() => {
-        $('#addAddressButton').show();
+        $("#section3").show();
+
+        $("#step3").click(() => {
+
+            $(".nav-link").removeClass("filled");
+            $(".nav-link").removeClass("active");
+            $("#section3").show();
+            $("#step1").addClass("filled");
+            $("#step2").addClass("filled");
+            $("#step3").addClass("active");
+            $("#step4").addClass("disabled");
+            $("#section4").empty();
+            $("#section4").hide();
+
+        });
+
         $('#addAddressForm').hide();
+        $("#postalCode2").val($("#postalCode").val());
+
+        $('#addAddressButton').click(() => {
+            resetFormValues();
+            $('#addAddressButton').hide();
+            $('#addAddressForm').show();
+        });
+        $('#closeAddressForm').click(() => {
+            resetFormValues();
+            $('#addAddressButton').show();
+            $('#addAddressForm').hide();
+        });
+
+        const addressValidation = () => {
+
+            var flag = true;
+
+            if ($("#addressLine1").val() == '') {
+                $("#addressLine1Error").text("Enter valid data");
+                flag = false;
+            }
+            if ($("#addressLine2").val() == '') {
+                $("#addressLine2Error").text("Enter valid data");
+                flag = false;
+            }
+            if ($("#mobile").val() == '') {
+                $("#mobileError").text("Enter 10 digit number");
+                flag = false;
+            }
+
+            return flag;
+        };
+
+        $("#addAddress").click(() => {
+
+            if (!addressValidation()) {
+                return;
+            }
+            else {
+                var address = {};
+                address.userId = parseInt($("#userId").text());
+                address.addressLine1 = $("#addressLine1").val();
+                address.addressLine2 = $("#addressLine2").val();
+                address.postalCode = $("#postalCode").val();
+                address.city = $("#city").val();
+                address.mobile = $("#mobile").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/BookNow/AddAddress",
+                    data: JSON.stringify(address),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (responce) {
+                        
+                        $('#addAddressButton').show();
+                        $('#addAddressForm').hide();
+                        GetAddress();
+
+                    },
+                    failure: function (response) {
+                        alert("failure");
+                    },
+                    error: function (response) {
+                        alert("Something went Worng");
+                    }
+                }); 
+            }
+
+        });
+
+        const GetAddress = () => {
+
+            $.ajax({
+
+                type: "POST",
+                url: "/BookNow/GetAddress",
+                data: { _id: parseInt($("#userId").text()), _postalCode: $("#postalCode").val() },
+
+                success: function (responce) {
+
+                    var addressArr = JSON.parse(responce).address;
+                    
+                    $(".address-wrapper").empty();
+                    for (var i = 0; i < addressArr.length; i++) {
+                        $(".address-wrapper").append(`
+                                                    <label class="form-label address-block">
+                                                        <input type="radio" name="address" id="${addressArr[i].AddressId}" value="${addressArr[i].AddressId}" />
+                                                        <div><span>Address: </span>${addressArr[i].AddressLine1} ${addressArr[i].AddressLine2}, ${addressArr[i].City}</div>
+                                                        <div><span>Mobile nunber: </span>${addressArr[i].Mobile}</div>
+                                                        <div class="radio-input-icon"></div>
+                                                    </label>
+                                                    `);
+                    }
+
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("Something went Worng");
+                }
+
+            });
+
+        };
+
+        GetAddress();
+
+        const stepOn = (firstStep, secondStep, section) => {
+
+            $(section).hide();
+            $(firstStep).removeClass("active");
+            $(firstStep).addClass("filled");
+            $(secondStep).addClass("active");
+            $(secondStep).removeClass("disabled");
+
+        };
+        const resetFormValues = () => {
+            // reseting the form value
+            $("#addressLine1").val("");
+            $("#addressLine2").val("");
+            $("#mobile").val("");
+        };
+
+        $("#submit3").click(() => {
+            stepOn("#step3", "#step4", "#section3");
+            $("#section4").load("/BookNow/GetPaymentPage");
+        });
+
     });
+
 
 </script>

@@ -12,6 +12,103 @@
     <label class="form-label">Please confirm your booking !!!</label>
     <p class="hr-line"></p>
 </div>
+    <div class="alert alert-success d-none" id="success-message-wrapper" role="alert">
+        <span id="success-message-wrapper-message"></span>&nbsp;&nbsp;<button class="btn render-page-button" onclick="window"><u>Click here to Book New Service</u></button>
+    </div>
+    <div class="alert alert-danger d-none" id="error-message-wrapper" role="alert">
+        <span id="success-message-wrapper-message"></span>&nbsp;&nbsp;<button class="btn render-page-button"><u>Click here to enter data</u></button>
+    </div>
+
+
 <div class="d-flex flex-row-reverse">
-    <input type="button" class="btn btn-large-outline" value="Complete Booking" />
+    <input type="button" class="btn btn-large-outline" value="Complete Booking" id="completeBooking" />
 </div>
+
+<script>
+
+    $().ready(() => {
+        $("#section4").show();
+
+        const getAllValues = () => {
+
+            var obj = {};
+
+            obj.userId = parseInt($("#userId").text());
+            obj.zipcode = $("#postalCode").val();
+            obj.comments = $("#comments").val();
+            obj.serviceStartDate = formatDateAndTime();
+            obj.serviceHours = getServiceHours();
+            obj.extraHours = getExtraServiceIdArr().length * 0.5;
+            obj.hasPets = $("input[name='haspets']").is(':checked');
+            obj.extraServiceId = getExtraServiceIdArr();
+            obj.addressID = $("input[name='address']:checked").val();
+
+            return obj;
+        };
+
+        $("#completeBooking").click(() => {
+
+            var data = getAllValues();
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveServiceRequest")",
+                data: data,
+                success: function (responce) {
+                    
+                    if (responce.success == true) {
+                        $("#success-message-wrapper").removeClass("d-none");
+                        $("#success-message-wrapper-message").text(responce.message);
+                    }
+                    else {
+                        $("#error-message-wrapper").removeClass("d-none");
+                        $("#error-message-wrapper-message").text(responce.message + " kjyfdktfkhgck");
+                    }
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("Something went Worng");
+                }
+            });
+
+        });
+
+        $(".render-page-button").click(() => {
+            window.location.reload();
+        });
+
+        const getExtraServiceIdArr = () => {
+            var extraServiceIdArr = [];
+            var obj = $('input[name="extraservice"]:checked');
+
+            for (let i = 0; i < obj.length; i++) {
+                let _id = parseInt($(obj[i]).val());
+                extraServiceIdArr.push(_id);
+            }
+            console.log(extraServiceIdArr);
+            return extraServiceIdArr;
+        };
+        const formatDateAndTime = () => {
+            var startTime = $("#serviceStartTime").val();
+            var startHour = Math.floor(startTime);
+            var startMinute = startTime - startHour;
+
+            if (startMinute > 0) {
+                minute = "30";
+            }
+            else {
+                minute = "00";
+            }
+
+            return $("#serviceDate").val() + " " + startHour + ":" + minute;
+        }
+        const getServiceHours = () => {
+            let arr = getExtraServiceIdArr().length;
+
+            return $("#serviceBaseTime").val() - (arr * 0.5);
+        }
+    });
+
+</script>

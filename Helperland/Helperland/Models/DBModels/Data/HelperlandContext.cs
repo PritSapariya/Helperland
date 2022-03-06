@@ -24,7 +24,7 @@ namespace Helperland.Models.DBModels.Data
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<ServiceRequest> ServiceRequests { get; set; }
         public virtual DbSet<ServiceRequestAddress> ServiceRequestAddresses { get; set; }
-        public virtual DbSet<ServiceRequestExtra> ServiceRequestExtras { get; set; }
+        public virtual DbSet<ServiceRequestExtra> ServiceRequestExtra { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<User> Users { get; set; }

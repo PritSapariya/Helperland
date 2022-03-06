@@ -1,1 +1,0 @@
-﻿Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=DESKTOP-3A1VGKB; initial catalog=Helperland; Trusted_Connection=true;" -OutputDir "Models/DBModels" -ContextDir "Models/DBModels/Data"

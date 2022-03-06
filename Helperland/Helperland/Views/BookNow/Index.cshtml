@@ -5,6 +5,8 @@
 
 <link rel='stylesheet' href="~/css/book-now.css">
 
+<h1 hidden id="userId" value="@ViewBag.UserId">@ViewBag.UserId</h1>
+
 <!-- Main Content Starts -->
 <main>
     <!-- Price Section -->
@@ -104,42 +106,38 @@
                                     <tbody>
                                         <tr>
                                             <td>Basic</td>
-                                            <td class="text-end" id="basicTime">3 Hrs</td>
+                                            <td class="text-end" id="baseTimeSummary">3 Hrs</td>
                                         </tr>
                                         <tr id="extraTitle">
                                             <td class="extra-title">Extras</td>
                                             <td></td>
                                         </tr>
-                                        <div class="d-none">
-
-                                            <tr>
-                                                <td>Inside cabinets</td>
-                                                <td class="text-end">30 Min.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Inside fridge</td>
-                                                <td class="text-end">30 Min.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Inside oven</td>
-                                                <td class="text-end">30 Min.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Laundry wash & dry</td>
-                                                <td class="text-end">30 Min.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Interior windows</td>
-                                                <td class="text-end">30 Min.</td>
-                                            </tr>
-
-                                        </div>
+                                        <tr class="extraServiceInfo" id="summaryExtraService1">
+                                            <td>Inside cabinets</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr class="extraServiceInfo" id="summaryExtraService2" >
+                                            <td>Inside fridge</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr class="extraServiceInfo" id="summaryExtraService3">
+                                            <td>Inside oven</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr class="extraServiceInfo" id="summaryExtraService4">
+                                            <td>Laundry wash & dry</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
+                                        <tr class="extraServiceInfo" id="summaryExtraService5">
+                                            <td>Interior windows</td>
+                                            <td class="text-end">30 Min.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <hr>
                                 <div class="total-time d-flex justify-content-between">
                                     <div class="d-inline-block"><b>Total Service Time</b></div>
-                                    <div class="d-inline-block text-end"><b>5.5 Hrs</b></div>
+                                    <div class="d-inline-block text-end fw-bolder" id="totalServiceTimePaymentSummary">3 Hrs</div>
                                 </div>
 
 
