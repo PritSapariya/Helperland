@@ -42,7 +42,7 @@
             obj.hasPets = $("input[name='haspets']").is(':checked');
             obj.extraServiceId = getExtraServiceIdArr();
             obj.addressID = $("input[name='address']:checked").val();
-
+            
             return obj;
         };
 
@@ -87,7 +87,7 @@
                 let _id = parseInt($(obj[i]).val());
                 extraServiceIdArr.push(_id);
             }
-            console.log(extraServiceIdArr);
+            
             return extraServiceIdArr;
         };
         const formatDateAndTime = () => {

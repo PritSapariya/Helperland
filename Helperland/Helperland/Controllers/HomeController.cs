@@ -17,17 +17,17 @@ namespace Helperland.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly UserRegistrationRepository _userRegistrationRepository;
-        private readonly LoginRepository _loginRepository;
+        private readonly ILogger<HomeController> _logger ;
+        private readonly UserRegistrationRepository _userRegistrationRepository ;
+        private readonly LoginRepository _loginRepository ;
 
         public HomeController ( ILogger<HomeController> logger,
                               IUserRegistrationRepository userRegistrationRepository,
                               ILoginRepository loginRepository )
         {
             _logger = logger;
-            this._userRegistrationRepository = (UserRegistrationRepository)userRegistrationRepository;
-            this._loginRepository = (LoginRepository)loginRepository;
+            this._userRegistrationRepository = ( UserRegistrationRepository ) userRegistrationRepository;
+            this._loginRepository = ( LoginRepository ) loginRepository;
         }
 
         public IActionResult Index ()
@@ -129,6 +129,8 @@ namespace Helperland.Controllers
             return RedirectToAction("Index", "Home", new { isLoginOpen = "true", returnurl = returnurl });
         }
         
+
+        // Login to system
         [HttpPost]
         public IActionResult Index ( LoginViewModel loginViewModel, string returnUrl )
         {
@@ -194,6 +196,13 @@ namespace Helperland.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
+
+
+
 
 
 

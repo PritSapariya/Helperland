@@ -129,7 +129,7 @@
                     </div>
                 </label>
                 <label class="form-label">
-                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-windows" value="@ViewBag.ExtraServiceInsideWindow" />
+                    <input class="extra-service-checkbox" type="checkbox" name="extraservice" id="extra-service-inside-windows" value="@ViewBag.ExtraServiceInsideWindows" />
                     <div class="extra-service-wrapper text-center">
                         <div class="img-container mb-2">
                             <div class="img-wrapper">
@@ -173,6 +173,7 @@
     $().ready(() => {
 
         var _baseTimeForService = 3.0;
+        var _basePayment = 50;
 
         $("#section2").show();
 
@@ -243,7 +244,6 @@
             $("#section3").load("/BookNow/GetAddressPage");
         });
 
-
         const stepOn = (firstStep, secondStep, section) => {
 
             $(section).hide();
@@ -283,15 +283,14 @@
 
             $("#totalServiceTimePaymentSummary").text((_baseTimeForService + (customExtraSevicesArr * 0.5)) + " Hrs");
             var _time = `#serviceBaseTime option[value="${(_baseTimeForService + (customExtraSevicesArr * 0.5))}"]`;
-            //console.log( _baseTimeForService + (customExtraSevicesArr * 0.5));
-            //console.log("_time = " + _time);
-            //console.log("_baseTimeForService = " + _baseTimeForService);
 
             $('#serviceBaseTime option').removeAttr('selected');
             $(_time).attr('selected', 'selected');
 
             $("#totalServiceTimePaymentSummary").text(parseFloat($(_time).val()) + " Hrs");
 
+            $('.text-payment').text((_basePayment + ((_baseTimeForService + (customExtraSevicesArr * 0.5)) - 3.0) * 10) + " €");
+            console.log((_basePayment + (((_baseTimeForService + (customExtraSevicesArr * 0.5)) - 3.0) * 10)) + " €");
         };
 
     });

@@ -1,6 +1,6 @@
 ﻿@model Helperland.Models.ViewModel.LoginViewModel;
-@*@using Microsoft.AspNetCore.Http
-@{ int? userId = Context.Session.GetInt32("userId"); }*@
+@using Microsoft.AspNetCore.Http
+@{ int? userId = Context.Session.GetInt32("UserId"); }
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@
                     <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
 
-                @if (1 != 1)
+                @if (userId != null)
                 {
 
                     <li class="nav-item icon notification-icon">
