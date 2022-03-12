@@ -19,6 +19,7 @@ namespace Helperland.Models.ViewModel.BookNow
         public double? ExtraHours { get; set; }
         [Required]
         public string ZipCode { get; set; }
+        public decimal? TotalCost { get; set; }
         public string Comments { get; set; }
         [Required]
         public bool HasPets { get; set; }

@@ -1,6 +1,9 @@
 ﻿@model Helperland.Models.ViewModel.LoginViewModel;
 @using Microsoft.AspNetCore.Http
-@{ int? userId = Context.Session.GetInt32("UserId"); }
+@{  
+    int? userId = Context.Session.GetInt32("UserId");
+    int? userTypeId = Context.Session.GetInt32("UserTypeId");
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +26,7 @@
 
 </head>
 <body>
+
     <!-- Main Navbar Starts -->
     <header class="">
         <nav class="navbar navbar-light fixed-top">
@@ -31,22 +35,22 @@
             </a>
             <ul class="nav justify-content-end d-none d-lg-flex">
                 <li class="nav-item btn-border">
-                    <a class="nav-link" asp-controller="BookNow" asp-action="Index">Book now</a>
+                    <a class="nav-link" asp-controller="BookNow" asp-action="Index" >Book now</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Prices">Prices & services</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Prices" >Prices & services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Warranty</a>
+                    <a class="nav-link" href="#" >Warranty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="#" >Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Contact" >Contact</a>
                 </li>
 
-                @if (userId != null)
+                @if (userTypeId == 1)
                 {
 
                     <li class="nav-item icon notification-icon">
@@ -66,9 +70,34 @@
                                     <b>@ViewBag.Name</b>
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer">My Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#">My Settings</a></li>
-                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home">Logout</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer" >My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#" >My Settings</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
+                        </ul>
+                    </li>
+                }
+                else if (userTypeId == 2)
+                {
+                    <li class="nav-item icon notification-icon">
+                        <a class="nav-link" href="#">
+                            <img src="~/images/icon-notification.png" alt="Notification icon" srcset="">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown icon profile-icon">
+                        <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="~/images/user.png" alt="Notification icon" srcset="">
+                            <img class="arrow" src="~/images/sp-arrow-down.png" alt="">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div class="dropdown-item side-navbar-welcome-msg" href="#">
+                                    Welcome,<br>
+                                    <b>@ViewBag.Name</b>
+                                </div>
+                            </li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="ServiceProvider" >My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#" >My Settings</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
                         </ul>
                     </li>
                 }
@@ -172,21 +201,15 @@
     </footer>
 
     <!-- Footer Section Ends -->
-    @* Custom JS File *@
+
+    <!-- JS Files -->
+
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
-
-
-@*
-    1. If we put JS CDN link to bottom, then large-navbar.js in Index.cshtml is not work.
-
-
-
-
-*@

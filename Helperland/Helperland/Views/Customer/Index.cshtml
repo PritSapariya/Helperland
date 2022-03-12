@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Helperland.Models.ViewModel.Customer.CurrentServiceRequestViewModel>
+
+@{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
     ViewData["Title"] = "Dashboard";
 }
@@ -7,46 +9,184 @@
 
 <div class="table-header-top d-flex justify-content-between align-items-center flex-wrap">
     <h4>Current Service Requests</h4>
-    <a href="#" class="btn">Add New Service Request</a>
+    <a asp-action="Index" asp-controller="BookNow" class="btn">Add New Service Request</a>
 </div>
-<table class="table table-borderless">
+<table class="table table-borderless" id="datatable">
     <thead>
         <tr>
             <th scope="col" class="align-middle sortable">Service ID<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle sortable">Service Date<img src="~/images/sort.png" alt=""></th>
-            <th scope="col" class="align-middle sortable">Service Provider<img src="~/images/sort.png" alt=""></th>
+            <th scope="col" class="align-middle sortable pe-none">Service Provider<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle text-center sortable">Payment<img src="~/images/sort.png" alt=""></th>
-            <th scope="col" class="align-middle text-center">Actions</th>
+            <th scope="col" class="align-middle text-center pe-none">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <!-- Dummy Data Starts -->
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center action"><button class="btn btn-action-primary">Reschedule</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-action-secondary">Cancel</button></td>
-        </tr>
 
 
+        @foreach (var item in Model)
+        {
 
-        <!-- Dummy Data Ends -->
+            <tr onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+                <td class="align-middle">@item.ServiceRequestId</td>
+                <td>
+                    <span hidden>@item.ServiceStartDate.ToString("yyyy/MM/dd HH:mm")</span>
+                    <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">@item.ServiceStartDate.ToString("dd'/'MM'/'yyyy")</span></div>
+                    <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">@item.ServiceStartDate.ToString("HH:mm") - @item.ServiceStartDate.AddMinutes((int)((item.ExtraHours + item.ServiceHours) * 60)).ToString("HH:mm")</span></div>
+                </td>
+                <td class="align-middle d-flex align-items-center">
+
+                    @if (item.ServiceProviderId != null)
+                    {
+                        <img src="~/images/avatar-car.png" height="46" width="46">
+                        <div class="d-inline-block">
+                            <div class="customer-name">David Bough</div>
+                            <div class="rating-icons d-block">
+                                <img src="~/images/star1.png">
+                                <img src="~/images/star1.png">
+                                <img src="~/images/star1.png">
+                                <img src="~/images/star2.png">
+                                <img src="~/images/star2.png">
+                                <h6 class="d-inline-block my-0 align-middle">3</h6>
+                            </div>
+                        </div>
+                    }
+
+                </td>
+                <td class="align-middle text-center payment-text">@item.TotalCost</td>
+                <td class="align-middle text-center action "><button class="btn btn-action-primary" onclick="rescheduleDetails(event, @item.ServiceRequestId)" >Reschedule</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-action-secondary" onclick="loadConcelServiceDetails(event, @item.ServiceRequestId)" >Cancel</button></td>
+            </tr>
+
+        }
+
+
     </tbody>
 </table>
+
+<!-- Service History Modal Starts -->
+<div class="modal fade" id="serviceDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" id="serviceDetailsModalContent">
+            @* AJAX call GET data rendering *@
+        </div>
+    </div>
+</div>
+<!-- Service History Model Ends -->
+
+<!-- Reschedule Model Starts -->
+<div class="modal fade" id="rescheduleModal" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="rescheduleModalLabel">Reschedule Service Request</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body form row m-0">
+                <label class="form-label">Select New Date & Time</label>
+                <div class="col-6 form-group">
+                    <input class="form-control date" type="date" id="serviceDate" value="2000-01-01" />
+                </div>
+                <div class="col-6">
+                    <select class="form-select" id="serviceTime">
+                        <option value="8" selected>8:00</option>
+                        <option value="8.5">8:30</option>
+                        <option value="9">9:00</option>
+                        <option value="9.5">9:30</option>
+                        <option value="10">10:00</option>
+                        <option value="10.5">10:30</option>
+                        <option value="11">11:00</option>
+                        <option value="11.5">11:30</option>
+                        <option value="12">12:00</option>
+                        <option value="12.5">12:30</option>
+                        <option value="13">13:00</option>
+                        <option value="13.5">13:30</option>
+                        <option value="14">14:00</option>
+                        <option value="14.5">14:30</option>
+                        <option value="15">15:00</option>
+                        <option value="15.5">15:30</option>
+                        <option value="16">16:00</option>
+                        <option value="16.5">16:30</option>
+                        <option value="17">17:00</option>
+                        <option value="17.5">17:30</option>
+                        <option value="18">18:00</option>
+                        <option value="18.5">18:30</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="modal-footer row m-0 action">
+                <button type="button" class="col-12 fw-bolder px-4 py-2 btn btn-action-primary" disabled>Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reschedule Model Ends -->
+
+
+<script>
+
+    const loadServiceRequestDetails = (id) => {
+
+        var url = "/Customer/GetServiceDetails?serviceId=" + id;
+
+        $('#serviceDetailsModalContent').load(url, () => {
+            $('#serviceDetailsModal').modal('show');
+        });
+
+    };
+    const rescheduleDetails = (event, id) => {
+        event.stopPropagation();
+
+        console.log(id);
+
+        $.ajax({
+
+            type: "POST",
+            url: "@Url.Action("GetServiceDateTimeById")",
+            data: { serviceId: parseInt(id) },
+            success: function (responce) {
+
+                console.log(responce);
+                if (responce.success != true) {
+                    alert("Something went Worng");
+                }
+                else {
+                    getDateTimeSuccess(responce.data);
+                }
+
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+
+    };
+    const loadConcelServiceDetails = (event, id) => {
+        event.stopPropagation();
+
+        console.log(id);
+
+
+    };
+    const getDateTimeSuccess = (dateTime) => {
+        console.log(dateTime);
+        var current = new Date(dateTime);
+        var date = current.getFullYear() + '-' + ((current.getMonth() + 1) < 10 ? ('0' + (current.getMonth() + 1)) : (current.getMonth() + 1)) + '-' + current.getDate();
+        var minute = current.getUTCMinutes > 0 ? '' : '.5';
+        var time = current.getUTCHours + minute;
+
+        $('#serviceDate').val(date);
+
+        $('#rescheduleModal').modal('show');
+
+
+    };
+
+    
+
+</script>

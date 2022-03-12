@@ -2,7 +2,7 @@
 h4 { margin: 0; font-weight: bold; font-size: 22px; }
 
 /* Service History Section Starts */
-.service-history .container-fluid { padding-top: 30px; padding-bottom: 30px; }
+.service-history .container-fluid { padding-top: 30px; padding-bottom: 60px; }
 .left { height: 100% }
 .list-group .list-group-item { border: 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); background-color: #1D7A8C; color: #FFFFFF; font-size: 1.125rem; padding: 17px 15px; line-height: 1; transition: 0.2s linear; }
 .list-group .list-group-item.active { background-color: #146371; }
@@ -57,3 +57,27 @@ td.service-status.cancel div { width: 76px; background-color: #ff6b6b; }
     tbody tr td:last-child { text-align: center; padding-bottom: 0px !important; border-bottom: none !important; }
 
 }
+
+
+/* Service Details Modal Starts */
+#serviceDetailsModal .model-content { padding: 0 !important; }
+#serviceDetailsModal .modal-header, #serviceDetailsModal .modal-body, #serviceDetailsModal .modal-footer { padding: 20px !important}
+#serviceDetailsModal .modal-header .modal-title { color: #3d3d3d; font-weight: 500 }
+#serviceDetailsModal .modal-body { color: #4F4F4F !important }
+#serviceDetailsModal .modal-body span.payment { font-size: 24px; color: #1D7A8C; font-weight: 700; }
+/* Service Details Modal Ends */
+
+/* Reschedule Modal Starts */
+#rescheduleModal .modal-dialog { max-width: 375px;}
+#rescheduleModal .modal-header, #rescheduleModal .modal-body, #rescheduleModal .modal-footer { padding: 20px !important}
+#rescheduleModal .modal-header .modal-title { color: #3d3d3d; font-weight: 500 }
+#rescheduleModal .form-control.date { position: relative; padding-left: 45px }
+#rescheduleModal input[type="date"]::-webkit-calendar-picker-indicator {position: absolute; left: -10px; color: #1D7A8C}
+/* Reschedule Modal Ends */
+
+/* Cancel Request Modal Starts */
+#cancelModal .modal-dialog { max-width: 380px;}
+#cancelModal .modal-header, #cancelModal .modal-body, #cancelModal .modal-footer { padding: 20px !important}
+#cancelModal .modal-header .modal-title { color: #3d3d3d; font-weight: 500 }
+#cancelModal textarea.form-control { min-height: 100px !important;}
+/* Cancel Request Modal Ends */

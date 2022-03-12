@@ -26,12 +26,15 @@ namespace Helperland
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllersWithViews();
             services.AddSession();
             services.AddDbContext<HelperlandContext>();
             services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IBookNowRepository, BookNowRepository>();
+            services.AddScoped<ICustomerDashboardRepository, CustomerDashboardRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

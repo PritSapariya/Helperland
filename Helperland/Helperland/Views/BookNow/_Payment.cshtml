@@ -27,6 +27,7 @@
 <script>
 
     $().ready(() => {
+
         $("#section4").show();
 
         const getAllValues = () => {
@@ -42,8 +43,10 @@
             obj.hasPets = $("input[name='haspets']").is(':checked');
             obj.extraServiceId = getExtraServiceIdArr();
             obj.addressID = $("input[name='address']:checked").val();
+            obj.totalCost = $("#FinalTotalPayment").text().split(" ")[0];
             
             return obj;
+
         };
 
         $("#completeBooking").click(() => {
@@ -109,6 +112,7 @@
 
             return $("#serviceBaseTime").val() - (arr * 0.5);
         }
+
     });
 
 </script>

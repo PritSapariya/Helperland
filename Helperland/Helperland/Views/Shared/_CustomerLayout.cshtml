@@ -130,7 +130,7 @@
                         <a href="#" class="list-group-item list-group-item-action">Notifications</a>
                     </div>
                 </div>
-                <div class="right col-lg-10">
+                <div class="right col-lg-10 custom">
                     
                     @RenderBody()
 
@@ -138,6 +138,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Main Content Ends -->
     <!-- Footer Section Starts -->
@@ -188,10 +190,34 @@
     @* Custom JS File *@
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
+
+    <!-- DataTable Script and CSS Starts -->
+    <script>
+        $(document).ready(() => {
+            $('#datatable').dataTable();
+            $('#datatable_filter').hide();
+            $(".dataTables_info").hide();
+        });
+    </script>
+    <style>
+        /* Datatable Style Starts */
+        .custom { position: relative; } 
+        .dataTables_length { position: absolute; bottom: -33px; }
+        .dataTables_paginate { position: absolute; bottom: -35px; right: 15px; }
+        
+        .dataTables_paginate .paginate_button { cursor: pointer; color: #646464; background-color: #d1cdcd91; font-weight: 500; display: inline-block; text-align: center; height: 35px !important; text-align: center; align-items: center;  width: 35px !important; border-radius: 35px; margin-left: 15px; padding-top: 8px; line-height: 1;}
+        .dataTables_paginate .paginate_button.current { color: #1D7A8C; border: 1px solid #1D7A8C;}
+        .dataTables_paginate > a.paginate_button {font-size: 0; display: none;}
+
+        /* Datatable Style Ends */
+    </style>
+    <!-- DataTable Script and CSS Ends -->
+
 </body>
 </html>
 

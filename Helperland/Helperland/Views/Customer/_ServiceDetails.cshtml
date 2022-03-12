@@ -1,0 +1,56 @@
+﻿@model Helperland.Models.ViewModel.Customer.CurrentServiceRequestViewModel;
+
+@{
+    Layout = null;
+}
+
+@{
+    List<String> extraList = new List<string>();
+    if (Model.ExtraServiceId.Contains(1)) extraList.Add("Inside cabinets");
+    if (Model.ExtraServiceId.Contains(2)) extraList.Add("Inside fridge");
+    if (Model.ExtraServiceId.Contains(3)) extraList.Add("Inside oven");
+    if (Model.ExtraServiceId.Contains(4)) extraList.Add("Laundry wash & dry");
+    if (Model.ExtraServiceId.Contains(5)) extraList.Add("Interior windows");
+
+    String extraString = String.Join(", ", extraList);
+}
+
+<div class="modal-header">
+    <h4 class="modal-title" id="serviceDetailsModalLabel">Service Details</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body row m-0">
+
+    <div class="col-12 p-0 mb-1"><h4>@Model.ServiceStartDate.ToString("dd'/'MM'/'yyyy")  @Model.ServiceStartDate.ToString("HH:mm") - @Model.ServiceStartDate.AddMinutes((int)((Model.ServiceHours + Model.ExtraHours) * 60)).ToString("HH:mm")</h4></div>
+    <div class="col-12 p-0 mb-1"><b>Duration :</b>  <span class="d-inline-block">@(Model.ServiceHours + Model.ExtraHours) Hrs</span></div>
+    <hr class="my-2">
+    <div class="col-12 p-0 mb-1"><b>Service Id :</b>  <span class="d-inline-block">@Model.ServiceRequestId</span></div>
+    <div class="col-12 p-0 mb-1"><b>Extras :</b>  <span class="d-inline-block">@extraString</span></div>
+    <div class="col-12 p-0 mb-1"><b>Net Amount :</b> &nbsp;&nbsp; <span class="d-inline-block payment">€ @Model.TotalCost</span></div>
+    <hr class="my-2">
+    <div class="col-12 p-0 mb-1"><b>Service Address :</b> <span class="d-inline-block">@Model.AddressLine2, @Model.AddressLine1, @Model.City - @Model.PostalCode</span></div>
+    <div class="col-12 p-0 mb-1"><b>Billing Address :</b> <span class="d-inline-block">Same as cleaning address</span></div>
+    <div class="col-12 p-0 mb-1"><b>Phone :</b> +91 <span class="d-inline-block">@Model.Mobile</span></div>
+    <div class="col-12 p-0 mb-1"><b>Email :</b> <span class="d-inline-block">@Model.Email</span></div>
+    <hr class="my-2">
+    <div class="col-12 p-0 mb-2"><b>Comments :</b> <span class="d-inline-block">@Model.Comments</span></div>
+            @if (Model.HasPets == true)
+            {
+
+                <div class="col-12 p-0 mb-1 d-flex align-items-center">
+                    <img class="m-0" src="~/images/included.png" alt="included">&nbsp;I have pets at home
+                </div>
+            }
+            else
+            {
+                <div class="col-12 p-0 mb-1 d-flex align-items-center">
+                    <img class="m-0" src="~/images/not-included.png" alt="not-included">&nbsp;I don't have pets at home
+                </div>
+            }
+
+
+</div>
+<div class="modal-footer action">
+    <button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal" onclick="rescheduleDetails(event, @Model.ServiceRequestId)"> <img src="~/images/reschedule-icon-small.png" alt="icon">&nbsp;Reschedule</button>
+    <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal" onclick="loadConcelServiceDetails(event, @Model.ServiceRequestId)" ><img src="~/images/close-icon-small.png" alt="icon">&nbsp;Cancel</button>
+</div>

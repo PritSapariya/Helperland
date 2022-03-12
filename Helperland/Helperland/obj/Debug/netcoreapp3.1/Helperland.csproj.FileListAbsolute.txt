@@ -164,3 +164,4 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.csproj.AssemblyReference.cache
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomerLayout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ServiceHistory.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_ServiceDetails.cshtml.g.cs

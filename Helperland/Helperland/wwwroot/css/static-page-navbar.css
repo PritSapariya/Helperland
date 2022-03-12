@@ -39,27 +39,26 @@ a { text-decoration: none; }
 /* Login Modal */
 input:focus, select:focus {box-shadow: 0 0 0 0.25rem #1d7a8c45; border-color: #1d7a8c45;}
 
-.modal-dialog {max-width: 360px;}
-.modal-header, .modal-body {padding: 0 !important; border: none;}
-.modal-dialog .modal-content {padding: 25px; position: relative;}
-.modal-header {color: #646464; margin-bottom: 45px; border-bottom: 0;}
-.modal-header h4 {font-weight: 700;}
-.modal-header .btn-close {position: absolute; top: 0; right: 0; padding: 15px; margin: 0;}
+.nav-modal .modal-dialog {max-width: 360px;}
+.nav-modal .modal-header, .modal-body {padding: 0 !important; border: none;}
+.nav-modal .modal-dialog .modal-content {padding: 25px; position: relative;}
+.nav-modal .modal-header {color: #646464; margin-bottom: 45px; border-bottom: 0;}
+.nav-modal .modal-header h4 {font-weight: 700;}
+.nav-modal .modal-header .btn-close {position: absolute; top: 0; right: 0; padding: 15px; margin: 0;}
 
-.modal-content .modal-body .form-group {position: relative; margin-bottom: 15px;}
-.modal-content .modal-body .form-group .form-control {padding: 12px 60px 12px 15px;}
-.modal-content .modal-body .form-group img { position: absolute; background: transparent; top: 13px; right: 20px;}
+.nav-modal .modal-content .modal-body .form-group {position: relative; margin-bottom: 15px;}
+.nav-modal .modal-content .modal-body .form-group .form-control {padding: 12px 60px 12px 15px;}
+.nav-modal .modal-content .modal-body .form-group img { position: absolute; background: transparent; top: 13px; right: 20px;}
 
-.modal-content .modal-body .form-check {margin-bottom: 15px;}
-.modal-content .modal-body .form-check .form-check-input {height: 20px; width: 20px;margin-top: 2px;}
-.modal-content .modal-body .form-check .form-check-input:checked {border-color: #1d7a8c; background-color: #1D7A8C;}
-.modal-content .modal-body .form-check .form-check-label {color: #4F4F4F; padding-left: 5px; line-height: 1;}
+.nav-modal .modal-content .modal-body .form-check {margin-bottom: 15px;}
+.nav-modal .modal-content .modal-body .form-check .form-check-input {height: 20px; width: 20px;margin-top: 2px;}
+.nav-modal .modal-content .modal-body .form-check .form-check-input:checked {border-color: #1d7a8c; background-color: #1D7A8C;}
+.nav-modal .modal-content .modal-body .form-check .form-check-label {color: #4F4F4F; padding-left: 5px; line-height: 1;}
 
-.modal-content .btn {width: 100%; padding: 15px 30px; border-radius: 54px; color: #FFFFFF; background-color: #1D7A8C; border: transparent !important; font-size: 18px; font-weight: 700; margin-bottom: 25px;}
-.modal-content p {color: #646464; font-size: 16px; margin: 0;}
-.modal-content .modal-body .login-modal-link {color: #1D7A8C;}
+.nav-modal .modal-content .btn {width: 100%; padding: 15px 30px; border-radius: 54px; color: #FFFFFF; background-color: #1D7A8C; border: transparent !important; font-size: 18px; font-weight: 700; margin-bottom: 25px;}
+.nav-modal .modal-content p {color: #646464; font-size: 16px; margin: 0;}
+.nav-modal .modal-content .modal-body .login-modal-link {color: #1D7A8C;}
 .nav-link:focus { color: #FFFFFF;}
-
 
 
 

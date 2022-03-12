@@ -107,7 +107,7 @@ namespace Helperland.Repository
                 request.ServiceStartDate = serviceRequestViewModel.ServiceStartDate;
                 request.ServiceHours = serviceRequestViewModel.ServiceHours;
                 request.Status = ConstantString.StatusPending;
-                request.TotalCost = 63;  // Payment can be changes once the Hourly Rate is fixed
+                request.TotalCost = serviceRequestViewModel.TotalCost;  // Payment can be changes once the Hourly Rate is fixed
 
                 _db.ServiceRequests.Add(request);
                 _db.SaveChanges();
