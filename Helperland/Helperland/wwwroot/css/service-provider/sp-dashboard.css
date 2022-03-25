@@ -8,3 +8,6 @@
 
 .dashboard-content-wrapper .card1 .count {background-color: #1fb6ff;}
 .dashboard-content-wrapper .card2 .count {background-color: #2cc896;}
+
+.block-wrapper .btn-primary { background-color: #ff6b6b !important; color: #FFF; border-color: #ff6b6b;}
+.block-wrapper .btn-primary:hover { background-color: #fd3636 !important; }

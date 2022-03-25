@@ -2,20 +2,15 @@
 
 @{
     Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
-    ViewData["title"] = "New Service Requests";
+    ViewData["Title"] = "Service History";
 }
 
-<input hidden type="text" value="2" id="navbarCurrentID" />
-
+<input hidden type="text" value="5" id="navbarCurrentID" />
 <link rel='stylesheet' href="~/css/service-provider/sp-upcoming-service.css">
 
-<div class="row mb-3 px-2 new-service-wrapper">
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-            Include Pet at Home
-        </label>
-    </div>
+<div class="mb-2 table-header-top d-flex justify-content-between align-items-center">
+    <h4>Service History</h4>
+    <button>Export</button>
 </div>
 
 <table class="table table-borderless" id="datatable">
@@ -25,17 +20,17 @@
             <th scope="col" class="align-middle sortable">Service date<img src="~/images/sort.png" alt=""></th>
             <th scope="col" width="366" class="align-middle sortable">Customer details<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle text-center">Payment</th>
-            @*<th scope="col"  class="align-middle">Distance</th>*@
-            <th scope="col" class="align-middle text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
 
+
+
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="align-middle" onclick="loadServiceRequestDetails(@item.ServiceRequestId)">@item.ServiceRequestId</td>
-                <td onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+            <tr onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+                <td class="align-middle">@item.ServiceRequestId</td>
+                <td>
                     <div>
                         <span hidden>@item.ServiceStartDate.ToString("yyyy/MM/dd HH:mm")</span>
                         <span class="service-date d-flex align-items-center">
@@ -50,7 +45,7 @@
                         </span>
                     </div>
                 </td>
-                <td onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+                <td>
                     <div><span class="customer-name">@item.User.FirstName @item.User.LastName</span></div>
                     <div>
                         <span class="customer-address d-flex align-items-center">
@@ -59,9 +54,7 @@
                         </span>
                     </div>
                 </td>
-                <td class="align-middle text-center" onclick="loadServiceRequestDetails(@item.ServiceRequestId)">@item.TotalCost €</td>
-                @*<td class="align-middle">15 km</td>*@
-                <td class="align-middle text-center"><a asp-action="AcceptService" asp-controller="ServiceProvider" asp-route-serviceId="@item.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button class="accept">Accept</button></a></td>
+                <td class="align-middle text-center">@item.TotalCost €</td>
             </tr>
 
         }

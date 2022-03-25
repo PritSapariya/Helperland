@@ -30,7 +30,7 @@ namespace Helperland.Controllers
 
             String PostalCode = HttpContext.Session.GetString("PostalCode");
 
-            ViewBag.NewService = serviceProviderRepository.GetCountOfNewService(PostalCode);
+            ViewBag.NewService = serviceProviderRepository.GetCountOfNewService(PostalCode, HttpContext.Session.GetInt32("UserId"));
             ViewBag.UpcomingService = serviceProviderRepository.GetCountOfUpcomingService(HttpContext.Session.GetInt32("UserId"));
 
             return View();
@@ -44,7 +44,7 @@ namespace Helperland.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
             String PostalCode = HttpContext.Session.GetString("PostalCode");
 
-            var model = serviceProviderRepository.GetAllNewServiceRequest(PostalCode, includePets);
+            var model = serviceProviderRepository.GetAllNewServiceRequest(PostalCode, includePets, HttpContext.Session.GetInt32("UserId"));
 
             return View(model);
         }
@@ -56,14 +56,55 @@ namespace Helperland.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             ViewBag.Name = HttpContext.Session.GetString("Name");
 
-            List<ServiceRequest> model = serviceProviderRepository.GetALlUpcomingService(HttpContext.Session.GetInt32("UserId"));
+            List<ServiceRequest> model = serviceProviderRepository.GetAllUpcomingService(HttpContext.Session.GetInt32("UserId"));
 
-            return View();
+            return View(model);
         }
 
-        public IActionResult AcceptService(int serviceId, int userId)
+        [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/ServiceHistory")]
+        public IActionResult ServiceHistory()
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+
+            List<ServiceRequest> model = serviceProviderRepository.GetAllCompletedService(HttpContext.Session.GetInt32("UserId"));
+
+            return View(model);
+        }
+
+        [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/BlockCustomer")]
+        public IActionResult BlockCustomer()
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+
+            List<ServiceRequest> model = serviceProviderRepository.GetAllCustomer(HttpContext.Session.GetInt32("UserId"));
+
+            return View(model);
+        }
+
+        public IActionResult BlockCustomerById(int UserId)
+        {
+            int serviceProviderId = (int)HttpContext.Session.GetInt32("UserId");
+            if (serviceProviderRepository.BlockCustomerById(UserId, serviceProviderId))
+            {
+                return RedirectToAction("BlockCustomer");
+            }
+            else
+            {
+
+
+                return View(new { hasError = true });
+            }
+            
+        }
+
+        public IActionResult AcceptService(int serviceId)
         {
 
+            int userId = (int)HttpContext.Session.GetInt32("UserId");
             if ((bool)serviceProviderRepository.AssignServiceRequest(serviceId, userId) == true)
             {
                 return RedirectToAction("NewService");
@@ -72,9 +113,19 @@ namespace Helperland.Controllers
             {
                 return RedirectToAction("NewService", new { hasAssigned = true });
             }
-
         }
+        public IActionResult CancelService(int serviceId, int userId)
+        {
+            serviceProviderRepository.CancelServiceById(serviceId);
 
+            return RedirectToAction("UpcomingService");
+        }
+        public IActionResult CompleteService(int serviceId, int userId)
+        {
+            serviceProviderRepository.CompleteServiceById(serviceId);
+
+            return RedirectToAction("UpcomingService");
+        }
         public IActionResult GetServiceDetailsById(int serviceId)
         {
             ServiceRequest model = new ServiceRequest();
@@ -82,6 +133,7 @@ namespace Helperland.Controllers
 
             return View("~/Views/ServiceProvider/Partial/_ServiceHistoryDetails.cshtml", model);
         }
+        
 
     }
 }

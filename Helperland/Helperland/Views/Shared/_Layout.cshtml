@@ -34,20 +34,23 @@
                 <img id="branding" src="~/images/logo-small.png" alt="">
             </a>
             <ul class="nav justify-content-end d-none d-lg-flex">
-                <li class="nav-item btn-border">
-                    <a class="nav-link" asp-controller="BookNow" asp-action="Index" >Book now</a>
+                @if (userTypeId != 2)
+                {
+                    <li class="nav-item btn-border">
+                        <a class="nav-link" asp-controller="BookNow" asp-action="Index">Book now</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Prices">Prices & services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Prices" >Prices & services</a>
+                    <a class="nav-link" href="#">Warranty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >Warranty</a>
+                    <a class="nav-link" href="#">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Contact" >Contact</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
 
                 @if (userTypeId == 1)
@@ -70,9 +73,9 @@
                                     <b>@ViewBag.Name</b>
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer" >My Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#" >My Settings</a></li>
-                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer">My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#">My Settings</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home">Logout</a></li>
                         </ul>
                     </li>
                 }
@@ -95,9 +98,9 @@
                                     <b>@ViewBag.Name</b>
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" asp-action="Index" asp-controller="ServiceProvider" >My Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#" >My Settings</a></li>
-                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="ServiceProvider">My Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#">My Settings</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home">Logout</a></li>
                         </ul>
                     </li>
                 }
@@ -126,7 +129,7 @@
                 <div class="side-navbar" id="side-navbar-menu">
                     <div class="nav-container">
                         <ul>
-                            <li><a href="#">Book Now</a></li>
+                            @if (userTypeId == 1) {<li><a asp-action="BookNow" asp-controller="BookNow">Book Now</a></li>}
                             <li><a asp-controller="Home" asp-action="Prices">Prices & Services</a></li>
                             <li><a href="#">Warranty</a></li>
                             <li><a href="#">Blog</a></li>

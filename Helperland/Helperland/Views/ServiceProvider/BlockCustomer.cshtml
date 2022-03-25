@@ -1,0 +1,31 @@
+﻿@model List<Helperland.Models.DBModels.ServiceRequest>
+
+@{
+    Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+<input hidden type="text" value="7" id="navbarCurrentID" />
+<link rel='stylesheet' href="~/css/service-provider/sp-dashboard.css">
+
+<div class="dashboard-content-wrapper block-wrapper">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mx-2">
+                <div class="count-wrapper mb-2">
+                    <img src="@item.User.UserProfilePicture" alt="avatar-logo">
+                </div>
+                <div class="subtitle text-center mb-2">
+                    @item.User.FirstName @item.User.LastName
+                </div>
+                <div class="button-wrapper text-center">
+                    <a asp-action="BlockCustomerById" asp-controller="ServiceProvider" asp-route-userId="@item.User.UserId"><button class="btn btn-primary">Block</button></a>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

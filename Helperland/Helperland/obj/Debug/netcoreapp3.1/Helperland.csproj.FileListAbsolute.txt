@@ -172,3 +172,5 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\NewService.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\UpcomingService.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\Partial\_ServiceHistoryDetails.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\ServiceHistory.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\BlockCustomer.cshtml.g.cs

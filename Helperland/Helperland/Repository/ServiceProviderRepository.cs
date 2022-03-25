@@ -4,6 +4,7 @@ using Helperland.Models.ViewModel;
 using Helperland.Models.ViewModel.Customer;
 using Helperland.Repository.IRepository;
 using Helperland.Utilities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -35,7 +36,7 @@ namespace Helperland.Repository
 
 
         // ************* New Service Request ************* //
-        public object GetAllNewServiceRequest(String PostalCode,String includePets)
+        public List<ServiceRequest> GetAllNewServiceRequest(String PostalCode,String includePets, int? id)
         {
             List<ServiceRequest> service = new List<ServiceRequest>();
 
@@ -45,7 +46,18 @@ namespace Helperland.Repository
                                         .Include(s => s.ServiceRequestExtras).AsSplitQuery()
                                         .Where(s => s.ServiceProviderId == null && s.Status == 1 && s.ServiceStartDate > DateTime.Now && s.ZipCode == PostalCode).ToList();
 
-            if(includePets == "true")
+            // Remoing Blocked Customer Service Request
+
+            List<int> blockedId = _db.FavoriteAndBlockeds.Where(x => x.UserId == id).Select(x => x.TargetUserId).ToList();
+
+            foreach (int i in blockedId)
+            {
+                service.RemoveAll(r => r.UserId == i);
+            }
+
+
+
+            if (includePets == "true")
             {
                 return service;
             }
@@ -75,7 +87,7 @@ namespace Helperland.Repository
 
             User sp = _db.Users.Where(x => x.UserId == userId).FirstOrDefault();
 
-            service.ServiceProvider = sp;
+            
             service.Status = ConstantString.StatusAssigned;
             service.ServiceProviderId = userId;
 
@@ -99,11 +111,26 @@ namespace Helperland.Repository
 
         }
 
-        public dynamic GetCountOfNewService(string postalCode)
+        public dynamic GetCountOfNewService(string postalCode, int? id)
         {
-            int result = _db.ServiceRequests.Where(x => x.ServiceProviderId == null && x.ZipCode == postalCode && x.Status == ConstantString.StatusPending && x.ServiceStartDate >= DateTime.Now).ToList().Count();
+            List<ServiceRequest> service = new List<ServiceRequest>();
 
-            return result;
+            service = _db.ServiceRequests.Include(s => s.ServiceProvider)
+                                        .Include(s => s.User)
+                                        .Include(s => s.ServiceRequestAddresses)
+                                        .Include(s => s.ServiceRequestExtras).AsSplitQuery()
+                                        .Where(s => s.ServiceProviderId == null && s.Status == 1 && s.ServiceStartDate > DateTime.Now && s.ZipCode == postalCode).ToList();
+
+            // Remoing Blocked Customer Service Request
+
+            List<int> blockedId = _db.FavoriteAndBlockeds.Where(x => x.UserId == id).Select(x => x.TargetUserId).ToList();
+
+            foreach (int i in blockedId)
+            {
+                service.RemoveAll(r => r.UserId == i);
+            }
+
+            return service.Count();
         }
 
         public dynamic GetCountOfUpcomingService(int? v)
@@ -113,7 +140,7 @@ namespace Helperland.Repository
             return result;
         }
 
-        public List<ServiceRequest> GetALlUpcomingService(int? id)
+        public List<ServiceRequest> GetAllUpcomingService(int? id)
         {
             List<ServiceRequest> result = new List<ServiceRequest>();
 
@@ -124,6 +151,77 @@ namespace Helperland.Repository
                                         .Where(s => s.ServiceProviderId == id && s.Status == ConstantString.StatusAssigned && s.ServiceStartDate >= DateTime.Now).ToList();
 
             return result;
+        }
+
+        public void CancelServiceById(int serviceId)
+        {
+            ServiceRequest service = _db.ServiceRequests.Where(x => x.ServiceRequestId == serviceId).FirstOrDefault();
+            service.Status = ConstantString.StatusCancelled;
+            _db.SaveChanges();
+        }
+
+        public void CompleteServiceById(int serviceId)
+        {
+            ServiceRequest service = _db.ServiceRequests.Where(x => x.ServiceRequestId == serviceId).FirstOrDefault();
+            service.Status = ConstantString.StatusCompleted;
+            _db.SaveChanges();
+        }
+
+        public List<ServiceRequest> GetAllCompletedService(int? id)
+        {
+            List<ServiceRequest> result;
+
+            result = _db.ServiceRequests.Include(s => s.ServiceProvider)
+                                        .Include(s => s.User)
+                                        .Include(s => s.ServiceRequestAddresses)
+                                        .Include(s => s.ServiceRequestExtras).AsSplitQuery()
+                                        .Where(s => s.ServiceProviderId == id && s.Status == ConstantString.StatusCompleted).ToList();
+
+            return result;
+        }
+
+        public List<ServiceRequest> GetAllCustomer(int? id)
+        {
+            List<ServiceRequest> result;
+
+            result = _db.ServiceRequests.Include(s => s.ServiceProvider)
+                                        .Include(s => s.User)
+                                        .Include(s => s.ServiceRequestAddresses)
+                                        .Include(s => s.ServiceRequestExtras).AsSplitQuery()
+                                        .Where(s => s.ServiceProviderId == id && s.Status == ConstantString.StatusCompleted).ToList();
+
+            List<int> blockedId = _db.FavoriteAndBlockeds.Where(x => x.UserId == id).Select(x => x.TargetUserId).ToList();
+
+            foreach(int i in blockedId)
+            {
+                result.RemoveAll(r => r.UserId == i);
+            }
+
+            return result;
+        }
+
+       
+        public bool BlockCustomerById(int UserId, int serviceProviderId)
+        {
+            try
+            {
+                FavoriteAndBlocked f = new FavoriteAndBlocked();
+
+                f.UserId = serviceProviderId;
+                f.TargetUserId = UserId;
+                f.IsBlocked = true;
+                f.IsFavorite = false;
+
+                _db.FavoriteAndBlockeds.Add(f);
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
         }
     }
 }

@@ -15,6 +15,14 @@ h6 {margin: 0; font-weight: bold;}
 .list-group {border-radius: 0px;}
 
 /* Main Content Starts */
+.table-header-top {margin-bottom: 10px}
+.table-header-top h4 {color: #646464}
+.table-header-top button {height: 34px; width: 70px; background-color: #1d7a8c; color: #FFFFFF; outline: none; border: 0; border-radius: 34px}
+.table-header-top button:hover {background-color: #146371 !important}
+.table-header-top a {height: 36px; background-color: #1d7a8c; color: #FFFFFF; outline: none; border: 0; border-radius: 36px}
+.table-header-top a:hover {background-color: #146371 !important; color: #FFF;}
+
+
 table {border: 1px solid #E1E1E1}
 table thead {background: #F9F9F9; border: 1px solid #E1E1E1; height: 49px;}
 table thead .sortable:hover { cursor: pointer;}
