@@ -63,8 +63,8 @@
                                 </div>
                             </li>
                             <li><a class="dropdown-item" asp-action="Index" asp-controller="Customer">My Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#">My Settings</a></li>
-                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home" >Logout</a></li>
+                            <li><a class="dropdown-item" asp-action="MySettings" asp-controller="Customer">My Settings</a></li>
+                            <li><a class="dropdown-item" asp-action="Logout" asp-controller="Home">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -86,22 +86,22 @@
                         </div>
                         <div class="nav-container">
                             <ul>
-                                <li><a asp-action="Index" asp-controller="Customer" >Dashboard</a></li>
+                                <li><a asp-action="Index" asp-controller="Customer">Dashboard</a></li>
                                 <li><a href="#" class="active">Service History</a></li>
                                 <li><a href="#">Service Schedule</a></li>
                                 <li><a href="#">Favourite Pros</a></li>
                                 <li><a href="#">Invoices</a></li>
-                                <li><a href="#">My Settings</a></li>
+                                <li><a asp-action="MySettings" asp-controller="Customer">My Settings</a></li>
                                 <li><a asp-action="Logout" asp-controller="Home">Logout</a></li>
                             </ul>
                         </div>
                         <div class="nav-container">
                             <ul>
                                 <li><a asp-action="Index" asp-controller="BookNow">Book Now</a></li>
-                                <li><a asp-controller="Home" asp-action="Prices" >Prices & services</a></li>
+                                <li><a asp-controller="Home" asp-action="Prices">Prices & services</a></li>
                                 <li><a href="#">Warranty</a></li>
                                 <li><a href="#">Blog</a></li>
-                                <li><a asp-controller="Home" asp-action="Contact" >Contact</a></li>
+                                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -117,11 +117,11 @@
     </section>
     <!-- Main Navbar Ends -->
     <!-- Main Content Starts-->
-    <section class="service-history">
+    <section class="service-history customer">
         <div class="container-fluid">
             <div class="row">
                 <div class="left d-none d-lg-block col-2">
-                    <div class="list-group">
+                    <div class="list-group" id="sideNavbarList">
                         <a asp-action="Index" asp-controller="Customer" class="list-group-item list-group-item-action active">Dashboard</a>
                         <a asp-action="ServiceHistory" asp-controller="Customer" class="list-group-item list-group-item-action">Service History</a>
                         <a href="#" class="list-group-item list-group-item-action">Service Schedule</a>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="right col-lg-10 custom">
-                    
+
                     @RenderBody()
 
                 </div>
@@ -186,6 +186,19 @@
         </div>
     </footer>
 
+
+    <!-- Navbar Current Page setup -->
+    <script>
+
+        var pageId = $('#navbarCurrentID').val();
+        var navbarArr = $('#sideNavbarList a');
+        $('#sideNavbarList a').removeClass('active');
+        $(`#sideNavbarList a:nth-child(${pageId})`).addClass('active');
+
+    </script>
+    <!-- ------------------------- -->
+
+
     <!-- Footer Section Ends -->
     @* Custom JS File *@
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
@@ -206,13 +219,47 @@
     </script>
     <style>
         /* Datatable Style Starts */
-        .custom { position: relative; } 
-        .dataTables_length { position: absolute; bottom: -33px; }
-        .dataTables_paginate { position: absolute; bottom: -35px; right: 15px; }
-        
-        .dataTables_paginate .paginate_button { cursor: pointer; color: #646464; background-color: #d1cdcd91; font-weight: 500; display: inline-block; text-align: center; height: 35px !important; text-align: center; align-items: center;  width: 35px !important; border-radius: 35px; margin-left: 15px; padding-top: 8px; line-height: 1;}
-        .dataTables_paginate .paginate_button.current { color: #1D7A8C; border: 1px solid #1D7A8C;}
-        .dataTables_paginate > a.paginate_button {font-size: 0; display: none;}
+        .custom {
+            position: relative;
+        }
+
+        .dataTables_length {
+            position: absolute;
+            bottom: -33px;
+        }
+
+        .dataTables_paginate {
+            position: absolute;
+            bottom: -35px;
+            right: 15px;
+        }
+
+        .dataTables_paginate .paginate_button {
+            cursor: pointer;
+            color: #646464;
+            background-color: #d1cdcd91;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+            height: 35px !important;
+            text-align: center;
+            align-items: center;
+            width: 35px !important;
+            border-radius: 35px;
+            margin-left: 15px;
+            padding-top: 8px;
+            line-height: 1;
+        }
+
+        .dataTables_paginate .paginate_button.current {
+            color: #1D7A8C;
+            border: 1px solid #1D7A8C;
+        }
+
+        .dataTables_paginate > a.paginate_button {
+            font-size: 0;
+            display: none;
+        }
 
         /* Datatable Style Ends */
     </style>

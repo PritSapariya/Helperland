@@ -1,14 +1,6 @@
 * { box-sizing: border-box }
 h4 { margin: 0; font-weight: bold; font-size: 22px; }
 
-/* Service History Section Starts */
-.service-history .container-fluid { padding-top: 30px; padding-bottom: 60px; }
-.left { height: 100% }
-.list-group .list-group-item { border: 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); background-color: #1D7A8C; color: #FFFFFF; font-size: 1.125rem; padding: 17px 15px; line-height: 1; transition: 0.2s linear; }
-.list-group .list-group-item.active { background-color: #146371; }
-.list-group .list-group-item:hover { background-color: #146371; }
-.list-group { border-radius: 0px }
-
 /* Main Content Starts */
 .table-header-top { margin-bottom: 10px }
 .table-header-top h4 { color: #646464 }
@@ -31,7 +23,9 @@ tbody tr td div span.customer-address img { padding-right: 3px }
 .rating-icons { padding-left: 5px; }
 h6 { margin: 0; padding-left: 10px; }
 .payment-text { font-size: 1.5rem; color: #1d7a8c; font-weight: 700 }
+.report-icon:hover {cursor: pointer;}
 .rate-action button { outline: none; border: none; border-radius: 70px; height: 34px; width: 70px; color: #FFFFFF; background-color: #1d7a8c; font-size: 14px; }
+.rate-action button:disabled { background-color: #135b68; cursor: not-allowed;}
 .rate-action button:hover { background-color: #146371!important; }
 
 .action button { outline: none; border: none; border-radius: 70px; color: #FFFFFF; font-size: 14px; font-weight: 500 !important; }
@@ -81,3 +75,11 @@ td.service-status.cancel div { width: 76px; background-color: #ff6b6b; }
 #cancelModal .modal-header .modal-title { color: #3d3d3d; font-weight: 500 }
 #cancelModal textarea.form-control { min-height: 100px !important;}
 /* Cancel Request Modal Ends */
+
+/* Rating Modal Starts */
+#ratingModal .modal-dialog { max-width: 500px; }
+#ratingModal .modal-header, #ratingModal .modal-body, #ratingModal .modal-footer { padding: 20px !important }
+#ratingModal .modal-body img { cursor: pointer; }
+#ratingModal .rating-block { position: relative; }
+#ratingModal .rating-block input { position: absolute; opacity: 0; }
+/* Rating Modal Ends */

@@ -34,23 +34,50 @@
     <div class="col-12 p-0 mb-1"><b>Email :</b> <span class="d-inline-block">@Model.Email</span></div>
     <hr class="my-2">
     <div class="col-12 p-0 mb-2"><b>Comments :</b> <span class="d-inline-block">@Model.Comments</span></div>
-            @if (Model.HasPets == true)
-            {
+    @if (Model.HasPets == true)
+    {
 
-                <div class="col-12 p-0 mb-1 d-flex align-items-center">
-                    <img class="m-0" src="~/images/included.png" alt="included">&nbsp;I have pets at home
+        <div class="col-12 p-0 mb-1 d-flex align-items-center">
+            <img class="m-0" src="~/images/included.png" alt="included">&nbsp;I have pets at home
+        </div>
+    }
+    else
+    {
+        <div class="col-12 p-0 mb-1 d-flex align-items-center">
+            <img class="m-0" src="~/images/not-included.png" alt="not-included">&nbsp;I don't have pets at home
+        </div>
+    }
+    @if (Model.ServiceProviderId != null)
+    {
+        <hr class="my-2">
+        <div class="col-12 pt-2 mb-2 align-middle d-flex align-items-center">
+            <img src="@Model.ServiceProviderAvatar" height="46" width="46">
+            <div class="d-inline-block">
+                <div class="customer-name px-3">@Model.ServiceProviderName</div>
+                <div class="rating-icons d-block px-3">
+                    @if (Model.ServiceProviderRating != null)
+                    {
+                        int i;
+                        for (i = 1; i < Model.ServiceProviderRating; i++)
+                        {
+                            <img src="~/images/star1.png">
+                        }
+                        for (int j = i; j <= 5; j++)
+                        {
+                            <img src="~/images/star2.png">
+                        }
+                        <h6 class="d-inline-block my-0 align-middle">@Model.ServiceProviderRating</h6>
+                    }
                 </div>
-            }
-            else
-            {
-                <div class="col-12 p-0 mb-1 d-flex align-items-center">
-                    <img class="m-0" src="~/images/not-included.png" alt="not-included">&nbsp;I don't have pets at home
-                </div>
-            }
-
+            </div>
+        </div>
+    }
 
 </div>
+@if(Model.Status != 4)
+            {
 <div class="modal-footer action">
     <button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal" onclick="rescheduleDetails(event, @Model.ServiceRequestId)"> <img src="~/images/reschedule-icon-small.png" alt="icon">&nbsp;Reschedule</button>
-    <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal" onclick="loadConcelServiceDetails(event, @Model.ServiceRequestId)" ><img src="~/images/close-icon-small.png" alt="icon">&nbsp;Cancel</button>
+    <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal" onclick="cancelDetails(event, @Model.ServiceRequestId)"><img src="~/images/close-icon-small.png" alt="icon">&nbsp;Cancel</button>
 </div>
+            }

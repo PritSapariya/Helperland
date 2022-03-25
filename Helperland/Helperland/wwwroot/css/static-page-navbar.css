@@ -72,3 +72,12 @@ button.nav-link {background: transparent !important; }
 .profile-icon .dropdown-menu:after {position: absolute; top: 0; content: ""; border-width: 0 8px 12px 8px; border-style: solid; border-color: transparent transparent rgb(255, 255, 255) transparent; top: -12px; right: 35px;}
 .profile-icon .dropdown-menu[data-bs-popper] {left: auto !important;}
 .dropdown-item.side-navbar-welcome-msg { border-bottom: 1px solid #e1e1e1 }
+
+
+/* Customer Side - Navbar Section Starts */
+.service-history.customer .container-fluid { padding-top: 30px; padding-bottom: 60px; }
+.customer .left { height: 100% }
+.customer .list-group .list-group-item { border: 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); background-color: #1D7A8C; color: #FFFFFF; font-size: 1.125rem; padding: 17px 15px; line-height: 1; transition: 0.2s linear; }
+.customer .list-group .list-group-item.active { background-color: #146371; }
+.customer .list-group .list-group-item:hover { background-color: #146371; }
+.customer .list-group { border-radius: 0px }

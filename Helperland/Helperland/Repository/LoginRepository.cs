@@ -99,5 +99,13 @@ namespace Helperland.Repository
             Message = "Internal Server Error";
             return Message;
         }
+
+        internal String GetPostalCode(int userId)
+        {
+
+            User u = _db.Users.Where(x => x.UserId == userId).FirstOrDefault();
+
+            return u.ZipCode;
+        }
     }
 }

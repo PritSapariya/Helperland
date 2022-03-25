@@ -14,6 +14,7 @@ namespace Helperland.Models.ViewModel.Customer
         public double? ExtraHours { get; set; }
         public string ZipCode { get; set; }
         public decimal? TotalCost { get; set; }
+        public int? Status { get; set; }
         public string Comments { get; set; }
         public int? ServiceProviderId { get; set; }
         public string ServiceProviderName { get; set; }
@@ -29,6 +30,7 @@ namespace Helperland.Models.ViewModel.Customer
         public string PostalCode { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
+        public bool IsRated { get; set; }
 
         public List<int> ExtraServiceId { get; set; }
 

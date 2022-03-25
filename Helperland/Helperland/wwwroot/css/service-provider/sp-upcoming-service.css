@@ -1,0 +1,49 @@
+* {box-sizing: border-box}
+h6 {margin: 0; font-weight: bold;}
+
+/* New Service Request Page Checkbox */
+.new-service-wrapper .form-check {margin-bottom: 15px; padding-left: 29px;}
+.new-service-wrapper .form-check .form-check-input {height: 20px; width: 20px;margin-top: 2px;}
+.new-service-wrapper .form-check .form-check-input:checked {border-color: #1d7a8c; background-color: #1D7A8C;}
+.new-service-wrapper .form-check .form-check-label {color: #4F4F4F; padding-left: 5px; line-height: 20px; font-size: 14px;}
+
+/* Upcoming Service Section Starts */
+.upcoming-service .container-fluid {padding-top: 30px; padding-bottom: 30px;}
+.list-group .list-group-item {border: 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); background-color: #1D7A8C; color: #FFFFFF; font-size: 1.125rem; padding: 17px 15px; line-height: 1; transition: 0.2s linear;}
+.list-group .list-group-item.active {background-color: #146371;}
+.list-group .list-group-item:hover {background-color: #146371;}
+.list-group {border-radius: 0px;}
+
+/* Main Content Starts */
+table {border: 1px solid #E1E1E1}
+table thead {background: #F9F9F9; border: 1px solid #E1E1E1; height: 49px;}
+table thead .sortable:hover { cursor: pointer;}
+table thead tr > th img {padding-left: 8px;}
+tbody tr {border: 1px solid #E1E1E1}
+tbody tr td div span.service-date {margin-bottom: 6px;}
+tbody tr td div span.service-date img {padding-right: 4px}
+tbody tr td div span.service-time img {padding-right: 3px;}
+tbody tr td button {padding: 0; height: 34px; width: 80px; outline: none; border: 0; border-radius: 34px;}
+tbody tr td button.accept { background-color: #1d7a8c; color: #FFF; }
+tbody tr td button.cancel { background-color: #ff6b6b; color: #FFF; }
+tbody tr td div span.customer-name {padding-bottom: 6px; line-height: 1}
+tbody tr td div span.customer-address img {padding-right: 3px}
+
+
+@media screen and (max-width: 767px) {
+    /* Main Content Responsice */
+    thead {display: none}
+    table {border: none}
+    table tbody tr {display: block; padding: 30px; margin-bottom: 35px; box-shadow: 0 0 6px rgb(0 0 0 / 25%);}
+    tbody tr td {display: block; padding: 15px 0 !important; margin: 0 !important ; color: #646464; border-bottom: 1px solid #E1E1E1 !important;}
+    tbody tr td:nth-child(1) {padding-top: 0 !important}
+    tbody tr td:nth-child(2) div {display: inline-block; margin-right: 10px;}
+    tbody tr td:last-child {text-align: center; padding-bottom: 0px !important; border-bottom: none !important;}
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    thead th:nth-child(1) {width: 114px;}
+    thead th:nth-child(2) {width: 130px;}
+    thead th:nth-child(4) {width: 105px;}
+    thead th:nth-child(5) {width: 105px;}
+}

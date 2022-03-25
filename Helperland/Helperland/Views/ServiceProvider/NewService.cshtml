@@ -1,0 +1,122 @@
+﻿@model List<Helperland.Models.DBModels.ServiceRequest>
+
+@{
+    Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
+    ViewData["title"] = "New Service Requests";
+}
+
+<input hidden type="text" value="2" id="navbarCurrentID" />
+
+<link rel='stylesheet' href="~/css/service-provider/sp-upcoming-service.css">
+
+<div class="row mb-3 px-2 new-service-wrapper">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+            Include Pet at Home
+        </label>
+    </div>
+</div>
+
+<table class="table table-borderless" id="datatable">
+    <thead>
+        <tr>
+            <th scope="col" class="align-middle sortable">Service ID<img src="~/images/sort.png" alt=""></th>
+            <th scope="col" class="align-middle sortable">Service date<img src="~/images/sort.png" alt=""></th>
+            <th scope="col" width="366" class="align-middle sortable">Customer details<img src="~/images/sort.png" alt=""></th>
+            <th scope="col" class="align-middle text-center">Payment</th>
+            @*<th scope="col"  class="align-middle">Distance</th>*@
+            <th scope="col" class="align-middle text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+        @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle"  onclick="loadServiceRequestDetails(@item.ServiceRequestId)">@item.ServiceRequestId</td>
+                            <td  onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+                                <div>
+                                    <span hidden>@item.ServiceStartDate.ToString("yyyy/MM/dd HH:mm")</span>
+                                    <span class="service-date d-flex align-items-center">
+                                        <img src="~/images/calendar2.png" alt="">
+                                        <h6>@item.ServiceStartDate.ToString("dd'/'MM'/'yyyy")</h6>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="service-time d-flex align-items-center">
+                                        <img src="~/images/layer-14.png" alt="">
+                                        @item.ServiceStartDate.ToString("HH:mm") - @item.ServiceStartDate.AddMinutes((int)((item.ExtraHours + item.ServiceHours) * 60)).ToString("HH:mm")
+                                    </span>
+                                </div>
+                            </td>
+                            <td  onclick="loadServiceRequestDetails(@item.ServiceRequestId)">
+                                <div><span class="customer-name">@item.User.FirstName @item.User.LastName</span></div>
+                                <div>
+                                    <span class="customer-address d-flex align-items-center">
+                                        <img class="mx-1" src="~/images/layer-15.png" alt="">
+                                        @item.ServiceRequestAddresses.First().AddressLine1, @item.ServiceRequestAddresses.First().AddressLine2, @item.ServiceRequestAddresses.First().PostalCode, @item.ServiceRequestAddresses.First().City
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="align-middle text-center"  onclick="loadServiceRequestDetails(@item.ServiceRequestId)">@item.TotalCost €</td>
+                            @*<td class="align-middle">15 km</td>*@
+                            <td class="align-middle text-center"><a asp-action="AcceptService" asp-controller="ServiceProvider" asp-route-serviceId="@item.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button class="accept">Accept</button></a></td>
+                        </tr>
+
+                    }
+
+
+
+    </tbody>
+</table>
+
+
+<!-- Service History Modal Starts -->
+<div class="modal fade" id="serviceDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" id="serviceDetailsModalContent">
+            @* AJAX call GET data rendering *@
+        </div>
+    </div>
+</div>
+<!-- Service History Model Ends -->
+
+
+<script>
+
+    $("#flexCheckDefault").change(() => {
+
+        if ($("#flexCheckDefault").is(':checked') == true) {
+
+            var url = window.location.pathname;
+            url = url + "?includePets=true"
+        }
+        else {
+            var url = window.location.pathname;
+        }
+
+        window.location.href = url;
+
+    });
+
+    let searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has("includePets")) {
+        $("#flexCheckDefault").attr("checked", true);
+    }
+
+    const loadServiceRequestDetails = (id) => {
+
+        var url = "/ServiceProvider/GetServiceDetailsById?serviceId=" + id;
+
+        $('#serviceDetailsModalContent').load(url, () => {
+            $('#serviceDetailsModal').modal('show');
+        });
+
+    };
+
+
+
+</script>

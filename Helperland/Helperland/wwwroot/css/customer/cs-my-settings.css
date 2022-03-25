@@ -1,0 +1,44 @@
+* {box-sizing: border-box}
+
+/* Tabbar CSS */
+.tabbar {width: 100%;}
+.tabbar .tab { width: calc(100% / 3); height: 55px; border-bottom: 4px solid #e1e1e1; text-align: center; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #646464;}
+.tabbar .tab:hover { cursor: pointer; }
+.tabbar .tab.active { border-color: #1D7A8C; color: #1D7A8C;}
+.tabbar .tab .tab-icon-wrapper { width: 24px; height: 26px; background-position: 0 0; }
+.tabbar .tab.active .tab-icon-wrapper { background-position: 0 26px; }
+.tabbar .tab.tab1 .tab-icon-wrapper { background-image: url(/images/my-account-details-icon.png); }
+.tabbar .tab.tab2 .tab-icon-wrapper { background-image: url(/images/my-account-location-icon.png); }
+.tabbar .tab.tab3 .tab-icon-wrapper { background-image: url(/images/my-account-password-icon.png); }
+
+/* general CSS */
+.my-details .form-label, .my-address .form-label, .my-password .form-label { font-weight: 500 !important; }
+.my-settings input.form-control:disabled { cursor: not-allowed !important; }
+
+/* Section1 -> My Details CSS */
+.btn-custom-primary { color: #FFF; background-color: #1D7A8C; line-height: 1; height: 40px; border-radius: 40px; min-width: 100px; }
+.btn-custom-primary:focus { color: #FFF !important;}
+.btn-custom-primary:hover { color: #fff !important; background-color: #146375 !important;}
+ .form-control.date {position: relative; padding-left: 60px}
+ input[type="date"]::-webkit-calendar-picker-indicator {position: absolute; left: 0; color: #1D7A8C}
+
+/* Section2 -> My Address CSS */
+.table thead { background-color: #f3f3f3; }
+.table { border: 2px solid #e1e1e1 ; }
+.table th.address, .table td.address { padding-left: 50px; }
+.table th.action {  width: 200px; }
+.table tbody > tr { height: 80px; }
+.table tbody > tr .icon-wrapper { padding: 0 5px; }
+.table tbody > tr .icon-wrapper:hover { cursor: pointer; }
+
+/* Section2 -> My Address -> Edit Address Modal CSS */
+#editAddressModal .modal-header, #editAddressModal .modal-body, #editAddressModal .modal-footer { color: #646464; padding: 25px !important; }
+#editAddressModal .modal-body .form-label { font-weight: 500; }
+#editAddressModal .btn-action-primary { background-color: #146375; max-height: 42px; border-radius: 42px; color: #FFF; font-size: 16px; font-weight: 500;}
+
+/* Section2 -> My Address -> Delete Address Modal CSS */
+#deleteAddressModal .modal-footer { justify-content: flex-start; flex-direction: row; }
+#deleteAddressModal .modal-footer .btn { width: 100%; height: 42px; font-weight: 500; border-radius: 42px;}
+#deleteAddressModal .modal-footer .btn:focus { box-shadow: none !important; }
+#deleteAddressModal .modal-footer .btn-primary { background-color: #FF6B6B; border: none; }
+#deleteAddressModal .modal-footer .btn-secondary { background-color: #e1e1e1; border: none; color: #646464; }

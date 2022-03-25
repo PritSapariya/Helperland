@@ -140,6 +140,11 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\BookNow\_Payment.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\BookNow\_Schedule.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\MySettings.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Partial\_UserAddresses.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Partial\_UserDetails.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ServiceHistory.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_ServiceDetails.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\Faq.cshtml.g.cs
@@ -149,6 +154,7 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserRegistration.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\Index.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomerLayout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Login.cshtml.g.cs
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -162,6 +168,7 @@ D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netc
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.pdb
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.genruntimeconfig.cache
 D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Helperland.csproj.AssemblyReference.cache
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomerLayout.cshtml.g.cs
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ServiceHistory.cshtml.g.cs
-D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_ServiceDetails.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ServiceProviderLayout.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\NewService.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\UpcomingService.cshtml.g.cs
+D:\Development\TatvaSoft\Project\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\Partial\_ServiceHistoryDetails.cshtml.g.cs

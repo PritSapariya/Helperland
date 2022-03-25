@@ -1,0 +1,303 @@
+﻿@model List<Helperland.Models.ViewModel.UserAddressViewModel>
+
+@{
+    Layout = null;
+}
+
+
+<div class="row d-md-none">
+    <div class="col-12 form-group">
+        <label class="form-label fw-bolder">My Addresses</label>
+        <hr class="mt-1">
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="address">Address</th>
+            <th class="action text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="address align-middle">
+                    <div>
+                        <b>Address:</b>&nbsp;&nbsp;@item.AddressLine1, @item.AddressLine2, @item.PostalCode, @item.City
+                    </div>
+                    <div>
+                        <b>Mobile Number:</b>&nbsp;&nbsp; @item.Mobile
+                    </div>
+                </td>
+                <td class="text-center align-middle">
+                    <span class="icon-wrapper" onclick="loadUserAddress(@item.AddressId)">
+                        <img src="~/images/edit-icon.png" alt="">
+                    </span>
+                    <span class="icon-wrapper" onclick="loadDeleteAddress(@item.AddressId)">
+                        <img src="~/images/delete-icon.png" alt="">
+                    </span>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<div class="row">
+   
+    <input type="button" class="mx-2 btn btn-custom-primary col-sm-3 fw-bolder" value="Add New Address" onclick="setEmptyModal($('#currentUserID').val())" />
+
+</div>
+
+<!-- Edit Address Modal Starts -->
+<div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="editAddressModal">Edit Address</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="currentEditAddressId" value="" hidden />
+                <div class="row ">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Street Name</label>
+                            <input type="text" class="form-control" id="address1Modal" onkeyup="buttonValidation()" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="houseNumber">House Number</label>
+                            <input type="text" class="form-control" id="address2Modal" onkeyup="buttonValidation()" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Postal Code</label>
+                            <input type="text" class="form-control" id="postalCodeModal" onkeyup="buttonValidation()" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <select class="form-select" id="cityModal">
+                                <option value="Junagadh" selected>Junagadh</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">Mobile Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+91</span>
+                                <input type="number" class="form-control" id="mobileModal" onkeyup="buttonValidation()" required />
+                            </div>
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer row m-0 action">
+                <button type="button" class="col-12 px-4 py-2 btn btn-action-primary" disabled id="editAddressButton">Edit</button>
+                <button type="button" class="col-12 px-4 py-2 btn btn-action-primary d-none" disabled id="saveAddressButton">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Address Modal Ends -->
+<!-- Delete Address Modal Starts -->
+<div class="modal fade" id="deleteAddressModal" tabindex="-1" aria-labelledby="deleteAddressModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteAddressModal">Are you sure to delete this address?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer row">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="button" class="btn btn-primary" value="Delete" id="deleteAddressButton" />
+                    </div>
+                    <div class="col-6">
+                        <input type="button" class="btn btn-secondary" value="Cancel" data-bs-dismiss="modal" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Address Modal Ends -->
+
+<script>
+
+    $("#editAddressButton").click(() => {
+
+        saveAddress();
+
+    });
+    $("#saveAddressButton").click(() => {
+
+        saveAddress();
+
+    });
+    $("#deleteAddressButton").click(() => {
+
+        $.ajax({
+            type: 'POST',
+            data: { addressId: parseInt($("#currentEditAddressId").val()) },
+            url: "@Url.Action("DeleteAddress")",
+            success: function (responce) {
+                window.location.reload();
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+        });
+
+    });
+
+    const loadDeleteAddress = (addressId) => {
+
+        $("#currentEditAddressId").val(addressId);
+        $("#deleteAddressModal").modal('show');
+
+    }
+
+    const buttonValidation = () => {
+
+        if ( $("#address1Modal").val() == '' || $("#address2Modal").val() == '' || $("#postalCodeModal").val() == '' || $("#mobileModal").val() == '' )
+        {
+            $("#saveAddressButton").attr('disabled', true);
+            $("#editAddressButton").attr('disabled', true);
+        }
+        else {
+            $("#saveAddressButton").attr('disabled', false);
+            $("#editAddressButton").attr('disabled', false);
+        }
+
+    }
+
+    const saveAddress = () => {
+
+        data = getUpdatedData();
+        console.log(data);
+        $.ajax({
+
+            type: 'POST',
+            url: '@Url.Action("SaveUpdatedResult")',
+            data: data,
+            success: function (responce) {
+
+                if (responce.success == true) {
+                    window.location.reload();
+                }
+                else {
+                    alert(responce.message);
+                }
+
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+    }
+
+    const getUpdatedData = () => {
+
+        var obj = {};
+
+        obj.UserId = $("#currentUserID").val();
+        obj.AddressId = $("#currentEditAddressId").val();
+        obj.AddressLine1 = $("#address1Modal").val();
+        obj.AddressLine2 = $("#address2Modal").val();
+        obj.PostalCode = $("#postalCodeModal").val();
+        obj.Mobile = $("#mobileModal").val();
+        obj.City = $("#cityModal").val();
+
+        return obj;
+    }
+
+    const loadUserAddress = (addressId) => {
+
+        $.ajax({
+
+            type: 'POST',
+            url: "@Url.Action("GetAddressById")",
+            data: { addressId: parseInt(addressId) },
+            success: function (responce) {
+                setAddressDetails(responce.data);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+    }
+
+    const setAddressDetails = (addressData) => {
+
+        $("#saveAddressButton").addClass('d-none');
+        $("#editAddressButton").removeClass('d-none');
+
+        $("#currentEditAddressId").val(addressData.addressId);
+        $("#address1Modal").val(addressData.addressLine1);
+        $("#address2Modal").val(addressData.addressLine2);
+        $("#postalCodeModal").val(addressData.postalCode);
+        $("#mobileModal").val(addressData.mobile);
+
+        $('#editAddressModal').modal('show');
+
+    }
+
+    const setEmptyModal = (userId) => {
+
+        $("#saveAddressButton").removeClass('d-none');
+        $("#editAddressButton").addClass('d-none');
+
+        $("#currentEditAddressId").val(userId);
+        $("#currentEditAddressId").val('-1');
+        $("#address1Modal").val();
+        $("#address2Modal").val();
+        $("#postalCodeModal").val();
+        $("#mobileModal").val();
+
+        $('#editAddressModal').modal('show');
+
+    }
+
+    const deleteAddressDetails = (addressId) => {
+
+    }
+
+
+</script>
+

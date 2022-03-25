@@ -17,7 +17,7 @@ namespace Helperland.Models.ViewModel
         [DataType(DataType.Text)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Please enter an Email Address")]
+        
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 

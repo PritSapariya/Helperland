@@ -1,6 +1,39 @@
-﻿@{ 
-    Layout = null;
+﻿
+@{
+    Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
 }
 
-<br /><br /><br /><br /><br />
-<h1 class="text-center">Hello Service Provider</h1>
+<input hidden type="text" value="1" id="navbarCurrentID" />
+<link rel='stylesheet' href="~/css/service-provider/sp-dashboard.css">
+
+<div class="dashboard-content-wrapper">
+    <div class="row">
+        <div class="col-md-3 mx-2 card1">
+            <div class="count-wrapper mb-2">
+                <span class="count text-center">
+                    @ViewBag.NewService
+                </span>
+            </div>
+            <div class="subtitle text-center mb-2">
+                New Service Requests
+            </div>
+            <div class="button-wrapper text-center">
+                <a asp-action="NewService"><button class="btn btn-primary">View all</button></a>
+            </div>
+        </div>
+        <div class="col-md-3 mx-2 card2">
+            <div class="count-wrapper mb-2">
+                <span class="count text-center">
+                    @ViewBag.UpcomingService
+                </span>
+            </div>
+            <div class="subtitle text-center mb-2">
+                Upcoming services
+            </div>
+            <div class="button-wrapper text-center">
+                <a asp-action="UpcomingService"><button class="btn btn-primary">View all</button></a>
+            </div>
+        </div>
+    </div>
+</div>

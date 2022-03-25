@@ -1,0 +1,9 @@
+/* Service Details Modal Starts */
+#serviceDetailsModal .modal-header, #serviceDetailsModal .modal-body, #serviceDetailsModal .modal-footer { padding: 20px !important}
+#serviceDetailsModal .modal-header .modal-title { color: #3d3d3d; font-weight: 500 }
+#serviceDetailsModal .modal-body { color: #4F4F4F !important }
+#serviceDetailsModal .modal-body span.payment { font-size: 24px; color: #1D7A8C; font-weight: 700; }
+#serviceDetailsModal .btn { border: none; border-radius: 100px;}
+#serviceDetailsModal .btn-action-primary { background-color: #1d7a8c; color: #FFF; }
+#serviceDetailsModal .btn-action-secondary { background-color: #FF6B6B; color: #FFF; }
+/* Service Details Modal Ends */

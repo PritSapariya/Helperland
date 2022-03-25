@@ -1,0 +1,120 @@
+﻿@model Helperland.Models.ViewModel.Customer.UserDetailsViewModel
+
+@{
+    Layout = null;
+
+}
+
+
+    <div class="row d-md-none">
+        <div class="col-12 form-group">
+            <label class="form-label fw-bolder">My Details</label>
+            <hr class="mt-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" value="@Model.FirstName" id="firstName" required onkeyup="$('#saveDetailsButton').attr('disabled', false);">
+                <span  class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input  type="text" class="form-control" value="@Model.LastName" id="lastName" onkeyup="$('#saveDetailsButton').attr('disabled', false);" required>
+                <span  class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control pe-none" value="@Model.Email" disabled>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">Mobile Number</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">+91</span>
+                    <input type="number" class="form-control" value="@Model.Mobile" id="mobileNumber" onchange="$('#saveDetailsButton').attr('disabled', false);" required />
+                </div>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">Date of Birth</label>
+                <input class="form-control date" type="date" id="dateOfBirth" value='@Model.DateOfBirth.ToString("yyyy-MM-dd")' max="2000-01-01" />
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">My Preferred Language</label>
+
+                <select class="form-select" disabled>
+                    <option value="en" selected>English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-3">
+            <input class="btn btn-custom-primary fw-bolder" name="saveDetails" type="button" value="Save" disabled id="saveDetailsButton" />
+        </div>
+    </div>
+
+
+<script>
+
+        const getData = () => {
+
+            var obj = {};
+
+            obj.UserId = $('#currentUserID').val();
+            obj.FirstName = $('#firstName').val();
+            obj.LastName = $('#lastName').val();
+            obj.Mobile = $('#mobileNumber').val();
+            obj.DateOfBirth = $('#dateOfBirth').val();
+
+            return obj;
+        }
+
+
+        $('#saveDetailsButton').click(() => {
+
+            var inputData = getData();
+
+            $.ajax({
+
+                type: 'POST',
+                url: '/Customer/SaveUserDetails',
+                data: inputData,
+                success: function (responce) {
+                    window.location.reload();
+                    
+                },
+                failure: function (response) {
+                    alert("failure");
+                },
+                error: function (response) {
+                    alert("Something went Worng");
+                }
+                
+            });
+
+
+        });
+
+
+</script>

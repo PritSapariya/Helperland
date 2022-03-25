@@ -17,8 +17,10 @@ namespace Helperland.Utilities
         public static int ExtraServiceInsideWindows = 5;
 
         public static int StatusPending = 1;
+        public static int StatusAssigned = 5;
         public static int StatusCompleted = 2;
         public static int StatusCancelled = 3;
+        public static int StatusRescheduled = 4;
 
     }
 }

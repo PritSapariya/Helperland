@@ -1,7 +1,15 @@
-﻿@{
+﻿@model List<Helperland.Models.ViewModel.Customer.CurrentServiceRequestViewModel>
+
+@{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
     ViewData["Title"] = "Service History";
 }
+
+<input hidden type="text" value="2" id="navbarCurrentID" />
+<input hidden type="text" value="@ViewBag.UserId" id="currentUserID" />
+<input hidden type="text" id="serviceCurrentID" />
+<input hidden type="text" id="serviceProviderID" />
+
 
 <link rel='stylesheet' href="~/css/customer/cs-service-history.css">
 
@@ -9,189 +17,328 @@
     <h4>Service History</h4>
     <button>Export</button>
 </div>
-<table class="table table-borderless">
+<table class="table table-borderless" id="datatable">
     <thead>
         <tr>
             <th scope="col" class="align-middle sortable">Service ID<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle sortable">Service Date<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle sortable">Service Provider<img src="~/images/sort.png" alt=""></th>
             <th scope="col" class="align-middle text-center sortable">Payment<img src="~/images/sort.png" alt=""></th>
-            <th scope="col" class="align-middle text-center">Status</th>
-            <th scope="col" class="align-middle text-center">Rate SP</th>
+            <th scope="col" class="align-middle text-center pe-none">Report</th>
+            <th scope="col" class="align-middle text-center pe-none">Status</th>
+            <th scope="col" class="align-middle text-center pe-none">Rate SP</th>
         </tr>
     </thead>
     <tbody>
-        <!-- Dummy Data Starts -->
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status complete"><div>Completed</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status complete"><div>Completed</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status complete"><div>Completed</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status cancel"><div>Cancelled</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status complete"><div>Completed</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status cancel"><div>Cancelled</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
-        <tr>
-            <td class="align-middle">323436</td>
-            <td>
-                <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">09/04/2022</span></div>
-                <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">12:00 - 18:00</span></div>
-            </td>
-            <td class="align-middle d-flex align-items-center">
-                <img src="~/images/avatar-car.png" height="46" width="46">
-                <div class="d-inline-block">
-                    <div class="customer-name">David Bough</div>
-                    <div class="rating-icons d-block">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star1.png">
-                        <img src="~/images/star2.png">
-                        <img src="~/images/star2.png">
-                        <h6 class="d-inline-block my-0 align-middle">3</h6>
-                    </div>
-                </div>
-            </td>
-            <td class="align-middle text-center payment-text">€63</td>
-            <td class="align-middle text-center service-status complete"><div>Completed</div></td>
-            <td class="align-middle text-center rate-action"><button>Rate SP</button></td>
-        </tr>
 
 
-        <!-- Dummy Data Ends -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">@item.ServiceRequestId</td>
+                <td>
+                    <span hidden>@item.ServiceStartDate.ToString("yyyy/MM/dd HH:mm")</span>
+                    <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">@item.ServiceStartDate.ToString("dd'/'MM'/'yyyy")</span></div>
+                    <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">@item.ServiceStartDate.ToString("HH:mm") - @item.ServiceStartDate.AddMinutes((int)((item.ExtraHours + item.ServiceHours) * 60)).ToString("HH:mm")</span></div>
+                </td>
+                <td class="align-middle d-flex align-items-center">
+                    @if (item.ServiceProviderId != null)
+                    {
+                        <img src="@item.ServiceProviderAvatar" height="46" width="46">
+                        <div class="d-inline-block">
+                            <div class="customer-name">@item.ServiceProviderName</div>
+                            <div class="rating-icons d-block">
+                                @if (item.ServiceProviderRating != null)
+                                {
+                                    int i;
+                                    for (i = 1; i < item.ServiceProviderRating; i++)
+                                    {
+                                        <img src="~/images/star1.png">
+                                    }
+                                    for (int j = i; j <= 5; j++)
+                                    {
+                                        <img src="~/images/star2.png">
+                                    }
+                                    <h6 class="d-inline-block my-0 align-middle">@item.ServiceProviderRating</h6>
+                                }
+                            </div>
+                        </div>
+                    }
+                </td>
+
+                <td class="align-middle text-center payment-text">@item.TotalCost</td>
+                <td class="align-middle text-center report-icon"><a asp-controller="Home" asp-action="Contact" asp-route-serviceID="@item.ServiceRequestId"><img src="~/images/inquiry-icon.png" alt=""></a></td>
+                @if (item.Status == 2)
+                {
+                    <td class="align-middle text-center service-status complete"><div>Completed</div></td>
+                }
+                else
+                {
+                    <td class="align-middle text-center service-status cancel"><div>Cancelled</div></td>
+                }
+
+                @if (item.Status == 2 && item.IsRated == false)
+                {
+                    <td class="align-middle text-center rate-action"><button onclick="loadRatingModal(event, '@item.ServiceProviderName', '@item.ServiceProviderRating', '/images/avatar-car.png', '@item.ServiceRequestId', '@item.ServiceProviderId')">Rate SP</button></td>
+                }
+                else if (item.Status == 2 && item.IsRated == true)
+                {
+                    <td class="align-middle text-center rate-action"></td>
+                }
+                else
+                {
+                    <td class="align-middle text-center rate-action"><button disabled>Rate SP</button></td>
+                }
+
+            </tr>
+
+        }
+
+
     </tbody>
 </table>
+
+<!-- Rating Modal Starts -->
+
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="align-middle d-flex align-items-center">
+                    <img src="~/images/avatar-car.png" height="46" width="46" id="spavatar">
+                    <div class="d-inline-block">
+                        <div class="customer-name px-3" id="spname"></div>
+                        <div class="rating-icons d-block px-3">
+                            <img src="~/images/star1.png" data-rt-value="1" data-rt="sprating">
+                            <img src="~/images/star1.png" data-rt-value="2" data-rt="sprating">
+                            <img src="~/images/star1.png" data-rt-value="3" data-rt="sprating">
+                            <img src="~/images/star2.png" data-rt-value="4" data-rt="sprating">
+                            <img src="~/images/star2.png" data-rt-value="5" data-rt="sprating">
+                            <h6 class="d-inline-block my-0 align-middle" id="sprating">3</h6>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-header">
+                <h4 class="modal-title" id="ratingModalLabel">Rate Your Service Provider</h4>
+            </div>
+            <div class="modal-body row m-0">
+
+                <div class="col-12 row p-0 mb-1">
+                    <div class="col-5">
+                        On time arrival
+                    </div>
+                    <div class="col-7">
+                        <label class="form-label rating-block">
+                            <input type="radio" name="timeRating" value="1">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="1" data-rt-type="timeRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="timeRating" value="2">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="2" data-rt-type="timeRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="timeRating" value="3">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="3" data-rt-type="timeRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="timeRating" value="4">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="4" data-rt-type="timeRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="timeRating" value="5">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="5" data-rt-type="timeRating" />
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 row p-0 mb-1">
+                    <div class="col-5">
+                        Friendly
+                    </div>
+                    <div class="col-7">
+                        <label class="form-label rating-block">
+                            <input type="radio" name="friendlyRating" value="1">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="1" data-rt-type="friendlyRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="friendlyRating" value="2">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="2" data-rt-type="friendlyRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="friendlyRating" value="3">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="3" data-rt-type="friendlyRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="friendlyRating" value="4">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="4" data-rt-type="friendlyRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="friendlyRating" value="5">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="5" data-rt-type="friendlyRating" />
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 row p-0 mb-1">
+                    <div class="col-5">
+                        Quality of Service
+                    </div>
+                    <div class="col-7">
+                        <label class="form-label rating-block">
+                            <input type="radio" name="qualityRating" value="1">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="1" data-rt-type="qualityRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="qualityRating" value="2">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="2" data-rt-type="qualityRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="qualityRating" value="3">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="3" data-rt-type="qualityRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="qualityRating" value="4">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="4" data-rt-type="qualityRating" />
+                        </label>
+                        <label class="form-label rating-block">
+                            <input type="radio" name="qualityRating" value="5">
+                            <img class="px-1" src="~/images/star2.png" alt="" data-rt="5" data-rt-type="qualityRating" />
+                        </label>
+                    </div>
+                </div>
+                <hr class="my-2">
+                <div class="col-12 row p-0 mb-1">
+                    <label class="form-label">Feedback on service provider</label>
+                    <div class="col-12 form-group">
+                        <textarea class="form-control my-input"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer action">
+                <button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" id="rescheduleServiceButton" disabled>
+                    Submit
+                </button>
+                <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rating Modal Ends -->
+<!-- Rating Modal script Starts -->
+
+<script>
+
+    const loadRatingModal = (event, spname, sprating, spavatar, serviceRequestId, serviceProviderID) => {
+
+        $("#serviceCurrentID").val(serviceRequestId);
+        $("#serviceProviderID").val(serviceProviderID);
+
+        $('#spname').text(spname);
+        $('#sprating').text(sprating == '' ? '' : parseInt(sprating));
+        $('#spavatar').attr('src', spavatar);
+        $("#ratingModal .rating-icons img[data-rt='sprating']").attr('src', '/images/star2.png');
+
+        for (let i = 1; i <= sprating; i++) {
+            $(`#ratingModal .rating-icons img[data-rt='sprating'][data-rt-value='${i}']`).attr('src', '/images/star1.png');
+        }
+
+        $('#ratingModal').modal('show');
+
+    };
+
+    $("input[name='timeRating']").change(() => {
+
+        $(`.rating-block img[data-rt-type='timeRating']`).attr('src', '/images/star2.png');
+
+        let rating1 = $("input[name='timeRating']:checked").val();
+        for (let i = 1; i <= rating1; i++) {
+            $(`.rating-block img[data-rt=${i}][data-rt-type='timeRating']`).attr('src', '/images/star1.png');
+        }
+
+    });
+    $("input[name='friendlyRating']").change(() => {
+
+        $(`.rating-block img[data-rt-type='friendlyRating']`).attr('src', '/images/star2.png');
+
+        let rating1 = $("input[name='friendlyRating']:checked").val();
+        for (let i = 1; i <= rating1; i++) {
+            $(`.rating-block img[data-rt=${i}][data-rt-type='friendlyRating']`).attr('src', '/images/star1.png');
+        }
+
+    });
+    $("input[name='qualityRating']").change(() => {
+
+        $(`.rating-block img[data-rt-type='qualityRating']`).attr('src', '/images/star2.png');
+
+        let rating1 = $("input[name='qualityRating']:checked").val();
+        for (let i = 1; i <= rating1; i++) {
+            $(`.rating-block img[data-rt=${i}][data-rt-type='qualityRating']`).attr('src', '/images/star1.png');
+        }
+
+    });
+
+    $('.my-input').keyup(() => {
+        $('.my-input').val() == '' || $("input[type='radio']:checked").length != 3 ? $("#rescheduleServiceButton").attr('disabled', true) : $("#rescheduleServiceButton").removeAttr('disabled');
+    });
+    $("input[type='radio']").change(() => {
+        $('.my-input').val() == '' || $("input[type='radio']:checked").length != 3 ? $("#rescheduleServiceButton").attr('disabled', true) : $("#rescheduleServiceButton").removeAttr('disabled');
+    });
+
+    $("#rescheduleServiceButton").click(() => {
+
+        const data = getRatingData();
+
+        console.log(data);
+
+        $.ajax({
+
+            type: 'POST',
+            url: '@Url.Action("SetServiceRating")',
+            data: data,
+            success: function (responce) {
+                window.location.reload();
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+    });
+
+    const getRatingData = () => {
+
+        const obj = {};
+
+        let timeRating = parseInt($("input[type='radio'][name='timeRating']:checked").val());
+        let friendlyRating = parseInt($("input[type='radio'][name='friendlyRating']:checked").val());
+        let qualityRating = parseInt($("input[type='radio'][name='qualityRating']:checked").val());
+
+
+
+        obj.ServiceRequestId = parseInt($("#serviceCurrentID").val());
+        obj.RatingFrom = parseInt($("#currentUserID").val());
+        obj.RatingTo = parseInt($("#serviceProviderID").val());
+        obj.Comments = $(".my-input").val();
+        obj.OnTimeArrival = timeRating;
+        obj.Friendly = friendlyRating;
+        obj.QualityOfService = qualityRating;
+        obj.Ratings = parseFloat((timeRating + friendlyRating + qualityRating) / 3);
+
+        return obj;
+    };
+
+
+</script>
+
+
+<!-- Rating Modal script Ends -->

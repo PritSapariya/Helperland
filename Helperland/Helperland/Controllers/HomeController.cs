@@ -141,10 +141,12 @@ namespace Helperland.Controllers
                     int _UserTypeId = _loginRepository.GetUserTypeId(loginViewModel.Email);
                     int _UserId = _loginRepository.GetUserId(loginViewModel.Email);
                     String _name = _loginRepository.GetUserName(_UserId);
+                    String _PostalCode = _loginRepository.GetPostalCode(_UserId);
 
                     HttpContext.Session.SetInt32("UserTypeId",  _UserTypeId);
                     HttpContext.Session.SetInt32("UserId", _UserId);
                     HttpContext.Session.SetString("Name", _name);
+                    HttpContext.Session.SetString("PostalCode", _PostalCode);
 
                     if (_UserTypeId == 1)
                     {

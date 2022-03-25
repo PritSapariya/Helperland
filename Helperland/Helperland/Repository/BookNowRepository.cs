@@ -116,7 +116,7 @@ namespace Helperland.Repository
 
                 UserAddress result = _db.UserAddresses.Where(x => x.AddressId == serviceRequestViewModel.AddressID).FirstOrDefault();
                 ServiceRequestAddress address = new ServiceRequestAddress();
-
+                
                 address.ServiceRequestId = serviceId;
                 address.AddressLine1 = result.AddressLine1;
                 address.AddressLine2 = result.AddressLine2;
@@ -130,13 +130,16 @@ namespace Helperland.Repository
                 _db.SaveChanges();
 
 
-                foreach ( int i in serviceRequestViewModel.ExtraServiceId )
+                if(serviceRequestViewModel.ExtraServiceId != null)
                 {
-                    ServiceRequestExtra extra = new ServiceRequestExtra();
-                    extra.ServiceRequestId = serviceId;
-                    extra.ServiceExtraId = i;
-                    _db.ServiceRequestExtra.Add(extra);
-                    _db.SaveChanges();
+                    foreach ( int i in serviceRequestViewModel.ExtraServiceId )
+                    {
+                        ServiceRequestExtra extra = new ServiceRequestExtra();
+                        extra.ServiceRequestId = serviceId;
+                        extra.ServiceExtraId = i;
+                        _db.ServiceRequestExtra.Add(extra);
+                        _db.SaveChanges();
+                    }
                 }
 
             }

@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
     ViewData["Title"] = "Dashboard";
 }
+<input hidden type="text" value="1" id="navbarCurrentID" />
+<input hidden type="text" value="1" id="serviceCurrentID" />
+
+
 
 <link rel='stylesheet' href="~/css/customer/cs-service-history.css">
 
@@ -38,23 +42,39 @@
 
                     @if (item.ServiceProviderId != null)
                     {
-                        <img src="~/images/avatar-car.png" height="46" width="46">
+                        <img src="@item.ServiceProviderAvatar" height="46" width="46">
                         <div class="d-inline-block">
-                            <div class="customer-name">David Bough</div>
+                            <div class="customer-name">@item.ServiceProviderName</div>
                             <div class="rating-icons d-block">
-                                <img src="~/images/star1.png">
-                                <img src="~/images/star1.png">
-                                <img src="~/images/star1.png">
-                                <img src="~/images/star2.png">
-                                <img src="~/images/star2.png">
-                                <h6 class="d-inline-block my-0 align-middle">3</h6>
+
+                                @if(item.ServiceProviderRating != null){
+                                    int i;
+                                    for (i = 1; i < item.ServiceProviderRating; i++)
+                                    {
+                                        <img src="~/images/star1.png">
+                                    }
+                                    for (int j = i; j <= 5; j++)
+                                    {
+                                        <img src="~/images/star2.png">
+                                    }
+                                    <h6 class="d-inline-block my-0 align-middle">@item.ServiceProviderRating</h6>
+                                }
+
                             </div>
                         </div>
                     }
 
                 </td>
+
                 <td class="align-middle text-center payment-text">@item.TotalCost</td>
-                <td class="align-middle text-center action "><button class="btn btn-action-primary" onclick="rescheduleDetails(event, @item.ServiceRequestId)" >Reschedule</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-action-secondary" onclick="loadConcelServiceDetails(event, @item.ServiceRequestId)" >Cancel</button></td>
+                @if(item.Status != 4)
+                {
+                    <td class="align-middle text-center action "><button class="btn btn-action-primary" onclick="rescheduleDetails(event, @item.ServiceRequestId)">Reschedule</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-action-secondary" onclick="cancelDetails(event, @item.ServiceRequestId)">Cancel</button></td>
+                }
+                else
+                {
+                    <td class="text-center align-middle text-success"><span>Your Service Request is Rescheduled.</span></td>
+                }
             </tr>
 
         }
@@ -72,7 +92,6 @@
     </div>
 </div>
 <!-- Service History Model Ends -->
-
 <!-- Reschedule Model Starts -->
 <div class="modal fade" id="rescheduleModal" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -82,13 +101,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body form row m-0">
+
                 <label class="form-label">Select New Date & Time</label>
                 <div class="col-6 form-group">
-                    <input class="form-control date" type="date" id="serviceDate" value="2000-01-01" />
+                    <input class="form-control date" type="date" id="serviceDate" value="2000-01-01" min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="isDateOrTimeChnaged()" />
                 </div>
+
                 <div class="col-6">
-                    <select class="form-select" id="serviceTime">
-                        <option value="8" selected>8:00</option>
+                    <select class="form-select" id="serviceTime" onchange="isDateOrTimeChnaged()">
+                        <option value="8">8:00</option>
                         <option value="8.5">8:30</option>
                         <option value="9">9:00</option>
                         <option value="9.5">9:30</option>
@@ -115,15 +136,117 @@
 
             </div>
             <div class="modal-footer row m-0 action">
-                <button type="button" class="col-12 fw-bolder px-4 py-2 btn btn-action-primary" disabled>Update</button>
+                <button type="button" class="col-12 fw-bolder px-4 py-2 btn btn-action-primary" id="updateServiceSchedule" disabled>Update</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Reschedule Model Ends -->
+<!-- Cancel Service Modal Starts -->
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="cancelModalLabel">Cancel Service Request</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body form row m-0">
+                <label class="form-label">Why you want to cancel the service request?</label>
+                <div class="col-12 form-group">
+                    <textarea class="form-control" placeholder="Reason" id="cancelReason" onchange="isCancelServiceRequestChanged()" ></textarea>
+                </div>
 
+            </div>
+            <div class="modal-footer row m-0 action">
+                <button type="button" class="col-12 px-4 py-2 btn btn-action-primary" id="cancelServiceRequest" disabled>Cancel Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cancel Service Modal Ends -->
 
 <script>
+
+    var currentServiceDate;
+    var currentServiceTime;
+
+    $('#updateServiceSchedule').click(() => {
+
+        $.ajax({
+
+            type: "POST",
+            url: "@Url.Action("RescheduleServiceRequest")",
+            data: { serviceId: parseInt($('#serviceCurrentID').val()), newDateAndTime: formatDateAndTime() },
+            success: function (responce) {
+
+                if (responce.success == true) {
+                    window.location.reload();
+                }
+                else {
+                    alert("Something went Worng");
+                }
+
+            },
+            failure: function (response) {
+                alert("Failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+    });
+
+    $('#cancelServiceRequest').click(() => {
+
+        $.ajax({
+
+            type: "POST",
+            url: "@Url.Action("CancelServiceRequest")",
+            data: { serviceId: parseInt($('#serviceCurrentID').val()), message: $('#cancelReason').val() },
+            success: function (responce) {
+
+                if (responce.success == true) {
+                    window.location.reload();
+                    alert("Service Request is successfully cancelled");
+                }
+                else {
+                    alert("Something went Worng");
+                }
+
+            },
+            failure: function (response) {
+                alert("Failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
+    });
+
+    const isDateOrTimeChnaged = () => {
+
+        let d = $('#serviceDate').val();
+        let t = $('#serviceTime').val();
+
+        console.log('serviceDate: ' + currentServiceDate);
+        console.log('serviceTime: ' + currentServiceTime);
+
+        if (currentServiceDate != d || currentServiceTime != t) {
+            $('#updateServiceSchedule').removeAttr('disabled');
+        }
+        else {
+            $('#updateServiceSchedule').attr('disabled', true);
+        }
+
+
+    };
+    const isCancelServiceRequestChanged = () => {
+        $('#cancelReason').val() == '' ? $('#cancelServiceRequest').attr('disabled', true) : $('#cancelServiceRequest').removeAttr('disabled');
+    };
 
     const loadServiceRequestDetails = (id) => {
 
@@ -134,10 +257,10 @@
         });
 
     };
+
     const rescheduleDetails = (event, id) => {
         event.stopPropagation();
-
-        console.log(id);
+        $('#serviceCurrentID').val(id);
 
         $.ajax({
 
@@ -164,29 +287,50 @@
 
         });
 
-
     };
-    const loadConcelServiceDetails = (event, id) => {
+
+    const cancelDetails = (event, id) => {
+
         event.stopPropagation();
-
-        console.log(id);
-
+        $('#serviceCurrentID').val(id);
+        $('#cancelModal').modal('show');
 
     };
+
     const getDateTimeSuccess = (dateTime) => {
-        console.log(dateTime);
+
         var current = new Date(dateTime);
-        var date = current.getFullYear() + '-' + ((current.getMonth() + 1) < 10 ? ('0' + (current.getMonth() + 1)) : (current.getMonth() + 1)) + '-' + current.getDate();
-        var minute = current.getUTCMinutes > 0 ? '' : '.5';
-        var time = current.getUTCHours + minute;
+        var date = current.getFullYear() + '-' + ((current.getMonth() + 1) < 10 ? ('0' + (current.getMonth() + 1)) : (current.getMonth() + 1)) + '-' + (current.getDate() < 10 ? ('0' + current.getDate()) : current.getDate());
+        var minute = current.getUTCMinutes() == 0 ? '' : '.5';
+        var time = current.getUTCHours() + minute;
+
+        currentServiceTime = time;
+        currentServiceDate = date;
+
+        timeString = `#serviceTime option[value='${time}']`;
 
         $('#serviceDate').val(date);
+        $(timeString).attr('selected', true);
 
+        $('#updateServiceSchedule').attr('disabled', true);
         $('#rescheduleModal').modal('show');
-
 
     };
 
-    
+    const formatDateAndTime = () => {
+        var startTime = $("#serviceTime").val();
+        var startHour = Math.floor(startTime);
+        var startMinute = startTime - startHour;
+
+        if (startMinute > 0) {
+            minute = "30";
+        }
+        else {
+            minute = "00";
+        }
+
+        return $("#serviceDate").val() + " " + startHour + ":" + minute;
+    }
+
 
 </script>

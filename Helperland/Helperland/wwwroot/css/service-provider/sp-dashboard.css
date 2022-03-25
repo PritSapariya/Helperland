@@ -1,0 +1,10 @@
+.dashboard-content-wrapper .col-md-3 {padding: 20px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;}
+.dashboard-content-wrapper .count-wrapper { height: 100px; display: flex; justify-content: center; }
+.dashboard-content-wrapper .count-wrapper .count { display: inline-block; width: 100px; height: 100%; border-radius: 50px; border: none; font-weight: 700; font-size: 40px; color: #FFF; display: flex; justify-content: center; align-items: center; }
+.dashboard-content-wrapper .subtitle { font-size: 1.25rem; color: #646464;  }
+.dashboard-content-wrapper .btn { height: 40px; width: 90px; line-height: 1; padding: 5px 10px; border-radius: 38px;}
+.dashboard-content-wrapper .btn-primary {background: transparent !important; color: #1D7A8C; border: 1px solid #1D7A8C; transition: all 0.2s ease-in-out;}
+.dashboard-content-wrapper .btn-primary:hover { background-color: #1D7A8C !important; color: #FFF; }
+
+.dashboard-content-wrapper .card1 .count {background-color: #1fb6ff;}
+.dashboard-content-wrapper .card2 .count {background-color: #2cc896;}

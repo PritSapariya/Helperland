@@ -1,0 +1,140 @@
+﻿@model Helperland.Models.ViewModel.Customer.ChangePasswordViewModel
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+
+
+
+<input hidden type="text" value="1" id="navbarCurrentID" />
+<input hidden type="text" value="@ViewBag.UserId" id="currentUserID" />
+
+<link rel='stylesheet' href="~/css/customer/cs-my-settings.css">
+
+@* Page Tabbar Starts *@
+<div class="tabbar d-flex mb-3">
+    <div class="tab tab1 active">
+        <span class="d-none d-md-inline-block">My Details</span>
+        <span class="d-md-none tab-icon-wrapper"></span>
+    </div>
+    <div class="tab tab2">
+        <span class="d-none d-md-inline-block">My Addresses</span>
+        <span class="d-md-none tab-icon-wrapper"></span>
+    </div>
+    <div class="tab tab3">
+        <span class="d-none d-md-inline-block">Change Password</span>
+        <span class="d-md-none tab-icon-wrapper"></span>
+    </div>
+</div>
+@* Page Tabbar Ends *@
+
+@* Section1 -> My Details Starts *@
+<section class="section my-details" id="section1">
+</section>
+@* Section1 -> My Details Ends *@
+
+@* Section2 -> My Addresses Starts *@
+<section class="section my-address d-none" id="section2">
+</section>
+@* Section2 -> My Addresses Ends *@
+
+@* Section3 -> Change Password Starts *@
+<section class="section my-password d-none" id="section3">
+
+    @if(ViewBag.isCompleted == true)
+            {
+    <div class="row px-2">
+        <div class="alert alert-success" role="alert">
+            Password is successfully changed !!!
+        </div>
+    </div>
+            }
+    
+
+    <form method="post" asp-action="MySettings">
+        <div class="row d-md-none">
+            <div class="col-12 form-group">
+                <label class="form-label fw-bolder">Change Password</label>
+                <hr class="mt-1">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-4 form-group">
+                <label class="form-label">Old Password</label>
+                <input asp-for="OldPassword" type="password" class="form-control" placeholder="Current Password" required>
+                <span asp-validation-for="OldPassword" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-4 form-group">
+                <label class="form-label">New Password</label>
+                <input asp-for="NewPassword" type="password" class="form-control" placeholder="New Password" required>
+                <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-md-4 form-group">
+                <label class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="col-12 m-2">
+
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-3">
+                <input class="btn btn-custom-primary fw-bolder" name="changePassword" type="submit" value="Change" />
+            </div>
+        </div>
+    </form>
+
+</section>
+@* Section3 -> Change Password Ends *@
+
+@{
+    if (ViewBag.isOpen == true)
+    {
+        <script>
+            $('.tab').removeClass("active");
+            $('.tab3').addClass("active");
+            $('.section').addClass("d-none");
+            $('#section3').removeClass("d-none");
+
+        </script>
+    }
+}
+                @* Tab Click Event Handling *@
+<script>
+
+    $(document).ready(() => {
+
+        $("#section1").load('/Customer/GetUserDetails');
+
+        $('.tab1').click(() => {
+            $("#section1").load('/Customer/GetUserDetails');
+            $('.tab').removeClass("active");
+            $('.tab1').addClass("active");
+            $('.section').addClass("d-none");
+            $('#section1').removeClass("d-none");
+        });
+        $('.tab2').click(() => {
+            $("#section2").load('/Customer/GetUserAddress');
+            $('.tab').removeClass("active");
+            $('.tab2').addClass("active");
+            $('.section').addClass("d-none");
+            $('#section2').removeClass("d-none");
+        });
+        $('.tab3').click(() => {
+            $('.tab').removeClass("active");
+            $('.tab3').addClass("active");
+            $('.section').addClass("d-none");
+            $('#section3').removeClass("d-none");
+        });
+
+
+
+    });
+</script>
