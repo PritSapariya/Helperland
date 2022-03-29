@@ -94,7 +94,7 @@ namespace Helperland.Controllers
             if(rate != null)
             {
                 decimal temp = System.Convert.ToDecimal(rate);
-                model = model.Where(x=> x.Ratings == temp).ToList();
+                model = model.Where(x=> x.Ratings >= temp && x.Ratings < (temp + 1)).ToList();
             }
 
             ViewBag.RatingList = new SelectList(new List<SelectListItem>
@@ -115,8 +115,6 @@ namespace Helperland.Controllers
                 new SelectListItem { Text = "Rating : High to Low", Value = "rating_asec" },
                 new SelectListItem { Text = "Rating : Low to High", Value = "rating_desc" }
             }, "Value", "Text", sort );
-
-
 
 
             switch (sort)
