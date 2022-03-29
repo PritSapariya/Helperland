@@ -1,5 +1,5 @@
 ﻿using Helperland.Models.DBModels;
-using Helperland.Models.ViewModel;
+using Helperland.Models.ViewModel.ServiceProvider;
 using Helperland.Models.ViewModel.Customer;
 using System;
 using System.Collections.Generic;
@@ -22,5 +22,9 @@ namespace Helperland.Repository.IRepository
         public List<ServiceRequest> GetAllCustomer(int? id);
 
         public bool BlockCustomerById(int UserId, int serviceProviderId);
+        bool ChangePassword(ChangePasswordViewModel changePasswordViewModel, int userId);
+        public ServiceProviderSettingsViewModel GetUserDetailsById(int? v);
+        public Boolean SaveDetails(ServiceProviderSettingsViewModel user);
+        public List<Rating> GetServiceHistory(int? id);
     }
 }

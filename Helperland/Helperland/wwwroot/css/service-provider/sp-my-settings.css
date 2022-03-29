@@ -1,0 +1,41 @@
+.my-settings-wrapper { color: #646464; } 
+.my-settings-wrapper .profile-pic { height: 100px; width: 100px; }
+.profile-status { font-size: 20px; margin-bottom: 25px;}
+.profile-status span.active { color: rgb(90, 197, 90); }
+h3.title { font-size: 18px; margin-bottom: 15px; }
+
+
+.form-control.date {position: relative; padding-left: 60px}
+input[type="date"]::-webkit-calendar-picker-indicator {position: absolute; left: 0; color: #1D7A8C}
+
+/* Select Avatar */
+.form-check-input[type="radio"]:checked { background-color: #2f8291; }
+.custom .d-inline-block { position: relative; }
+.avatar-input-box {position: absolute; top: 50%; opacity: 0;}
+.avatar-input-icon { width: 100px; height: 100px; border-radius: 100px;  background-image: url(/images/avatar-car.png); background-position: 50% 50%;}
+.avatar-input-box:checked ~ .avatar-input-icon { border: solid 2px #3b93a5; }
+
+#avatar1 ~ .avatar-input-icon { background-image: url(/images/avatar-car.png); } 
+#avatar2 ~ .avatar-input-icon { background-image: url(/images/avatar-female.png); } 
+#avatar3 ~ .avatar-input-icon { background-image: url(/images/avatar-hat.png); } 
+#avatar4 ~ .avatar-input-icon { background-image: url(/images/avatar-iron.png); } 
+#avatar5 ~ .avatar-input-icon { background-image: url(/images/avatar-male.png); } 
+#avatar6 ~ .avatar-input-icon { background-image: url(/images/avatar-ship.png); } 
+
+.btn-custom-primary { color: #FFF; background-color: #1D7A8C !important; line-height: 1; height: 40px; border-radius: 40px; min-width: 100px; }
+.btn-custom-primary:focus { color: #FFF !important;}
+.btn-custom-primary:hover { color: #fff !important; background-color: #146375 !important;}
+
+.my-password .form-label { font-weight: 500; }
+
+/* Tabbar CSS Starts */
+.tabbar {width: 100%;}
+.tabbar .tab { width: calc(100% / 2) !important; height: 55px; border-bottom: 4px solid #e1e1e1; text-align: center; display: flex; align-items: center; justify-content: center; font-weight: 600;}
+.tabbar .tab a { color: #646464; }
+.tabbar .tab:hover { cursor: pointer; }
+.tabbar .tab.active { border-color: #1D7A8C; color: #1D7A8C;}
+.tabbar .tab.active a { color: #1D7A8C }
+.tabbar .tab .tab-icon-wrapper { width: 24px; height: 26px; background-position: 0 0; }
+.tabbar .tab.active .tab-icon-wrapper { background-position: 0 26px; }
+.tabbar .tab.tab1 .tab-icon-wrapper { background-image: url(/assets/images/my-account-details-icon.png); }
+.tabbar .tab.tab3 .tab-icon-wrapper { background-image: url(/assets/images/my-account-password-icon.png); }

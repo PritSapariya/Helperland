@@ -1,0 +1,121 @@
+﻿@model List<Helperland.Models.DBModels.Rating>
+@{
+    Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+<input hidden type="text" value="6" id="navbarCurrentID" />
+<link rel='stylesheet' href="~/css/service-provider/sp-my-ratings.css">
+
+<div class="ratings-wrapper">
+
+    <div class="row">
+        <div class="left-section col-md-6 mb-2">
+            <label class="form-label d-inline-block">Rating&nbsp;</label>
+            <select asp-items="ViewBag.RatingList" class="form-select rating-list d-inline-block">
+                <option value="">All</option>
+
+            </select>
+        </div>
+        <div class="right-section col-md-6">
+            <label class="form-label d-inline-block">Sorting&nbsp;</label>
+            <select asp-items="ViewBag.SortingList" class="form-select sorting-list d-inline-block">
+
+            </select>
+        </div>
+    </div>
+
+    <table class="table mt-3 table-bordered" id="datatable">
+        <tbody>
+
+            @foreach(var item in Model)
+            {
+                <tr class="mb-2">
+                    <td class="p-3">
+                        <div>
+                            <span class="d-md-inline-block px-md-3">
+                                <span class="d-block">@item.ServiceRequestId</span>
+                                <h6 class="d-block">@item.RatingFromNavigation.FirstName @item.RatingFromNavigation.LastName</h6>
+                            </span>
+                            <span class="d-md-inline-block px-5">
+                                <span class="d-block"><b><img src="~/images/calendar2.png" alt="">&nbsp;&nbsp;@item.ServiceRequest.ServiceStartDate.ToString("dd'/'MM'/'yyyy")</b></span>
+                                <span class="d-block"><img src="~/images/layer-14.png" alt="">&nbsp;&nbsp;@item.ServiceRequest.ServiceStartDate.ToString("HH:mm") - @item.ServiceRequest.ServiceStartDate.AddMinutes((int)((item.ServiceRequest.ExtraHours + item.ServiceRequest.ServiceHours) * 60)).ToString("HH:mm")</span>
+                            </span>
+                            <span class="d-md-inline-block px-5">
+                                <span class="d-block"><b>Rating</b></span>
+                                <span class="d-block align-middle">
+                                    @if (item.Ratings != null)
+                                    {
+                                        int i;
+                                        for (i = 1; i < item.Ratings; i++)
+                                        {
+                                            <img src="~/images/star1.png">
+                                        }
+                                        for (int j = i; j <= 5; j++)
+                                        {
+                                            <img src="~/images/star2.png">
+                                        }
+
+                                        if (item.Ratings == 5)
+                                        {
+                                            <h6 class="mt-1 fw-light d-md-inline-block mx-md-2">Excellent</h6>
+                                        }
+                                        else if (item.Ratings >= 4)
+                                        {
+                                            <h6 class="mt-1 fw-light d-md-inline-block mx-md-2">Very Good</h6>
+                                        }
+                                        else if (item.Ratings >= 3)
+                                        {
+                                            <h6 class="mt-1 fw-light d-md-inline-block mx-md-2">Good</h6>
+                                        }
+                                        else if (item.Ratings >= 2)
+                                        {
+                                            <h6 class="mt-1 fw-light d-md-inline-block mx-md-2">Poor</h6>
+                                        }
+                                        else 
+                                        {
+                                            <h6 class="mt-1 fw-light d-md-inline-block mx-md-2">Very Poor</h6>
+                                        }
+
+                                    }
+                                </span>
+                            </span>
+                        </div>
+                        @if (item.ServiceRequest.Comments != null)
+                        {
+                            <hr class="my-2">
+                            <div class="px-md-3">
+                                <h6 class="d-inline-block mb-1">Customer Comment</h6><br />
+                                <span class="d-inline-block">@item.Comments</span>
+                            </div>
+                        }
+
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+    $(".sorting-list").change(() => {
+
+        let url = window.location.pathname + "?sort=" + $(".sorting-list").val() + "&&rate=" + $(".rating-list").val();
+        window.location.href = url;
+        
+    });
+
+    $(".rating-list").change(() => {
+
+        let url = window.location.pathname + "?sort=" + $(".sorting-list").val() + "&&rate=" + $(".rating-list").val();
+        console.log(url);
+        window.location.href = url;
+
+    });
+
+</script>

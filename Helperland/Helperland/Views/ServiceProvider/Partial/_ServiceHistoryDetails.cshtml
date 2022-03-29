@@ -11,9 +11,9 @@
 @{
     List<String> extraList = new List<string>();
 
-    foreach(var item in Model.ServiceRequestExtras)
+    foreach (var item in Model.ServiceRequestExtras)
     {
-        switch(item.ServiceExtraId)
+        switch (item.ServiceExtraId)
         {
             case 1:
                 extraList.Add("Inside cabinets");
@@ -43,7 +43,7 @@
     }
 
     String extraString = String.Join(", ", extraList);
-    }
+}
 
 <div class="modal-header">
     <h4 class="modal-title" id="serviceDetailsModalLabel">Service Details</h4>
@@ -85,18 +85,25 @@
 </div>
 @if (Model.Status != 4 && Model.Status != 2)
 {
-<div class="modal-footer action">
-    @if (Model.Status == 5)
-    {
-        if (Model.ServiceStartDate.AddMinutes((int)((Model.ServiceHours + Model.ExtraHours) * 60)) < DateTime.Now)
+    <div class="modal-footer action">
+        @if (Model.Status == 5)
         {
-            <a asp-action="CompleteService" asp-controller="ServiceProvider" asp-route-serviceId="@Model.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal">Complete</button></a>
+            if (Model.ServiceStartDate.AddMinutes((int)((Model.ServiceHours + Model.ExtraHours) * 60)) < DateTime.Now)
+            {
+                <a asp-action="CompleteService" asp-controller="ServiceProvider" asp-route-serviceId="@Model.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal">Complete</button></a>
+            }
         }
-    }
-    @if (Model.Status == 1)
-    {
-        <a asp-action="AcceptService" asp-controller="ServiceProvider" asp-route-serviceId="@Model.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal">Accept</button></a>
-    }
-    <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal">Cancel</button>
-</div>
+        @if (Model.Status == 1)
+        {
+            <a asp-action="AcceptService" asp-controller="ServiceProvider" asp-route-serviceId="@Model.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button type="button" class="btn px-4 py-2 btn-action-primary d-flex align-items-center" data-bs-dismiss="modal">Accept</button></a>
+        }
+        <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal">Cancel</button>
+    </div>
+}
+else
+{
+    <div class="modal-footer action">
+            
+        <button type="button" class="btn px-4 py-2 btn-action-secondary d-flex align-items-center" data-bs-dismiss="modal">Cancel</button>
+    </div>
 }

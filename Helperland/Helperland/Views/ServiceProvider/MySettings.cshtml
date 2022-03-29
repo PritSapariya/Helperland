@@ -1,0 +1,260 @@
+﻿@model Helperland.Models.ViewModel.ServiceProvider.ServiceProviderSettingsViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_ServiceProviderLayout.cshtml";
+    ViewData["Title"] = "My Settings";
+
+    if (Model.Gender == null)
+    {
+        ViewBag.GenderId = -1;
+    }
+    else
+    {
+        ViewBag.GenderId = Model.Gender;
+    }
+    if (Model.UserProfilePicture == null)
+    {
+        ViewBag.Path = "path";
+    }
+    else
+    {
+        ViewBag.Path = Model.UserProfilePicture;
+    }
+    if (Model.IsActive == true)
+    {
+        ViewBag.IsActive = true;
+    }
+    else
+    {
+        ViewBag.IsActive = false;
+    }
+
+}
+
+<input hidden type="text" value="-1" id="navbarCurrentID" />
+<input hidden type="text" value="@ViewBag.GenderId" id="currentGenderID" />
+<input hidden type="text" value="@ViewBag.Path" id="currentAvatarID" />
+<input hidden type="text" asp-for="UserId" value="@ViewBag.UserId" />
+
+<link rel='stylesheet' href="~/css/service-provider/sp-my-settings.css">
+
+<div class="tabbar d-flex mb-3">
+
+    <div class="tab tab1 active">
+        <a asp-action="MySettings" asp-controller="ServiceProvider"><span class="d-none d-md-inline-block">My Details</span></a>
+        <span class="d-md-none tab-icon-wrapper"></span>
+    </div>
+
+    <div class="tab tab3">
+        <a asp-action="ChangePassword" asp-controller="ServiceProvider"><span class="d-none d-md-inline-block">Change Password</span></a>
+        <span class="d-md-none tab-icon-wrapper"></span>
+    </div>
+
+</div>
+
+@if (ViewBag.isChanged == true)
+{
+<div class="row px-2">
+    <div class="alert alert-success" role="alert">
+        Your Details is successfully changed !!!
+    </div>
+</div>
+}
+
+<form asp-action="MySettings" asp-controller="ServiceProvider" method="post">
+
+
+    <div class="row">
+        <div class="col-10">
+            @if (ViewBag.IsActive == true)
+            {
+                <h3 class="profile-status fw-bold">Account Status: <span class="active">Active</span></h3>
+            }
+            else
+            {
+                <h3 class="profile-status fw-bold">Account Status: <span class="deactive">Deactive</span></h3>
+            }
+            <div>
+                <h3 class="title fw-bolder">Basic Details</h3>
+            </div>
+            <hr>
+        </div>
+        <div class="col-2 d-flex flex-row-reverse">
+            <div class="profile-pic">
+                <img src="/images/avatar-car.png" alt="Profile Pic">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input asp-for="FirstName" type="text" class="form-control" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input asp-for="LastName" type="text" class="form-control" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">E-mail Address</label>
+                <input asp-for="Email" type="email" class="form-control" disabled />
+            </div>
+        </div>
+
+    </div>
+    <div class="row mb-3">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">Mobile Number</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">+91</span>
+                    <input type="number" asp-for="Mobile" class="form-control" required />
+                </div>
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Date of Birth</label>
+            <input asp-for="DateOfBirth" class="form-control date" type="date" id="serviceDate" max="1999-12-31" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Nationality</label>
+            <select class="form-select" disabled>
+                <option value="1">Indian</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="row mb-3">
+
+        <div class="col-12 gender">
+
+            <label class="Gender mb-1">Gender</label>
+            <div>
+                <div class="d-inline-block mx-2">
+                    <input asp-for="Gender" class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                </div>
+                <div class="d-inline-block mx-2">
+                    <input asp-for="Gender" class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Female
+                    </label>
+                </div>
+                <div class="d-inline-block mx-2">
+                    <input asp-for="Gender" class="form-check-input" type="radio" name="gender" id="flexRadioDefault3" value="3">
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Rather not to say
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="row mb-3">
+
+        <label>
+            Select Avatar
+        </label>
+        <div class="custom">
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar1" value="/images/avatar-car.png" />
+                <label class="avatar-input-icon my-3" for="avatar1"></label>
+            </div>
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar2" value="/images/avatar-female.png" />
+                <label class="avatar-input-icon my-3" for="avatar2"></label>
+            </div>
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar3" value="/images/avatar-hat.png" />
+                <label class="avatar-input-icon my-3" for="avatar3"></label>
+            </div>
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar4" value="/images/avatar-iron.png" />
+                <label class="avatar-input-icon my-3" for="avatar4"></label>
+            </div>
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar5" value="/images/avatar-male.png" />
+                <label class="avatar-input-icon my-3" for="avatar5"></label>
+            </div>
+            <div class="d-inline-block my-2 mx-2">
+                <input asp-for="UserProfilePicture" class="avatar-input-box" type="radio" id="avatar6" value="/images/avatar-ship.png" />
+                <label class="avatar-input-icon my-3" for="avatar6"></label>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row mb-2">
+        <div class="col-12">
+            <h3 class="title">My Address</h3>
+            <hr>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <div class="form-group">
+                <label class="form-label">Street Name</label>
+                <input asp-for="AddressLine1" type="text" class="form-control" />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">House Number</label>
+                <input asp-for="AddressLine2" type="text" class="form-control" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label">Postal Code</label>
+                <input asp-for="ZipCode" type="text" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">City</label>
+            <select asp-for="City" class="form-select" disabled>
+                <option value="Junagadh">Junagadh</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-2 mt-2">
+
+        <div class="col-12">
+            <hr>
+            <input class="btn-custom-primary btn" type="submit" value="Save" />
+        </div>
+    </div>
+
+
+</form>
+
+<script>
+
+    var currentGenderID = parseInt($("#currentGenderID").val());
+    var currentAvatarID = $("#currentAvatarID").val();
+
+    if (!isNaN(currentGenderID)) {
+        $(`input[type="radio"][id="flexRadioDefault${currentGenderID}"]`).attr("Checked", true);
+    }
+    if (currentAvatarID != null) {
+        $(`input[type="radio"][id="avatar${currentAvatarID}"]`).attr("Checked", true);
+    }
+
+</script>

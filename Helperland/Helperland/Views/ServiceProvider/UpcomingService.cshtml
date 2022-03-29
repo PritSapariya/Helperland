@@ -52,7 +52,7 @@
                 </td>
                 <td class="align-middle text-center" onclick="loadServiceRequestDetails(@item.ServiceRequestId)">@item.TotalCost €</td>
                 @*<td class="align-middle">15 km</td>*@
-                <td class="align-middle text-center"><a asp-action="CancelService" asp-controller="ServiceProvider" asp-route-serviceId="@item.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button class="cancel">Cancel</button></a></td>
+                <td class="align-middle text-center"><a asp-action="CancelService" asp-controller="ServiceProvider" asp-route-serviceId="@item.ServiceRequestId" asp-route-userId="@ViewBag.UserId"><button class="cancel">Cancel Service</button></a></td>
             </tr>
 
         }

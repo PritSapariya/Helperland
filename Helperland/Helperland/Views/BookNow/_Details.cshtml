@@ -180,6 +180,10 @@
                                                     `);
                     }
 
+                    if ($(`input[type="radio"][name="address"]`) != null) {
+                        $(`input[type="radio"][name="address"]:first-child`).attr("Checked", true);
+                    }
+
                 },
                 failure: function (response) {
                     alert("failure");
@@ -213,6 +217,7 @@
         $("#submit3").click(() => {
             stepOn("#step3", "#step4", "#section3");
             $("#section4").load("/BookNow/GetPaymentPage");
+
         });
 
     });

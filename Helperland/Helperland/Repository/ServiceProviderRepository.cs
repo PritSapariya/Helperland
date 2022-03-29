@@ -2,6 +2,7 @@
 using Helperland.Models.DBModels.Data;
 using Helperland.Models.ViewModel;
 using Helperland.Models.ViewModel.Customer;
+using Helperland.Models.ViewModel.ServiceProvider;
 using Helperland.Repository.IRepository;
 using Helperland.Utilities;
 using Microsoft.AspNetCore.Http;
@@ -175,7 +176,7 @@ namespace Helperland.Repository
                                         .Include(s => s.User)
                                         .Include(s => s.ServiceRequestAddresses)
                                         .Include(s => s.ServiceRequestExtras).AsSplitQuery()
-                                        .Where(s => s.ServiceProviderId == id && s.Status == ConstantString.StatusCompleted).ToList();
+                                        .Where(s => s.ServiceProviderId == id && (s.Status == ConstantString.StatusCompleted || s.Status == ConstantString.StatusCancelled )).ToList();
 
             return result;
         }
@@ -222,6 +223,89 @@ namespace Helperland.Repository
                 return false;
             }
             
+        }
+
+        public Boolean ChangePassword(ChangePasswordViewModel changePasswordViewModel, int userId)
+        {
+
+            try
+            {
+                User u = _db.Users.Where(x => x.UserId == userId && x.Password == changePasswordViewModel.OldPassword).FirstOrDefault();
+                u.Password = changePasswordViewModel.NewPassword;
+
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public ServiceProviderSettingsViewModel GetUserDetailsById(int? v)
+        {
+            User user = _db.Users.Include(x => x.UserAddresses).Where(x => x.UserId == v).FirstOrDefault();
+
+            ServiceProviderSettingsViewModel result = new ServiceProviderSettingsViewModel();
+            
+            result.UserId = (int)v;
+            result.FirstName = user.FirstName;
+            result.LastName = user.LastName;
+            result.Email = user.Email;
+            result.Mobile = user.Mobile;
+            result.DateOfBirth = user.DateOfBirth;
+            result.Gender = user.Gender;
+            result.UserProfilePicture = user.UserProfilePicture;
+            result.ZipCode = user.ZipCode;
+            result.IsActive = user.IsActive;
+            
+            if(user.UserAddresses.Count != null)
+            {
+                result.AddressLine1 = user.UserAddresses.First().AddressLine1;
+                result.AddressLine2 = user.UserAddresses.First().AddressLine2;
+                result.City = user.UserAddresses.First().City;
+            }
+
+            return result;
+        }
+
+        public bool SaveDetails(ServiceProviderSettingsViewModel userDetails)
+        {
+            try 
+            {
+                User user = _db.Users.Include(x => x.UserAddresses).Where(x => x.UserId == userDetails.UserId).FirstOrDefault();
+                
+                user.FirstName = userDetails.FirstName;
+                user.LastName = userDetails.LastName;
+                user.Mobile = userDetails.Mobile;
+                user.ZipCode = userDetails.ZipCode;
+                user.DateOfBirth = userDetails.DateOfBirth;
+                user.Gender = (int)userDetails.Gender;
+                user.UserProfilePicture = userDetails.UserProfilePicture;
+                
+                user.UserAddresses.FirstOrDefault().AddressLine1 = userDetails.AddressLine1;
+                user.UserAddresses.FirstOrDefault().AddressLine2 = userDetails.AddressLine2;
+                user.UserAddresses.FirstOrDefault().Email = userDetails.Email;
+                user.UserAddresses.FirstOrDefault().Mobile = userDetails.Mobile;
+                user.UserAddresses.FirstOrDefault().City = userDetails.City;
+                user.UserAddresses.FirstOrDefault().PostalCode = userDetails.ZipCode;
+
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public List<Rating> GetServiceHistory(int? id)
+        {
+            List<Rating> result = _db.Ratings.Include(x => x.RatingFromNavigation).Include(x => x.ServiceRequest).Where(x => x.RatingTo == id).ToList();
+            return result;
         }
     }
 }

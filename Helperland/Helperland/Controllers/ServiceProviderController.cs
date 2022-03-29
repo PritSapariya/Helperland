@@ -1,8 +1,11 @@
 ﻿using Helperland.Models.DBModels;
+using Helperland.Models.ViewModel.Customer;
+using Helperland.Models.ViewModel.ServiceProvider;
 using Helperland.Repository.IRepository;
 using Helperland.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +76,82 @@ namespace Helperland.Controllers
             return View(model);
         }
 
+        [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/MyRatings")]
+        public IActionResult MyRatings(string sort, string rate)
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+
+            List<Rating> model = serviceProviderRepository.GetServiceHistory(HttpContext.Session.GetInt32("UserId"));
+
+
+
+            if(sort == null)
+            {
+                sort = "cust_name_desc";
+            }
+            if(rate != null)
+            {
+                decimal temp = System.Convert.ToDecimal(rate);
+                model = model.Where(x=> x.Ratings == temp).ToList();
+            }
+
+            ViewBag.RatingList = new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Excellent", Value = "5" },
+                new SelectListItem { Text = "Very Good", Value = "4" },
+                new SelectListItem { Text = "Good", Value = "3" },
+                new SelectListItem { Text = "Poor", Value = "2" },
+                new SelectListItem { Text = "Very Poor", Value = "1" }
+            }, "Value", "Text", rate );
+
+            ViewBag.SortingList = new SelectList( new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Customer Name : Ascending", Value = "cust_name_asec" },
+                new SelectListItem { Text = "Customer Name : Descending", Value = "cust_name_desc" },
+                new SelectListItem { Text = "Service Date : Latest", Value = "service_date_asec" },
+                new SelectListItem { Text = "Service Date : Oldest", Value = "service_date_desc" },
+                new SelectListItem { Text = "Rating : High to Low", Value = "rating_asec" },
+                new SelectListItem { Text = "Rating : Low to High", Value = "rating_desc" }
+            }, "Value", "Text", sort );
+
+
+
+
+            switch (sort)
+            {
+                case "cust_name_asec":
+                    model = model.OrderBy(x => x.RatingFromNavigation.FirstName).ToList();
+                    break;
+
+                case "cust_name_desc":
+                    model = model.OrderByDescending(x => x.RatingFromNavigation.FirstName).ToList();
+                    break;
+
+                case "service_date_asec":
+                    model = model.OrderBy(x => x.ServiceRequest.ServiceStartDate).ToList();
+                    break;
+
+                case "service_date_desc":
+                    model = model.OrderByDescending(x => x.ServiceRequest.ServiceStartDate).ToList();
+                    break;
+
+                case "rating_asec":
+                    model = model.OrderBy(x => x.ServiceRequest.ServiceStartDate).ToList();
+                    break;
+
+                case "rating_desc":
+                    model = model.OrderByDescending(x => x.ServiceRequest.ServiceStartDate).ToList();
+                    break;
+
+                default:
+                    break;
+            }
+
+            return View(model);
+        }
+
         [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/BlockCustomer")]
         public IActionResult BlockCustomer()
         {
@@ -84,6 +163,76 @@ namespace Helperland.Controllers
 
             return View(model);
         }
+        
+        [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/MySettings")]
+        public IActionResult MySettings(bool isChanged)
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+            ViewBag.PostalCode = HttpContext.Session.GetString("PostalCode");
+            
+            if(isChanged == true)
+            {
+                ViewBag.isChanged = true;
+            }
+            
+
+            ServiceProviderSettingsViewModel model = serviceProviderRepository.GetUserDetailsById(HttpContext.Session.GetInt32("UserId"));
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult MySettings(ServiceProviderSettingsViewModel s)
+        {
+            s.UserId = (int)HttpContext.Session.GetInt32("UserId");
+            if (ModelState.IsValid)
+            {
+                if(serviceProviderRepository.SaveDetails(s))
+                {
+                    return RedirectToAction("MySettings", "ServiceProvider", new { isChanged = true });
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [SessionHelper(UserTypeID: 2, returnUrl: "/ServiceProvider/ChangePassword")]
+        public IActionResult ChangePassword()
+        {
+            ViewBag.UserTypeId = HttpContext.Session.GetInt32("UserTypeId");
+            ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+            ViewBag.PostalCode = HttpContext.Session.GetString("PostalCode");
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(ChangePasswordViewModel changePasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = (int)HttpContext.Session.GetInt32("UserId");
+                serviceProviderRepository.ChangePassword(changePasswordViewModel, userId);
+
+
+                ViewBag.isCompleted = true;
+            }
+
+            ViewBag.isOpen = true;
+            return View();
+        }
+
+
 
         public IActionResult BlockCustomerById(int UserId)
         {
@@ -100,7 +249,6 @@ namespace Helperland.Controllers
             }
             
         }
-
         public IActionResult AcceptService(int serviceId)
         {
 
@@ -132,8 +280,7 @@ namespace Helperland.Controllers
             model = serviceProviderRepository.GetServiceDetailsById(serviceId);
 
             return View("~/Views/ServiceProvider/Partial/_ServiceHistoryDetails.cshtml", model);
-        }
-        
+        } 
 
     }
 }

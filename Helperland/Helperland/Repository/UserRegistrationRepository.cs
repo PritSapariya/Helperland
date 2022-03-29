@@ -51,6 +51,11 @@ namespace Helperland.Repository
                     user.Mobile = _userRegistrationViewModel.MobileNumber;
                     user.Password = _userRegistrationViewModel.Password;
                     user.CreatedDate = DateTime.Now.Date;
+                    
+                    if(_userTypeId == 1){
+                        user.IsActive = true;
+                        user.IsApproved = true;
+                    }
 
                     // Entry to database
                     _db.Users.Add(user);
