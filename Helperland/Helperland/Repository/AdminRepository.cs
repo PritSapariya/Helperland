@@ -14,13 +14,11 @@ namespace Helperland.Repository
     public class AdminRepository : IAdminRepository
     {
         private readonly HelperlandContext _db;
-        
 
         public AdminRepository(HelperlandContext _db)
         {
             this._db = _db;
         }
-
 
         public List<ServiceRequest> GetAllServiceRequest()
         {
@@ -168,6 +166,14 @@ namespace Helperland.Repository
             service.ServiceStartDate = temp;
             service.ServiceRequestAddresses.First().AddressLine1 = model.AddressLine1;
             service.ServiceRequestAddresses.First().AddressLine2 = model.AddressLine2;
+
+            _db.SaveChanges();
+        }
+
+        public void CancelServiceById(int? id)
+        {
+            ServiceRequest service = _db.ServiceRequests.Where(s => s.ServiceRequestId == id).FirstOrDefault();
+            service.Status = ConstantString.StatusCancelled;
 
             _db.SaveChanges();
         }

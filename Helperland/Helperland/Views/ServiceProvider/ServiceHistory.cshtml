@@ -7,10 +7,11 @@
 
 <input hidden type="text" value="5" id="navbarCurrentID" />
 <link rel='stylesheet' href="~/css/service-provider/sp-upcoming-service.css">
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 
 <div class="mb-2 table-header-top d-flex justify-content-between align-items-center">
     <h4>Service History</h4>
-    <button>Export</button>
+    <button onclick="exportData()">Export</button>
 </div>
 
 <table class="table table-borderless" id="datatable">
@@ -109,6 +110,22 @@
 
     };
 
+</script>
 
 
+<script>
+
+    const html_table_to_excel = (type) => {
+
+        var data = document.getElementById('datatable');
+        var file = XLSX.utils.table_to_book(data, { sheet: "sheet1" });
+
+        XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
+        XLSX.writeFile(file, 'SPServiceHistory.' + type);
+
+    }
+
+    const exportData = () => {
+        html_table_to_excel('xlsx');
+    }
 </script>

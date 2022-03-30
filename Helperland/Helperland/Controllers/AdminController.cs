@@ -224,6 +224,11 @@ namespace Helperland.Controllers
             return View(model);
         }
 
+        public IActionResult CancelService(int? serviceid)
+        {
+            adminRepository.CancelServiceById(serviceid);
+            return Redirect("/Admin/ServiceManagement");
+        }
         [HttpPost]
         public IActionResult SaveDetails(CustomServiceRequestViewModel service)
         {

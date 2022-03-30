@@ -183,7 +183,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" onclick="loadServiceDetails(@item.ServiceRequestId)">Edit & Reschedule</a></li>
-                                <li><a class="dropdown-item" href="#">Cancel SR</a></li>
+                                <li><a class="dropdown-item" asp-action="CancelService" asp-controller="Admin" asp-route-serviceid="@item.ServiceRequestId">Cancel SR</a></li>
                             </ul>
                         </div> 
                         }

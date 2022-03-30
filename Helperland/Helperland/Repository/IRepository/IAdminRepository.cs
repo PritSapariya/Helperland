@@ -15,6 +15,7 @@ namespace Helperland.Repository.IRepository
         public Dictionary<int, decimal> GetAllSPRating();
         public List<User> GetAllUser(int? id);
         public List<String> GetAllUserName(int? id);
+        public void CancelServiceById(int? id);
 
         public List<String> GetAllCustomerName(int? id);
         public List<String> GetAllSPName(int? id);
