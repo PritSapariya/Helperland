@@ -1,0 +1,39 @@
+body {background-color: #f2f4f5; height: 100vh; width: 100%;}
+
+/* Main Content */
+.main-wrapper {height: 100vh; padding: 90px 20px 70px 290px; overflow: scroll;}
+.page-title-wrapper {width: 100%; margin-bottom: 10px;}
+.page-title-wrapper h4 {line-height: 1; font-size: 22px; font-weight: 500;}
+.page-title-wrapper button {border: none; padding: 1px 10px; width: 132px; height: 30px; border-radius: 4px; background-color: #1FB6FF; color: #FFFFFF; font-size: 14px; line-height: 1; display: flex;}
+
+.filter-form-wrapper {border: 1px solid #e1e1e1; padding: 20px 15px; margin-bottom: 20px; background-color: #FFF;}
+.filter-form-wrapper form .form-select {width: 205px; height: 46px; line-height: 1; color: #646464;}
+.filter-form-wrapper form > * {margin-right: 15px;}
+.input-group.phonenumber {max-width: 220px;}
+.input-group.zipcode {max-width: 140px;}
+.btn-group {width: 84px;}
+.btn-group .btn-primary {background-color: #1FB6FF; border: none;}
+.btn-group .btn-outline-primary {background: transparent; border-color: #1FB6FF !important; color: #1FB6FF !important;}
+
+.main-table-wrapper {margin-bottom: 20px;}
+table tr {border: 1px solid #e6e6e6 !important}
+thead {background: #F9F9F9; height: 56px; }
+table thead tr > th img {padding-left: 8px;}
+.sortable {cursor: pointer}
+thead th {padding: 3px 15px; color: #646464;}
+
+.user-name {padding-left: 15px !important;} /* Just for first col to set padding */
+
+.calander-img { margin-top: -5px; }
+tbody tr {height: 75px; background-color: #FFFFFF; color: #646464;}
+td.user-status div {height: 22px; width: 82px; padding-top: 2px; margin: 0 auto; font-weight: 400; color: #FFFFFF; font-size: 12px;}
+td.user-status.active div{background-color: #67b644;}
+td.user-status.new div{background-color: #e7e41b; width: 70px;}
+td.user-status.inactive div{background-color: #ff6b6b;}
+.dropdown > a { display:block; margin: 0 auto; height: 30px; border-radius: 30px; width: 30px; background-color: transparent; transition: 0.3s all ease;}
+a.show {height: 30px; border-radius: 30px; width: 30px; background-color: #f4f4f4;}
+.user-action .dropdown {position: relative;}
+.user-action .dropdown .dropdown-menu {position: absolute; right: 0; width: 34px; box-shadow: 0px 0px 13px 3px rgba(235,235,235,1); padding: 0 !important;}
+.user-action .dropdown .dropdown-menu a {width: 160px; color: #646464; padding: 7px 10px;}
+
+footer p {color: #A2A6A8; font-size: 14px;}

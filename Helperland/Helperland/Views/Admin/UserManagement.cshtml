@@ -1,0 +1,165 @@
+﻿@model List<Helperland.Models.DBModels.User>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "User Management";
+}
+
+<link rel="stylesheet" href="~/css/admin/admin-user-management.css" />
+
+
+<div class="page-title-wrapper">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>User Management</h4>
+    </div>
+</div>
+
+<div class="filter-form-wrapper">
+    <form class="d-flex flex-wrap" id="myForm" asp-action="UserManagement" asp-controller="Admin">
+        <select class="form-select" name="username" aria-label="Default select example" id="selUser" asp-items="ViewBag.UserList">
+            <option value="">Select UserName</option>
+        </select>
+        <select class="form-select" name="userrole" aria-label="Default select example" asp-items="ViewBag.RoleList">
+            <option value="">Select Role</option>
+        </select>
+        <div class="input-group phonenumber">
+            <span class="input-group-text" id="basic-addon1">+49</span>
+            @if (ViewBag.Mobile != null)
+            {
+                <input type="text" name="mobile" class="form-control" placeholder="Phone Number" value="@ViewBag.Mobile" aria-label="phonenumber" aria-describedby="basic-addon1">
+            }
+            else
+            {
+                <input type="text" name="mobile" class="form-control" placeholder="Phone Number" aria-label="phonenumber" aria-describedby="basic-addon1">
+            }
+        </div>
+        <div class="input-group zipcode">
+            @if (ViewBag.Zipcode != null)
+            {
+                <input type="text" name="zipcode" class="form-control" placeholder="Zipcode" value="@ViewBag.Zipcode" aria-label="zipcode" aria-describedby="basic-addon1">
+            }
+            else
+            {
+                <input type="text" name="zipcode" class="form-control" placeholder="Zipcode" aria-label="zipcode" aria-describedby="basic-addon1">
+            }
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="reset" class="btn btn-outline-primary" id="clearForm">Clear</button>
+        </div>
+    </form>
+</div>
+
+<div class="main-table-wrapper">
+    <table class="table" id="datatable">
+        <thead>
+            <tr>
+                <th scope="col" class="align-middle sortable user-name">User Name</th>
+                <th scope="col" class="align-middle sortable">Date of Registration</th>
+                <th scope="col" class="align-middle sortable">User Type</th>
+                <th scope="col" class="align-middle sortable">Phone</th>
+                <th scope="col" class="align-middle sortable">Postal Code</th>
+                <th scope="col" class="align-middle sortable text-center">Status<img src="./assets/images/sort.png" alt=""></th>
+                <th scope="col" class="align-middle text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="align-middle user-name">@item.FirstName @item.LastName</td>
+                @if (item.CreatedDate != null)
+                {
+                    <td class="align-middle"><span hidden>@item.CreatedDate.ToString("yyyy-MM-dd")</span> <img class="calander-img" src="~/images/calendar2.png" alt="pic">&nbsp;&nbsp;<b>@item.CreatedDate.ToString("dd'/'MM'/'yyyy")</b></td>
+                }
+                else
+                {
+                    <td class="align-middle"></td>
+                }
+                @if (item.UserTypeId == 1)
+                {
+                    <td class="align-middle">Customer</td>
+                }
+                else if (item.UserTypeId == 2)
+                {
+                    <td class="align-middle">Service Provider</td>
+                }
+                else if (item.UserTypeId == 3)
+                {
+                    <td class="align-middle">Admin</td>
+                }
+                else
+                {
+                    <td class="align-middle"></td>
+                }
+
+                    @if (item.Mobile != null)
+                    {
+                        <td class="align-middle">@item.Mobile</td>
+                    }
+                    else
+                    {
+                        <td class="align-middle"></td>
+                    }
+                    @if (item.ZipCode != null)
+                    {
+                        <td class="align-middle">@item.ZipCode</td>
+                    }
+                    else
+                    {
+                        <td class="align-middle"></td>
+                    }
+
+                    @if (item.IsActive == true)
+                    {
+                        <td class="align-middle user-status active"><div class="text-center">Active</div></td>
+
+                    }
+                    else if (item.IsApproved == false)
+                    {
+                        <td class="align-middle user-status new"><div class="text-center">New</div></td>
+                    }
+                    else
+                    {
+                        <td class="align-middle user-status inactive"><div class="text-center">Inactive</div></td>
+                    }
+
+
+                    <td class="align-middle user-action text-center">
+                        <div class="dropdown">
+                            <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="~/images/group-38.png" alt="">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @if (item.IsActive == true)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Deactive" asp-route-userId="@item.UserId">Deactive</a></li>
+                                }
+                                else if (item.IsApproved == false)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Approve" asp-route-userId="@item.UserId">Approve</a></li>
+                                }
+                                else
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Active" asp-route-userId="@item.UserId">Active</a></li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>©2018 Helperland. All rights reserved.</p>
+</footer>

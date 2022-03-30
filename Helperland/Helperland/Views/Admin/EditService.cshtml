@@ -1,0 +1,80 @@
+﻿@model Helperland.Models.ViewModel.Admin.CustomServiceRequestViewModel
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="serviceModal Label">Edit & Reschedule</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form asp-action="SaveDetails" asp-controller="Admin" method="post">
+            <div class="modal-body">
+
+                <div class="row">
+                    <input hidden asp-for="ServiceRequestId" />
+                    <div class="col-sm-6 mb-3 form-group">
+                        <label class="form-label"><b>Date</b></label>
+                        <input asp-for="ServiceStartDate" class="form-control date" type="date" id="serviceDate" value="@Model.ServiceStartDate.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-sm-6 mb-3 form-group">
+                        <label class="form-label"><b>Time</b></label>
+                        <select asp-for="Time" class="form-select" id="serviceTime" asp-items="ViewBag.TimeList">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="form-label"><h6 class="my-2 fw-bold">Service Address</h6></label>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Street Name</label>
+                            <input asp-for="AddressLine1" type="text" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="houseNumber">House Number</label>
+                            <input asp-for="AddressLine2" type="text" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Postal Code</label>
+                            <input asp-for="ZipCode" type="text" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <select class="form-select" disabled>
+                                <option value="Junagadh" selected>Junagadh</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">Why do you want to reschedule service request ?</label>
+                            <div class="col-12 form-group">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

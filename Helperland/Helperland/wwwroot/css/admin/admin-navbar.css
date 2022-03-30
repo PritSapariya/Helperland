@@ -1,0 +1,11 @@
+/* Admin Navbar */
+.navbar {background-color: #1FB6FF; padding: 11px 0 10px;}
+.nav-link h6 {display: inline-block; margin: 0 !important; line-height: 1; padding-left: 10px; color: #FFFFFF}
+
+/* Side Navigation */
+aside {position: fixed; top: 73px; width: 270px; height: 100%; background-color: #ffffff; box-shadow: 2px 0 6px 0px rgb(0 0 0 / 10%);}
+aside ul {padding: 0px;}
+aside ul li {height: 50px; border-bottom: 1px solid #e5e5e5;}
+aside ul li a {text-decoration: none; line-height: 1; color: #646464; background-color: transparent; padding: 15px; width: 100%; display: block; transition: 0.3s all ease;}
+aside ul li a:hover, a.active {color: #1FB6FF;} 
+#collapseExample {background-color: #f1f1f1b3;}

@@ -1,0 +1,317 @@
+﻿@model List<Helperland.Models.DBModels.ServiceRequest>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Service Management";
+    Dictionary<int, decimal> rating = ViewBag.RatingOfServiceProvider;
+}
+
+<link rel="stylesheet" href="~/css/admin/admin-service-requests.css" />
+
+<div class="page-title-wrapper">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Service Management</h4>
+    </div>
+</div>
+
+<div class="filter-form-wrapper">
+    <form class="d-flex flex-wrap" asp-action="ServiceManagement" asp-controller="Admin" method="get">
+
+        <div class="input-group fixed-text-width">
+            @if (ViewBag.ServiceId != null)
+            {
+                <input type="text" class="form-control" name="serviceid" placeholder="Service ID" value="@ViewBag.ServiceId">
+            }
+            else
+            {
+                <input type="text" class="form-control" name="serviceid" placeholder="Service ID">
+            }
+        </div>
+        <div class="input-group fixed-text-width">
+            @if (ViewBag.PostalCode != null)
+            {
+                <input type="text" class="form-control" name="postalcode" placeholder="Postal Code" value="@ViewBag.PostalCode">
+            }
+            else
+            {
+                <input type="text" class="form-control" name="postalcode" placeholder="Postal Code">
+            }
+        </div>
+        <div class="input-group fixed-email-width">
+            @if (ViewBag.Email != null)
+            {
+                <input type="text" class="form-control" name="email" placeholder="Email" value="@ViewBag.Email">
+            }
+            else
+            {
+                <input type="text" class="form-control" name="email" placeholder="Email">
+            }
+        </div>
+        <select class="form-select" name="customer" aria-label="Select Status" asp-items="ViewBag.CustomerList" id="customerList">
+            <option value="">Select Customer</option>
+        </select>
+        <select class="form-select" name="serviceprovider" aria-label="Select Status" asp-items="ViewBag.ServiceProviderList" id="serviceProviderList">
+            <option value="">Select Service Provider</option>
+        </select>
+        <select class="form-select" name="status" aria-label="Select Status" asp-items="ViewBag.StatusList">
+            <option value="">Select Status</option>
+        </select>
+        <div class="input-group fixed-date-width">
+            @if (ViewBag.StartDate != null)
+            {
+                <input class="form-control date" type="date" name="startdate" value="@ViewBag.StartDate" />
+
+            }
+            else
+            {
+                <input class="form-control date" type="date" name="startdate" />
+
+            }
+        </div>
+        <div class="input-group fixed-date-width">
+            @if (ViewBag.StartDate != null)
+            {
+                <input class="form-control date" type="date" name="todate" value="@ViewBag.ToDate" />
+
+            }
+            else
+            {
+                <input class="form-control date" type="date" name="todate" />
+
+            }
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="reset" class="btn btn-outline-primary">Clear</button>
+        </div>
+    </form>
+</div>
+
+<div class="main-table-wrapper">
+    <table class="table" id="datatable">
+        <thead>
+            <tr>
+                <th scope="col" class="align-middle sortable" width="100">Service ID</th>
+                <th scope="col" class="align-middle sortable" width="150">Service Date</th>
+                <th scope="col" class="align-middle sortable">Customer Details</th>
+                <th scope="col" class="align-middle sortable" width="260">Service Provider</th>
+                <th scope="col" class="align-middle sortable text-center" width="100">Payment</th>
+                <th scope="col" class="align-middle sortable text-center" width="120">Status</th>
+                <th scope="col" class="align-middle text-center pe-none" width="80">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ServiceRequestId</td>
+                    <td>
+                        <span hidden>@item.ServiceStartDate.ToString("yyyy/MM/dd HH:mm")</span>
+                        <div><span class="service-date d-flex align-items-center"><img src="~/images/calendar2.png" alt="">@item.ServiceStartDate.ToString("dd'/'MM'/'yyyy")</span></div>
+                        <div><span class="service-time d-flex align-items-center"><img src="~/images/layer-14.png" alt="">@item.ServiceStartDate.ToString("HH:mm") - @item.ServiceStartDate.AddMinutes((int)((item.ExtraHours + item.ServiceHours) * 60)).ToString("HH:mm")</span></div>
+                    </td>
+                    <td>
+                        <div><span class="customer-name">@item.User.FirstName @item.User.LastName</span></div>
+                        <div><span class="customer-address d-flex align-items-center"><img src="~/images/layer-15.png" alt="">@item.ServiceRequestAddresses.First().AddressLine1, @item.ServiceRequestAddresses.First().AddressLine2, @item.ServiceRequestAddresses.First().PostalCode, @item.ServiceRequestAddresses.First().City</span></div>
+                    </td>
+
+
+
+                    @if (item.ServiceProviderId != null)
+                    {
+                        <td class="d-flex align-items-center">
+                            <img src="@item.ServiceProvider.UserProfilePicture" height="46" width="46" alt="pic">
+                            <div class="d-inline-block">
+                                <div class="customer-name mx-2">@item.ServiceProvider.FirstName @item.ServiceProvider.LastName</div>
+                                <div class="rating-icons d-block mx-2">
+                                    @if (rating[(int)item.ServiceProviderId] >= 0)
+                                    {
+                                        int i;
+                                        for (i = 1; i < rating[(int)item.ServiceProviderId]; i++)
+                                        {
+                                            <img src="~/images/star1.png">
+                                        }
+                                        for (int j = i; j <= 5; j++)
+                                        {
+                                            <img src="~/images/star2.png">
+                                        }
+                                        <h6 class="d-inline-block my-0 mx-1 align-middle">@rating[(int)item.ServiceProviderId]</h6>
+                                    }
+
+                                </div>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="d-flex align-items-center"></td>
+                    }
+
+                    <td class="text-center">@item.TotalCost €</td>
+
+                    @if (item.Status == 1)
+                    {
+                        <td class="service-status text-center new"><span class="text-center">New</span></td>
+                    }
+                    else if (item.Status == 5)
+                    {
+                        <td class="service-status text-center upcoming"><span class="text-center">Upcoming</span></td>
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <td class="service-status text-center completed"><span class="text-center">Completed</span></td>
+                    }
+                    else if (item.Status == 3)
+                    {
+                        <td class="service-status text-center cancelled"><span class="text-center">Cancelled</span></td>
+                    }
+                    else
+                    {
+                        <td class="service-status text-center rescheduled"><span class="text-center">Rescheduled</span></td>
+
+                    }
+
+                    <td class="user-action text-center">
+                        @if(item.Status == 5 || item.Status == 1)
+                        {
+                        <div class="dropdown">
+                            <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="~/images/group-38.png" alt="">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" onclick="loadServiceDetails(@item.ServiceRequestId)">Edit & Reschedule</a></li>
+                                <li><a class="dropdown-item" href="#">Cancel SR</a></li>
+                            </ul>
+                        </div> 
+                        }
+                        
+                    </td>
+                </tr>
+            }
+
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>©2018 Helperland. All rights reserved.</p>
+</footer>
+
+<!-- Service Details Modal Starts -->
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModal Label">Edit & Reschedule</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-6 mb-3 form-group">
+                        <label class="form-label"><b>Date</b></label>
+                        <input class="form-control date" type="date" id="serviceDate" value="2000-01-01" />
+                    </div>
+                    <div class="col-sm-6 mb-3 form-group">
+                        <label class="form-label"><b>Time</b></label>
+                        <select class="form-select" id="serviceTime">
+                            <option value="8" selected>8:00</option>
+                            <option value="8.5">8:30</option>
+                            <option value="9">9:00</option>
+                            <option value="9.5">9:30</option>
+                            <option value="10">10:00</option>
+                            <option value="10.5">10:30</option>
+                            <option value="11">11:00</option>
+                            <option value="11.5">11:30</option>
+                            <option value="12">12:00</option>
+                            <option value="12.5">12:30</option>
+                            <option value="13">13:00</option>
+                            <option value="13.5">13:30</option>
+                            <option value="14">14:00</option>
+                            <option value="14.5">14:30</option>
+                            <option value="15">15:00</option>
+                            <option value="15.5">15:30</option>
+                            <option value="16">16:00</option>
+                            <option value="16.5">16:30</option>
+                            <option value="17">17:00</option>
+                            <option value="17.5">17:30</option>
+                            <option value="18">18:00</option>
+                            <option value="18.5">18:30</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="form-label"><h6 class="my-2 fw-bold">Service Address</h6></label>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Street Name</label>
+                            <input type="text" class="form-control" value="M.G.Road" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="houseNumber">House Number</label>
+                            <input type="text" class="form-control" value="B - 104" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="streetName">Postal Code</label>
+                            <input type="text" class="form-control" value="362001" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <select class="form-select" disabled>
+                                <option value="Junagadh" selected>Junagadh</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <div class="form-group">
+                            <label class="form-label">Why do you want to reschedule service request ?</label>
+                            <div class="col-12 form-group">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service Details Model Ends -->
+
+<script>
+        const loadServiceDetails = (id) => {
+
+            let url = "/Admin/EditService?serviceId=" + id;
+            console.log("ID: " + id);
+            console.log("url: " + url);
+            $("#serviceModal").load(url);
+            $("#serviceModal").modal("show");
+
+        };
+
+</script>

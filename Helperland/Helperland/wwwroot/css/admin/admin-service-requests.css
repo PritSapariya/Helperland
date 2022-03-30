@@ -1,0 +1,63 @@
+body {background-color: #f2f4f5; height: 100vh; width: 100%;}
+
+/* Main Wrapper */
+.main-wrapper {height: 100vh; padding: 90px 20px 70px 290px; overflow-y: scroll;}
+.page-title-wrapper {width: 100%; margin-bottom: 10px;}
+.page-title-wrapper h4 {line-height: 1; font-size: 22px; font-weight: 500;}
+
+aside ul li a.active {color: #1FB6FF;}
+.sortable {cursor: pointer}
+.filter-form-wrapper {border: 1px solid #e1e1e1; padding: 20px 15px; margin-bottom: 20px; background-color: #FFF;}
+.filter-form-wrapper form .form-select {width: 205px; height: 46px; line-height: 1; color: #646464;}
+form {gap: 15px;}
+
+.input-group.fixed-text-width {max-width: 140px;}
+.input-group.fixed-email-width {max-width: 240px;}
+.input-group.fixed-date-width {max-width: 180px; position: relative;}
+.input-group.fixed-date-width .form-control {padding: 12px 10px 12px 40px;}
+
+.btn-group {width: 84px;}
+.btn-group .btn-primary {background-color: #1FB6FF; border: none;}
+.btn-group .btn-outline-primary {background: transparent; border-color: #1FB6FF !important; color: #1FB6FF !important;}
+
+.main-table-wrapper {margin-bottom: 20px;}
+table tr {border: 1px solid #e6e6e6 !important}
+table td {border: none;}
+thead {background: #F9F9F9; height: 56px;}
+table thead tr > th img {padding-left: 8px;}
+thead th {padding: 3px 15px; color: #646464; border-bottom: 1px solid #e6e6e6 !important}
+
+tbody tr td:nth-child(1), thead tr td:nth-child(1) {padding-left: 15px !important;} /* Just for first col to set padding */
+
+tbody tr td div span.service-date {margin-bottom: 6px; font-weight: bold;}
+tbody tr td div span.service-date img {padding-right: 4px}
+tbody tr td div span.service-time img {padding-right: 3px;}
+.form-control.date {position: relative; padding-left: 60px !important; }
+input[type="date"]::-webkit-calendar-picker-indicator {position: absolute; left: 0; color: #1D7A8C}
+
+tbody tr td div span.customer-name {padding-bottom: 6px; line-height: 1;}
+tbody tr td div span.customer-address img {padding-right: 3px}
+
+tbody tr {height: 75px; background-color: #FFFFFF; color: #646464;}
+td.service-status span {padding: 5px 10px; margin: 0 auto; color: #FFFFFF; font-size: 13px; line-height: 22px;}
+td.service-status.new span{background-color: #F2BB37; width: 45px;}
+td.service-status.cancelled span{background-color: #ff6b6b;}
+td.service-status.completed span{background-color: #5be027;}
+td.service-status.upcoming span{background-color: #25e4e4;}
+td.service-status.rescheduled span{background-color: #d226e9;}
+
+td.payment-status.not-applicable span{background-color: #ff6b6b !important;}
+
+
+.dropdown > a { display:block; margin: 0 auto; height: 30px; border-radius: 30px; width: 30px; background-color: transparent; transition: 0.3s all ease;}
+a.show {height: 30px; border-radius: 30px; width: 30px; background-color: #f4f4f4;}
+.user-action .dropdown {position: relative;}
+.user-action .dropdown .dropdown-menu {position: absolute; right: 0; width: 34px; box-shadow: 0px 0px 13px 3px rgba(235,235,235,1); padding: 0 !important;}
+.user-action .dropdown .dropdown-menu a {width: 160px; color: #646464; padding: 7px 10px;}
+
+/* Edit and Reschedule CSS Starts */
+#serviceModal .modal-header, #serviceModal .modal-body, #serviceModal .modal-footer { padding: 20px !important}
+#serviceModal .modal-dialog { min-width: 600px; }
+#serviceModal textarea { min-height: 100px; }
+#serviceModal .modal-footer .btn { width: 100%; }
+/* Edit and Reschedule CSS Ends */

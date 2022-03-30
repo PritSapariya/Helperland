@@ -146,6 +146,17 @@ namespace Helperland.Controllers
                     HttpContext.Session.SetInt32("UserTypeId",  _UserTypeId);
                     HttpContext.Session.SetInt32("UserId", _UserId);
                     HttpContext.Session.SetString("Name", _name);
+
+                    if (_UserTypeId == 3)
+                    {
+                        if (!String.IsNullOrEmpty(returnUrl))
+                        {
+                            return LocalRedirect(returnUrl);
+                        }
+
+                        return RedirectToAction("ServiceManagement", "Admin");
+                    }
+
                     HttpContext.Session.SetString("PostalCode", _PostalCode);
 
                     if (_UserTypeId == 1)
@@ -167,6 +178,7 @@ namespace Helperland.Controllers
 
                         return RedirectToAction("Index", "ServiceProvider");
                     }
+                    
                     else
                     {
                         ViewBag.IsLoginOpen = true;

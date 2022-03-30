@@ -35,6 +35,7 @@ namespace Helperland
             services.AddScoped<IBookNowRepository, BookNowRepository>();
             services.AddScoped<ICustomerDashboardRepository, CustomerDashboardRepository>();
             services.AddScoped<IServiceProviderRepository, ServiceProviderRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
 
         }
 
